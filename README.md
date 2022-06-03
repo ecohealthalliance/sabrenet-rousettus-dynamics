@@ -41,16 +41,20 @@ when using data or referring to this study.
 
 ``` mermaid
 graph LR
-  subgraph Legend
-    x5b3426b4c7fa7dbc([""Started""]):::started --- xbf4603d6c2c2ad6b([""Stem""]):::none
-  end
   subgraph Graph
+    xc2117931d245afce(["dat_xls"]):::queued --> x733041ef94e8d4a9(["dat_fec"]):::queued
+    xc2117931d245afce(["dat_xls"]):::queued --> x6cf5d6dc2e05a667(["dat_bat"]):::queued
+    x6cf5d6dc2e05a667(["dat_bat"]):::queued --> x4a5cfaffa1d0e789(["dat_prepped"]):::queued
+    x733041ef94e8d4a9(["dat_fec"]):::queued --> x4a5cfaffa1d0e789(["dat_prepped"]):::queued
+    x3f8f3f89b15a4a7c>"process_data"]:::uptodate --> x4a5cfaffa1d0e789(["dat_prepped"]):::queued
     x6e52cb0f1668cc22(["readme"]):::started --> x6e52cb0f1668cc22(["readme"]):::started
+    xf7544390134f4647{{"plot_targets"}}:::uptodate --> xf7544390134f4647{{"plot_targets"}}:::uptodate
+    xad15c442a1533efe{{"output_targets"}}:::outdated --> xad15c442a1533efe{{"output_targets"}}:::outdated
+    x6a7cdb164c636498{{"analysis_targets"}}:::uptodate --> x6a7cdb164c636498{{"analysis_targets"}}:::uptodate
+    xbea903ca6e7865e7{{"user_rprof"}}:::outdated --> xbea903ca6e7865e7{{"user_rprof"}}:::outdated
+    x7f1f0b8d59d2dfab{{"r_file"}}:::uptodate --> x7f1f0b8d59d2dfab{{"r_file"}}:::uptodate
+    x61c99aa4be265faa{{"data_targets"}}:::outdated --> x61c99aa4be265faa{{"data_targets"}}:::outdated
   end
-  classDef started stroke:#000000,color:#000000,fill:#DC863B;
-  classDef none stroke:#000000,color:#000000,fill:#94a4ac;
-  linkStyle 0 stroke-width:0px;
-  linkStyle 1 stroke-width:0px;
 ```
 
 -   This project requires R version 4.2.0 (2022-04-22). This project

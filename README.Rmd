@@ -45,7 +45,7 @@ when using data or referring to this study.
 ```{r, echo=FALSE, message = FALSE, results='asis'}
 cat(
   "```mermaid",
-  targets::tar_mermaid(targets_only = TRUE),
+  targets::tar_mermaid(targets_only = FALSE, outdated = FALSE, legend = FALSE, color = FALSE),
   "```",
   sep = "\n"
 )

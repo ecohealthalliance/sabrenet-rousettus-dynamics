@@ -12,6 +12,10 @@ tar_option_set(
 )
 
 data_targets <- tar_plan(
+  tar_file(dat_xls, "data/2021-10_ Supplementary datasets.xlsx"),
+  dat_fec = read_xlsx(dat_xls, sheet = "Dataset 1", skip = 1),
+  dat_bat = read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
+  dat_prepped = process_data(dat_fec, dat_bat)
 )
 
 analysis_targets <- tar_plan(
