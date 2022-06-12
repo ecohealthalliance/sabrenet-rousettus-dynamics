@@ -1,0 +1,102 @@
+---
+title: "Model Diagnostics"
+author: "Noam Ross"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+<style type="text/css">
+.main-container {
+  max-width: 1800px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+This document summarizes model diagnostics and checks.
+
+First, we set up by loading packages and generated R objects.
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+library(targets)
+library(mgcv)
+```
+
+```{r load_targets}
+tar_load(c(
+  multinomial_model,
+  gam_posterior,
+  posterior_stats
+))
+```
+
+## Model Summary
+
+```{r}
+summary(multinomial_model)
+```
+
+## GAM Checks
+
+`gam.check()` provides convergence diagnostics. Basis dimension (k) results should all be above 0.05 to indicate
+that there are not systematic patterns in the model residuals.  Four diagnostic
+plot are provided. In the first (Q-Q) plot, we should see residuals and quantiles
+line up on the 1-1 line.  Other plots are difficult to interpret in the multinomial
+case. 
+
+```{r}
+gam.check(multinomial_model)
+```
+
+## Individual Smooth terms
+
+These are plots of the indivudal smooths in the model on the linear scale.
+Inspect for strange behavior and check that their shape corresponds with
+significance terms in in the model summary.
+
+```{r, fig.show="hold", out.width="33%"}
+for (i in seq_len(length(multinomial_model$smooth))) {
+  plot(multinomial_model, scale = 0, select = i)
+}
+```
+
+## MCMC diagnostics
+
+These are acceptance ratios from the `r dim(gam_posterior)[2]` MCMC chains
+run.  
+
+From `?gam.mh`:
+
+> The function reports the acceptance rate of the two types of step. If the 
+> random walk acceptance probability (`$rw.accept`) is higher than a quarter then `rw.step` 
+> should probably be increased. Similarly if the acceptance rate (`$accept`) is too low,
+> it should be decreased. The random walk steps can be turned off altogether
+> (see above), but it is important to check the chains for stuck sections if
+> this is done.
+
+
+```{r}
+attributes(gam_posterior)[c("accept", "rw.accept")]
+```
+
+Here is a summary of the dimensions of the MCMC chain output
+```{r}
+tibble(
+  dimension = names(dimnames(gam_posterior)),
+  value = dim(gam_posterior)
+)
+```
+
+
+Here are Stan-type per-parameter chain diagnostics.  `Rhat` should be at or near
+1 to indicate that the multiple MCMC chains are well-mixed.  `ess_bulk` and 
+`ess_tail` are the effective sample sizes for posterior samples from the parameter
+distributions and the tails of those distributions, respectively. These should be
+large enough to make reasonable inferences from. If not, the chain length should
+be increased (and more thinning applied to keep the sample size reasonable):
+
+```{r}
+print(posterior_stats, n = Inf)
+```
+
