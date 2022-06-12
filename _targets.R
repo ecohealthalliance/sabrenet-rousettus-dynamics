@@ -42,11 +42,9 @@ plot_targets <- tar_plan(
 
 output_targets <- tar_plan(
   tar_render(readme,
-             path = "README.Rmd",
-             output_dir = here::here()),
+             path = "README.Rmd"),
   tar_render(model_diagnostics,
-             path = "reports/model_diagnostics.Rmd",
-             output_dir = "outputs"),
+             path = "reports/model_diagnostics.Rmd"),
   tar_file(dat_cleaned_csv, {
     write_csv(dat_cleaned, "outputs/data_prepped.csv")
     "outputs/data_prepped.csv"

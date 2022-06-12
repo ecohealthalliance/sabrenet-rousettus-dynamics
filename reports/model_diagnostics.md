@@ -51,15 +51,15 @@ summary(multinomial_model)
 ## outcome ~ s(day, bs = "ad", k = 15, m = 3, by = sample_type) + 
 ##     s(day_of_year, bs = "cc", by = sample_type, k = 5) + s(fmi_kg_m2, 
 ##     k = 5, by = dummy_rectal)
-## <environment: 0x7f77cdb541c8>
+## <environment: 0x7fe398067580>
 ## ~s(day, bs = "ad", k = 15, m = 3, by = sample_type) + s(day_of_year, 
 ##     bs = "cc", by = sample_type, k = 5) + s(fmi_kg_m2, k = 5, 
 ##     by = dummy_rectal)
-## <environment: 0x7f77cdb541c8>
+## <environment: 0x7fe398067580>
 ## ~s(day, bs = "ad", k = 15, m = 3, by = sample_type) + s(day_of_year, 
 ##     bs = "cc", by = sample_type, k = 5) + s(fmi_kg_m2, k = 5, 
 ##     by = dummy_rectal)
-## <environment: 0x7f77cdb541c8>
+## <environment: 0x7fe398067580>
 ## 
 ## Parametric coefficients:
 ##               Estimate Std. Error z value Pr(>|z|)    
@@ -106,7 +106,7 @@ case.
 gam.check(multinomial_model)
 ```
 
-![](/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](model_diagnostics_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```
 ## 
@@ -151,7 +151,7 @@ for (i in seq_len(length(multinomial_model$smooth))) {
 }
 ```
 
-<img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-1.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-2.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-3.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-4.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-5.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-6.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-7.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-8.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-9.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-10.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-11.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-12.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-13.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-14.png" width="33%" /><img src="/Users/noamross/projects-eha/sabrenet-rousettus-dynamics/outputs/model_diagnostics_files/figure-html/unnamed-chunk-3-15.png" width="33%" />
+<img src="model_diagnostics_files/figure-html/unnamed-chunk-3-1.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-2.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-3.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-4.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-5.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-6.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-7.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-8.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-9.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-10.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-11.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-12.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-13.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-14.png" width="33%" /><img src="model_diagnostics_files/figure-html/unnamed-chunk-3-15.png" width="33%" />
 
 ## MCMC diagnostics
 

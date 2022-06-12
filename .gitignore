@@ -7,8 +7,8 @@ _targets.yaml
 references/*
 README.html
 /figs/*
-reports/*.html
-reports/*_files
+#reports/*.html
+#reports/*_files
 
 ### R ###
 # History files
