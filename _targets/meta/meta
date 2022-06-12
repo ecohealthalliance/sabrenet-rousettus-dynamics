@@ -29,7 +29,7 @@ fit_multinomial_model|function|8b75443899ec7341|||||||||||||||
 gam_posterior|stem|828aa208e96fb29b|4ed8aded811ec2bf|7a6b2c458ee56e6f|814049398||t19155.9200900957s|f3e3676675cbb857|774174|qs|local|vector|||278.477||
 inst|function|454f23d0207db85b|||||||||||||||
 install_proj_deps|function|ca7b64f5c9db662b|||||||||||||||
-model_diagnostics|stem|02b157a65df6dc3e|83e7a95f853ae0ef|f9173dee93354007|-2086566065|outputs/model_diagnostics.html*reports/model_diagnostics.Rmd|t19155.9203136024s|acdb91743e08acaf|2526082|file|local|vector|||5.389||
+model_diagnostics|stem|698c7d59c0abbd63|83e7a95f853ae0ef|f9173dee93354007|-2086566065|outputs/model_diagnostics.html*reports/model_diagnostics.Rmd*outputs/model_diagnostics_files|t19155.97565152s|84cf5b6988e74651|1933792|file|local|vector|||3.902||
 multinomial_model|stem|c99d010680f247d3|90e9b0f6837df1fd|702d541f3d7ba08f|-640274962||t19155.916866561s|74cb890c14f0162e|5975702|qs|local|vector|||114.797||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
 output_targets|object|6eef7b03d50a3466|||||||||||||||
@@ -48,4 +48,4 @@ readme|stem|b98412e9bed1031d|03eec8ac03c6c0f9|4745aa592080ea1d|-165896733|README
 sample_gam_posterior|function|b795d608f1f23e5a|||||||||||||||
 time_series|stem|b9d648dc4004222a|a5a02842bd0ace24|f1ec8b6e8d6fc419|1125167423||t19155.9383249032s|5fffcfea610849fb|55958141|qs|local|vector|||9.813||
 updt|function|a79d73e59deec4b5|||||||||||||||
-user_rprof|object|4b25338b775bf115|||||||||||||||
+user_rprof|object|97f9e1a213201d2e|||||||||||||||

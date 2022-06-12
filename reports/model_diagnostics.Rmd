@@ -2,7 +2,9 @@
 title: "Model Diagnostics"
 author: "Noam Ross"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 <style type="text/css">
@@ -92,9 +94,15 @@ tibble(
 Here are Stan-type per-parameter chain diagnostics.  `Rhat` should be at or near
 1 to indicate that the multiple MCMC chains are well-mixed.  `ess_bulk` and 
 `ess_tail` are the effective sample sizes for posterior samples from the parameter
-distributions and the tails of those distributions, respectively. These should be
-large enough to make reasonable inferences from. If not, the chain length should
-be increased (and more thinning applied to keep the sample size reasonable):
+distributions and the tails of those distributions, respectively. From the Stan
+manual:
+
+> We recommend running at least four chains by default and only using the sample
+> if R-hat is less than 1.05....
+>
+> Both bulk-ESS and tail-ESS should be at least 100 (approximately) per
+> Markov Chain in order to be reliable and indicate that estimates of respective
+> posterior quantiles are reliable
 
 ```{r}
 print(posterior_stats, n = Inf)
