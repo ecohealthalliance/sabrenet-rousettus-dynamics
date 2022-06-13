@@ -38,9 +38,9 @@ when using data or referring to this study.
     framework to organize build steps for analysis pipeline.  The steps are
     defined in the `_targets.R` file and the workflow can be executed by running
     `run.R` via `source("run.R")` in your R terminal or `Rscript run.R` in 
-    your system shell.  The schematic figure below summarizes the steps. (It uses
+    your system shell.  The schematic figure below summarizes the steps. (The figure is generated using
     `mermaid.js` syntax and should display as a graph on GitHub.  It can also
-    we viewed by pasting the code into <https://mermaid.live>.)
+    be viewed by pasting the code into <https://mermaid.live>.)
 
 ```{r, echo=FALSE, message = FALSE, results='asis'}
 cat(
@@ -56,7 +56,3 @@ cat(
     `renv.lock` and code used to manage dependencies is in `renv/` and other files
     in the root project directory.  On starting an R session in the working directory, run `renv::restore()`
     to install R package dependencies.
-    -   The package also requires [`cmdstan`](https://mc-stan.org/users/interfaces/cmdstan) 
-        to be installed. Version `r cmdstanr::cmdstan_version()` is used.
-        If not already installed, run `cmdstanr::install_cmdstan(version = "`r cmdstanr::cmdstan_version()`")`
-        after `renv::restore()`

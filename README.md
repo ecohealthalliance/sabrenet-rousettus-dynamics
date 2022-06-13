@@ -35,9 +35,9 @@ when using data or referring to this study.
     the `_targets.R` file and the workflow can be executed by running
     `run.R` via `source("run.R")` in your R terminal or `Rscript run.R`
     in your system shell. The schematic figure below summarizes the
-    steps. (It uses `mermaid.js` syntax and should display as a graph on
-    GitHub. It can also we viewed by pasting the code into
-    <https://mermaid.live>.)
+    steps. (The figure is generated using `mermaid.js` syntax and should
+    display as a graph on GitHub. It can also be viewed by pasting the
+    code into <https://mermaid.live>.)
 
 ``` mermaid
 graph LR
@@ -82,8 +82,3 @@ graph LR
     dependencies is in `renv/` and other files in the root project
     directory. On starting an R session in the working directory, run
     `renv::restore()` to install R package dependencies.
-    -   The package also requires
-        [`cmdstan`](https://mc-stan.org/users/interfaces/cmdstan) to be
-        installed. Version 2.29.2 is used. If not already installed, run
-        `cmdstanr::install_cmdstan(version = "2.29.2")` after
-        `renv::restore()`
