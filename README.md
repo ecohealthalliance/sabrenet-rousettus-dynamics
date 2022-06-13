@@ -3,13 +3,13 @@
 
 # sabrenet-rousettus-dynamics
 
-\#[![DOI](https://zenodo.org/badge/DOI/#######)](https://doi.org/########)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6637927)](https://doi.org/10.5281/zenodo.6637927)
 [![License (for code):
-MIT](https://img.shields.io/badge/License%20(for%20code)-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+MIT](https://img.shields.io/badge/License%20(for%20code)-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![License:
 CC0-1.0](https://img.shields.io/badge/License%20(for%20data)-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![License:
-CC-BY-4.0](https://img.shields.io/badge/License%20(for%20text)-CC-BY-4.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+CC-BY-4.0](https://img.shields.io/badge/License%20(for%20text)-CC_BY_4.0-blue.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 This repository contains data and R code which are supplements to:
 
