@@ -42,9 +42,16 @@ when using data or referring to this study.
     be viewed by pasting the code into <https://mermaid.live>.)
 
 ```{r, echo=FALSE, message = FALSE, results='asis'}
+mer <- targets::tar_mermaid(targets_only = FALSE, outdated = FALSE, 
+                            legend = FALSE, color = FALSE, 
+                            exclude = c("readme", ends_with("_targets")))
 cat(
   "```mermaid",
-  targets::tar_mermaid(targets_only = TRUE, outdated = FALSE, legend = FALSE, color = FALSE, exclude = "readme"),
+  mer[1], 
+  'Objects([""Objects""]) --- Functions>""Functions""]',
+  'subgraph Project Workflow',
+  mer[3:length(mer)],
+  'linkStyle 0 stroke-width:0px;',
   "```",
   sep = "\n"
 )
@@ -55,3 +62,7 @@ cat(
     `renv.lock` and code used to manage dependencies is in `renv/` and other files
     in the root project directory.  On starting an R session in the working directory, run `renv::restore()`
     to install R package dependencies.
+-   The package also requires [`cmdstan`](https://mc-stan.org/users/interfaces/cmdstan) 
+        to be installed. (Version `r cmdstanr::cmdstan_version()` was used). 
+        If not already installed, run `cmdstanr::install_cmdstan(version = "`r cmdstanr::cmdstan_version()`")`
+        after `renv::restore()`

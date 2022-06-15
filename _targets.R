@@ -4,7 +4,7 @@
 suppressPackageStartupMessages(source('packages.R'))
 
 for (r_file in list.files("R", pattern = "\\.R$", recursive = TRUE, full.names = TRUE)) try(source(r_file))
-
+rm(r_file)
 tar_option_set(
   resources = tar_resources(
     qs = tar_resources_qs(preset = "fast")),

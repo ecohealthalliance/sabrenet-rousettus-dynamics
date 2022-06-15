@@ -33,6 +33,7 @@ user_rprof <- Sys.getenv("R_PROFILE_USER", normalizePath("~/.Rprofile", mustWork
 if(interactive() && file.exists(user_rprof)) {
   source(user_rprof)
 }
+rm(user_rprof)
 
 # If project packages have conflicts define them here
 if(requireNamespace("conflicted", quietly = TRUE)) {
