@@ -12,6 +12,7 @@ Key Tests:
 -  Does FMI have an effect on positivity?
 -  Does % juveniles have an effect on positivity?
 
+-- Cutoff for adults is forearm length (mm), reproductive state is separate
 
 What groups are worth looking at? Here's the breakdown of detections by group:
 ```
