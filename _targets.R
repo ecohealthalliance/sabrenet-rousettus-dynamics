@@ -14,7 +14,7 @@ tar_option_set(
 #tar_option_set(debug = "fig_time_series")
 
 data_targets <- tar_plan(
-  tar_file(dat_xls, "data/2021-10_ Supplementary datasets.xlsx"),
+  tar_file(dat_xls, "data/2022-06; Supplementary datasets.xlsx"),
   dat_fec = readxl::read_xlsx(dat_xls, sheet = "Dataset 1", skip = 1),
   dat_bat = readxl::read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
   dat_cleaned = clean_data(dat_fec, dat_bat)
