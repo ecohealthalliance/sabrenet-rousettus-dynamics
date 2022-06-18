@@ -42,6 +42,7 @@ when using data or referring to this study.
     be viewed by pasting the code into <https://mermaid.live>.)
 
 ```{r, echo=FALSE, message = FALSE, results='asis'}
+tar_load(plan_targets)
 mer <- targets::tar_mermaid(targets_only = FALSE, outdated = FALSE, 
                             legend = FALSE, color = FALSE, 
                             exclude = c("readme", ends_with("_targets")))

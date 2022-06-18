@@ -41,6 +41,7 @@ plot_targets <- tar_plan(
 )
 
 output_targets <- tar_plan(
+  tar_file(plan_targets, "_targets.R"), # make the plan a target so README updates
   tar_render(readme,
              path = "README.Rmd"),
   tar_render(model_diagnostics,
