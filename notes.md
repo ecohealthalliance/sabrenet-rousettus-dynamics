@@ -36,3 +36,10 @@ What groups are worth looking at? Here's the breakdown of detections by group:
 12 SA    M      Not scrotal            Not-active                                         37   216 17%  
 13 SA    M      Scrotal                Active                                              1     3 33%  
 ```
+
+
+----
+2022-07-021
+
+- Are the number pregnant or lactating subsets of female or in addition?
+

@@ -15,8 +15,11 @@ tar_option_set(
 
 data_targets <- tar_plan(
   tar_file(dat_xls, "data/2022-06; Supplementary datasets.xlsx"),
+  tar_file(captures_xls, "data/Captures per month.xlsx"),
+  dat_captures = readxl::read_xlsx(captures_xls),
   dat_fec = readxl::read_xlsx(dat_xls, sheet = "Dataset 1", skip = 1),
   dat_bat = readxl::read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
+  captures_cleaned = clean_captures(dat_captures),
   dat_cleaned = clean_data(dat_fec, dat_bat)
 
 )

@@ -58,13 +58,13 @@ subgraph Project Workflow
     x733041ef94e8d4a9(["dat_fec"]):::queued --> xba784c3a136c631a(["dat_cleaned"]):::queued
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x743d14db79d088a5(["fig_fmi_time"]):::queued
     x81e3813389f7c111>"plot_fmi_time"]:::uptodate --> x743d14db79d088a5(["fig_fmi_time"]):::queued
-    xc2117931d245afce(["dat_xls"]):::skipped --> x733041ef94e8d4a9(["dat_fec"]):::queued
+    xc2117931d245afce(["dat_xls"]):::built --> x733041ef94e8d4a9(["dat_fec"]):::queued
     x23873f9d63594e23(["fig_fmi_demo"]):::queued --> x8fc58a4d202a711a(["fig_fmi_demo_file"]):::queued
     xc0afa1ca6e3a3ecf>"calc_posterior_stats"]:::uptodate --> x48dd96190e644d8f(["posterior_stats"]):::queued
     x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> x48dd96190e644d8f(["posterior_stats"]):::queued
     x023bc1d70802c4e1(["multinomial_model"]):::queued --> x89c8b8fe66c39f8c(["gam_posterior"]):::queued
     x8ff1740672def84e>"sample_gam_posterior"]:::uptodate --> x89c8b8fe66c39f8c(["gam_posterior"]):::queued
-    xc2117931d245afce(["dat_xls"]):::skipped --> x6cf5d6dc2e05a667(["dat_bat"]):::queued
+    xc2117931d245afce(["dat_xls"]):::built --> x6cf5d6dc2e05a667(["dat_bat"]):::queued
     xcdebc0583bb5c42e(["fig_size_demo"]):::queued --> x6c01430c132507c0(["fig_size_demo_file"]):::queued
     x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> x1e7dc8900c0252af(["model_diagnostics"]):::queued
     x023bc1d70802c4e1(["multinomial_model"]):::queued --> x1e7dc8900c0252af(["model_diagnostics"]):::queued

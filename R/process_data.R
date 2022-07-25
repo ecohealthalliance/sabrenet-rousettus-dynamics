@@ -30,7 +30,7 @@ prep_data <- function(dat_cleaned) {
            sample_type = fct_recode(sample_type, Fecal = "Faecal pool (x3)", Rectal = "Rectal swab"),
            fmi_kg_m2 = coalesce(fmi_kg_m2, mean_fmi),
            dummy_rectal = as.integer(sample_type == "Rectal"),
-           demo_group = paste(gender, age, reproductive_status_based_on_condition)) |>
+           demo_group = paste(gender, age, reproductive_condition)) |>
     mutate(across(c(gender, age, demo_group), \(x) if_else(sample_type == "Rectal", x, "NA"))) |>
     mutate(vir = c(NA_character_, "Novel Alpha-Cov", "HKU9-related Beta-CoV","Novel Beta-CoV")[outcome + 1]) |>
     mutate(across(c(sample_type, gender, age, demo_group, vir), as.factor)) |>
