@@ -43,13 +43,13 @@ when using data or referring to this study.
 
 ```{r, echo=FALSE, message = FALSE, results='asis'}
 tar_load(plan_targets)
-mer <- targets::tar_mermaid(targets_only = FALSE, outdated = FALSE, 
+mer <- targets::tar_mermaid(targets_only = TRUE, outdated = FALSE, 
                             legend = FALSE, color = FALSE, 
                             exclude = c("readme", ends_with("_targets")))
 cat(
   "```mermaid",
   mer[1], 
-  'Objects([""Objects""]) --- Functions>""Functions""]',
+  #'Objects([""Objects""]) --- Functions>""Functions""]',
   'subgraph Project Workflow',
   mer[3:length(mer)],
   'linkStyle 0 stroke-width:0px;',

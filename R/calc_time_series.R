@@ -11,32 +11,37 @@
 calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_posterior) {
 
   K = multinomial_model$family$nlp
+
+  interps <- dat_prepped |>
+    mutate(day = as.numeric(date - min(date), "days"),
+           week = lubridate::floor_date(date, "week")) |>
+    group_by(week) |>
+    mutate(day = mean(unique(day))) |>
+    ungroup() |>
+    group_by(day) |>
+    summarize(frac_subadult = unique(frac_subadult),
+              fmi_kg_m2 = mean(fmi_kg_m2[sample_type == "Rectal"],))
+  frac_subadult_fn <- splinefun(x = interps$day, y = interps$frac_subadult)
+  fmi_kg_m2_fn <- splinefun(x = interps$day[is.finite(interps$fmi_kg_m2)], y = interps$fmi_kg_m2[is.finite(interps$fmi_kg_m2)])
+
   newdat <- crossing(
     date = seq(min(dat_cleaned$date_collected),
                max(dat_cleaned$date_collected),
                by = "day"),
-    sample_type = as.factor(c("Fecal", "Rectal"))) |>
+    sample_type = as.factor(c("Fecal", "Rectal")),
+    gender_age = factor("NA"),
+    dummy_repro = ordered(0),
+    # fmi_kg_m2 = multinomial_model$model$fmi_kg_m2 |> table() |> sort() |> rev() |> names() |> head(1) |> as.numeric(),
+    # frac_subadult = multinomial_model$model$frac_subadult |> table() |> sort() |> rev() |> names() |> head(1) |> as.numeric(),
+    reproductive_condition = factor("None"),
+    dummy_any_rectal = 1)|>
     mutate(day = as.numeric(date - min(date), "days"),
            day_of_year = lubridate::yday(date),
-           dummy_rectal = as.integer(sample_type == "Rectal"))
-
-   newdat <- left_join(
-     newdat,
-     dat_prepped |>
-       group_by(date, sample_type) |>
-       summarize(fmi_kg_m2 = mean(fmi_kg_m2, na.rm = TRUE), .groups = "drop"),
-     by = c("date", "sample_type")
-   ) |>
-     arrange(sample_type, date)
-
-   interp <- newdat |>
-     filter(sample_type == "Rectal", !is.na(fmi_kg_m2))
-
-   newdat$fmi_kg_m2[newdat$sample_type == "Rectal"] <-
-     approx(interp$day, interp$fmi_kg_m2, newdat[newdat$sample_type == "Rectal", ]$day, method = "linear", rule = 2)$y
-
-   newdat <- newdat |>
-     mutate(fmi_kg_m2 = coalesce(fmi_kg_m2, 0))
+           frac_subadult = frac_subadult_fn(day),
+           fmi_kg_m2 = fmi_kg_m2_fn(day),
+           dummy_rectal = ordered(as.integer(sample_type == "Rectal"))
+    ) |>
+    arrange(sample_type, date)
 
   post <- do.call(rbind, apply(gam_posterior, 2, identity, simplify = FALSE))
   pmat <-

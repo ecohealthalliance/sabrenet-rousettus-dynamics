@@ -41,55 +41,39 @@ when using data or referring to this study.
 
 ``` mermaid
 graph LR
-Objects([""Objects""]) --- Functions>""Functions""]
 subgraph Project Workflow
     x7a7f43da56388c67(["fig_bat_demographics"]):::queued --> x57a7f9cc118d43ce(["fig_bat_demographics_file"]):::queued
     xba784c3a136c631a(["dat_cleaned"]):::queued --> x7a7f43da56388c67(["fig_bat_demographics"]):::queued
-    x923e5d3f7effdb97>"plot_bat_demographics"]:::uptodate --> x7a7f43da56388c67(["fig_bat_demographics"]):::queued
-    x3541a3d3c2c93003>"calc_time_series"]:::uptodate --> xf22c729b71100575(["time_series"]):::queued
     xba784c3a136c631a(["dat_cleaned"]):::queued --> xf22c729b71100575(["time_series"]):::queued
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> xf22c729b71100575(["time_series"]):::queued
     x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> xf22c729b71100575(["time_series"]):::queued
     x023bc1d70802c4e1(["multinomial_model"]):::queued --> xf22c729b71100575(["time_series"]):::queued
-    xba784c3a136c631a(["dat_cleaned"]):::queued --> xcdebc0583bb5c42e(["fig_size_demo"]):::queued
-    xdf8b170c766e2d6b>"plot_size_demo"]:::uptodate --> xcdebc0583bb5c42e(["fig_size_demo"]):::queued
-    xdc4c0b12c3eff7c3>"clean_data"]:::uptodate --> xba784c3a136c631a(["dat_cleaned"]):::queued
     x6cf5d6dc2e05a667(["dat_bat"]):::queued --> xba784c3a136c631a(["dat_cleaned"]):::queued
     x733041ef94e8d4a9(["dat_fec"]):::queued --> xba784c3a136c631a(["dat_cleaned"]):::queued
-    x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x743d14db79d088a5(["fig_fmi_time"]):::queued
-    x81e3813389f7c111>"plot_fmi_time"]:::uptodate --> x743d14db79d088a5(["fig_fmi_time"]):::queued
-    xc2117931d245afce(["dat_xls"]):::built --> x733041ef94e8d4a9(["dat_fec"]):::queued
-    x23873f9d63594e23(["fig_fmi_demo"]):::queued --> x8fc58a4d202a711a(["fig_fmi_demo_file"]):::queued
-    xc0afa1ca6e3a3ecf>"calc_posterior_stats"]:::uptodate --> x48dd96190e644d8f(["posterior_stats"]):::queued
+    xc2117931d245afce(["dat_xls"]):::skipped --> x733041ef94e8d4a9(["dat_fec"]):::queued
+    xe05634441492d438(["dat_captures"]):::skipped --> x370906d20a0ac4c5(["captures_cleaned"]):::queued
     x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> x48dd96190e644d8f(["posterior_stats"]):::queued
     x023bc1d70802c4e1(["multinomial_model"]):::queued --> x89c8b8fe66c39f8c(["gam_posterior"]):::queued
-    x8ff1740672def84e>"sample_gam_posterior"]:::uptodate --> x89c8b8fe66c39f8c(["gam_posterior"]):::queued
-    xc2117931d245afce(["dat_xls"]):::built --> x6cf5d6dc2e05a667(["dat_bat"]):::queued
-    xcdebc0583bb5c42e(["fig_size_demo"]):::queued --> x6c01430c132507c0(["fig_size_demo_file"]):::queued
+    xc2117931d245afce(["dat_xls"]):::skipped --> x6cf5d6dc2e05a667(["dat_bat"]):::queued
     x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> x1e7dc8900c0252af(["model_diagnostics"]):::queued
     x023bc1d70802c4e1(["multinomial_model"]):::queued --> x1e7dc8900c0252af(["model_diagnostics"]):::queued
     x48dd96190e644d8f(["posterior_stats"]):::queued --> x1e7dc8900c0252af(["model_diagnostics"]):::queued
-    x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x37da1c8de8c2ccbe(["fig_fmi_effects"]):::queued
-    x89c8b8fe66c39f8c(["gam_posterior"]):::queued --> x37da1c8de8c2ccbe(["fig_fmi_effects"]):::queued
-    x023bc1d70802c4e1(["multinomial_model"]):::queued --> x37da1c8de8c2ccbe(["fig_fmi_effects"]):::queued
-    xd5ee960dd8f86a23>"plot_fmi_effects"]:::uptodate --> x37da1c8de8c2ccbe(["fig_fmi_effects"]):::queued
+    xb354ea9be719f8bb(["captures_xls"]):::skipped --> xe05634441492d438(["dat_captures"]):::skipped
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> xe3a4a17736576ba6(["fig_time_series"]):::queued
-    x6ee5b97ea4d7b6f2>"plot_time_series"]:::uptodate --> xe3a4a17736576ba6(["fig_time_series"]):::queued
     xf22c729b71100575(["time_series"]):::queued --> xe3a4a17736576ba6(["fig_time_series"]):::queued
     xba784c3a136c631a(["dat_cleaned"]):::queued --> xdb44d218f76593df(["dat_cleaned_csv"]):::queued
-    xba784c3a136c631a(["dat_cleaned"]):::queued --> x23873f9d63594e23(["fig_fmi_demo"]):::queued
-    x0f821fb38c59b6f4>"plot_fmi_demo"]:::uptodate --> x23873f9d63594e23(["fig_fmi_demo"]):::queued
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x023bc1d70802c4e1(["multinomial_model"]):::queued
-    x98c1037972a8a636>"fit_multinomial_model"]:::uptodate --> x023bc1d70802c4e1(["multinomial_model"]):::queued
-    x37da1c8de8c2ccbe(["fig_fmi_effects"]):::queued --> x942eeb410ea37982(["fig_fmi_effects_file"]):::queued
+    x835f456db5951df5(["all_plot_files"]):::queued --> xbda0fd67e19f73bc(["outputs_readme"]):::queued
+    x07b56d1fbca21cf3(["summarized_quantities"]):::skipped --> xbda0fd67e19f73bc(["outputs_readme"]):::queued
+    x57a7f9cc118d43ce(["fig_bat_demographics_file"]):::queued --> x835f456db5951df5(["all_plot_files"]):::queued
+    x650683ca19a5d319(["fig_time_series_file"]):::queued --> x835f456db5951df5(["all_plot_files"]):::queued
     xe3a4a17736576ba6(["fig_time_series"]):::queued --> x650683ca19a5d319(["fig_time_series_file"]):::queued
     xba784c3a136c631a(["dat_cleaned"]):::queued --> x4a5cfaffa1d0e789(["dat_prepped"]):::queued
-    x9369f9c58212db0f>"prep_data"]:::uptodate --> x4a5cfaffa1d0e789(["dat_prepped"]):::queued
   end
 linkStyle 0 stroke-width:0px;
 ```
 
--   This project requires R version 4.2.0 (2022-04-22). This project
+-   This project requires R version 4.2.1 (2022-06-23). This project
     uses the [{renv}](https://rstudio.github.io/renv/) framework to
     record R package dependencies and versions. Packages and versions
     used are recorded in `renv.lock` and code used to manage

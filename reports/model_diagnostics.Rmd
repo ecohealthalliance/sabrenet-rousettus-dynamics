@@ -23,6 +23,7 @@ First, we set up by loading packages and generated R objects.
 knitr::opts_chunk$set(echo = TRUE)
 library(targets)
 library(mgcv)
+options(width = 250)
 ```
 
 ```{r load_targets}

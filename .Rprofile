@@ -13,7 +13,9 @@ options(
   renv.config.cache.enabled = TRUE,   ## Use the renv build cache to speed up install times
   renv.config.cache.symlinks = TRUE,  ## Keep full copies of packages locally than symlinks to make the project portable in/out of containers
   renv.config.install.transactional = FALSE,
-  renv.config.synchronized.check = FALSE
+  renv.config.synchronized.check = FALSE,
+
+  mc.cores = min(parallel::detectCores(), 4)
 
 )
 
