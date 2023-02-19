@@ -10,7 +10,7 @@ tar_option_set(
   format = "qs"
 )
 
-#tar_option_set(debug = "fig_time_series")
+tar_option_set(debug = "plotfiles")
 
 data_targets <- tar_plan(
   tar_file(dat_xls, "data/2022-06; Supplementary datasets.xlsx"),
@@ -25,40 +25,37 @@ data_targets <- tar_plan(
 
 analysis_targets <- tar_plan(
   dat_prepped = prep_data(dat_cleaned),
-  multinomial_model = fit_multinomial_model(dat_prepped),
-  gam_posterior = sample_gam_posterior(multinomial_model, chains = 4,
-                                       burn = 5000, ns = 55000, thin = 100, rw.scale = 0.02),
+  tar_target(multinomial_model, fit_multinomial_model(dat_prepped), cue = tar_cue("never")),
+  tar_target(gam_posterior, sample_gam_posterior(multinomial_model, chains = 4,
+                                                 burn = 5000, ns = 55000, thin = 100, rw.scale = 0.02),
+             cue = tar_cue("never")),
   posterior_stats = calc_posterior_stats(gam_posterior),
   time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior)
 )
 
 plot_targets <- tar_plan(
-  fig_bat_demographics = plot_bat_demographics(dat_cleaned),
-#  fig_fmi_demo = plot_fmi_demo(dat_cleaned),
-#  fig_size_demo = plot_size_demo(dat_cleaned),
-#
-  fig_time_series = plot_time_series(dat_prepped, time_series)
-#  fig_fmi_time = plot_fmi_time(dat_prepped),
-#  fig_fmi_effects = plot_fmi_effects(dat_prepped, multinomial_model, gam_posterior)
+  fig_bat_demographics =    structure(plot_bat_demographics(dat_cleaned), fig.width = 8, fig.height = 4.5),
+  fig_fmi_demo =            structure(plot_fmi_demo(dat_prepped), fig.width = 8, fig.height = 8),
+  fig_time_series =         structure(plot_time_series(dat_prepped, time_series), fig.width = 8, fig.height = 6),
+  fig_fmi_demo_timeseries = structure(plot_fmi_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 6),
+  fig_pos_demo_timeseries = structure(plot_positivity_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 4),
+  fig_fmi_effects =         structure(plot_fmi_effects(dat_prepped, multinomial_model, gam_posterior), fig.width = 8, fig.height = 4.5),
+  fig_fmi_demo_effects =    structure(plot_fmi_demo_effects(dat_prepped), fig.width = 8, fig.height = 6)
 )
 
-plot_file_targets <- tar_plan(
 
-  tar_file(fig_bat_demographics_file,
-           ggsave("outputs/fig_bat_demographics.png", fig_bat_demographics,
-                  dpi = 300, units = "in", width = 8, height = 4.5, bg = "white")),
-  tar_file(fig_time_series_file,
-           ggsave("outputs/fig_time_series.png", fig_time_series,
-                  dpi = 300, units = "in", width = 8, height = 6, bg = "white"))
- # tar_file(fig_fmi_effects_file,
- #          ggsave("outputs/fig_fmi_effects.png", fig_fmi_effects,
- #                 dpi = 300, units = "in", width = 8, height = 4, bg = "white")),
- # tar_file(fig_fmi_demo_file,
- #          ggsave("outputs/fig_fmi_demo.png", fig_fmi_demo,
- #                 dpi = 300, units = "in", width = 8, height = 6, bg = "white")),
- # tar_file(fig_size_demo_file,
- #          ggsave("outputs/fig_size_demo.png", fig_size_demo,
- #                 dpi = 300, units = "in", width = 8, height = 6, bg = "white")),
+plot_file_targets <- tar_plan(
+  tar_combine(allplots, plot_targets, command = vctrs::vec_c(list(!!!.x))),
+  tar_file(png_plots, ggsave(
+    paste0("outputs/", names(allplots), ".png"), allplots[[1]],
+    units = "in", bg = "white",
+    width = attr(allplots[[1]], "fig.width"), height = attr(allplots[[1]], "fig.height")),
+    pattern = map(allplots)),
+  tar_file(svg_plots, ggsave(
+    paste0("outputs/", names(allplots), ".svg"), allplots[[1]],
+    units = "in", bg = "white",
+    width = attr(allplots[[1]], "fig.width"), height = attr(allplots[[1]], "fig.height")),
+    pattern = map(allplots))
 )
 
 output_targets <- tar_plan(
@@ -72,11 +69,8 @@ output_targets <- tar_plan(
     "outputs/data_prepped.csv"
   }),
 
-
   summarized_quantities = summarize_quantities(),
-
-  tar_target_raw("all_plot_files", parse(text = paste0("c(", paste(map_chr(plot_file_targets, \(x) x$settings$name), collapse = ", "), ")"))),
-  tar_render(outputs_readme, path = "outputs/README.Rmd", params = all_plot_files),
+  tar_render(outputs_readme, path = "outputs/README.Rmd"),
 )
 
 list(

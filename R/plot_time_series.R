@@ -64,7 +64,7 @@ plot_time_series <- function(dat_prepped, time_series) {
           panel.grid.minor.x = element_blank(), panel.grid.major.x = element_blank(), axis.title.x = element_text(),
           legend.position = "bottom")
 
-  rm(all_dat_sum, dat_sum, outcomes, all_time_series, time_series)
+  if (!interactive()) rm(all_dat_sum, dat_sum, outcomes, all_time_series, time_series)
   fig_time_series
 
 }

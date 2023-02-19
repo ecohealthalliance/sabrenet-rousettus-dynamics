@@ -11,7 +11,13 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
                     length.out = 50),
     sample_type = "Rectal",
     day = mean(dat_prepped$day),
-    day_of_year = mean(dat_prepped$day_of_year)
+    day_of_year = mean(dat_prepped$day_of_year),
+    gender_age = factor("M-A"),
+    swab = 1,
+    reproductive_condition = factor("None"),
+    dummy_repro = 1,
+    dummy_any_rectal = 1,
+    frac_subadult = mean(dat_prepped$frac_subadult, na.rm = TRUE)
   )
 
   post <- do.call(rbind, apply(gam_posterior, 2, identity, simplify = FALSE))
@@ -67,6 +73,6 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     facet_wrap(~vir, nrow = 1, scales = "fixed") +
     labs(x = "Forearm Mass Index (kg/m2)", y = "Marginal Effect on CoV Positivity")
 
-  rm(zz, pal, outcomes, preds, post, lpi, pmat, newdat, K)
+  if (!interactive()) rm(zz, pal, outcomes, preds, post, lpi, pmat, newdat, K)
   fig_fmi_effects
 }

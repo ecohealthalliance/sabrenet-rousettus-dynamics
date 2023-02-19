@@ -39,7 +39,7 @@ fit_multinomial_model <- function(dat_prepped, nthreads = 8, n_blas_threads = 16
     method = "REML",
     control = list(
       nthreads = nthreads,
-      trace=interactive()
+      trace=TRUE
       )
     )
   multinomial_model

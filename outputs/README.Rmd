@@ -8,7 +8,7 @@ output:
 ```{r setup, include=FALSE}
 library(knitr)
 library(targets)
-tar_load(summarized_quantities)
+tar_load(c(summarized_quantities, svg_plots, png_plots))
 ```
 
 # Summarized Quantities
@@ -32,6 +32,5 @@ knitr::kable(tibble::tibble(
 # Figures
 
 ```{r, results = "asis", echo = FALSE}
-files = list.files(here::here("outputs"), pattern = "png$")
-cat(paste0("## ", files, "\n\n![](", files, ")"), sep = "\n\n")
+cat(paste0("## ", svg_plots, "\n\n![](", basename(svg_plots), ")"), sep = "\n\n")
 ```

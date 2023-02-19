@@ -15,22 +15,30 @@ to expand
 
 # Figures
 
-## fig_bat_demographics.png
+## outputs/fig_bat_demographics.svg
 
-![](fig_bat_demographics.png)
+![](fig_bat_demographics.svg)
 
-## fig_fmi_demo.png
+## outputs/fig_fmi_demo.svg
 
-![](fig_fmi_demo.png)
+![](fig_fmi_demo.svg)
 
-## fig_fmi_effects.png
+## outputs/fig_time_series.svg
 
-![](fig_fmi_effects.png)
+![](fig_time_series.svg)
 
-## fig_size_demo.png
+## outputs/fig_fmi_demo_timeseries.svg
 
-![](fig_size_demo.png)
+![](fig_fmi_demo_timeseries.svg)
 
-## fig_time_series.png
+## outputs/fig_pos_demo_timeseries.svg
 
-![](fig_time_series.png)
+![](fig_pos_demo_timeseries.svg)
+
+## outputs/fig_fmi_effects.svg
+
+![](fig_fmi_effects.svg)
+
+## outputs/fig_fmi_demo_effects.svg
+
+![](fig_fmi_demo_effects.svg)

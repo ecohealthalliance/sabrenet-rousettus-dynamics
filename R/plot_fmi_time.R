@@ -25,7 +25,7 @@ plot_fmi_time <- function(dat_prepped) {
     facet_wrap(~paste(age, gender, sep ="-")) +
     geom_smooth(mapping = aes( color = paste(age, gender, sep ="-")))
 
-  rm(dat_prepped)
+  if (!interactive()) rm(dat_prepped)
   gplot
 
 }
