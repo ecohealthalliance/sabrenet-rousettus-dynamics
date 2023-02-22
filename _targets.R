@@ -20,7 +20,6 @@ data_targets <- tar_plan(
   dat_bat = readxl::read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
   captures_cleaned = clean_captures(dat_captures),
   dat_cleaned = clean_data(dat_fec, dat_bat)
-
 )
 
 analysis_targets <- tar_plan(
@@ -31,7 +30,8 @@ analysis_targets <- tar_plan(
              cue = tar_cue("thorough")),
   posterior_stats = calc_posterior_stats(gam_posterior),
   time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior),
-  pooled_fecal_ave = calc_raw_fecal_prev(dat_prepped)
+  raw_prev = calc_raw_prev(dat_prepped),
+  model_prev = calc_model_prev(dat_prepped, multinomial_model, gam_posterior)
 )
 
 plot_targets <- tar_plan(

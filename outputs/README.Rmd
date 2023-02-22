@@ -8,25 +8,26 @@ output:
 ```{r setup, include=FALSE}
 library(knitr)
 library(targets)
-tar_load(c(summarized_quantities, svg_plots, png_plots))
+tar_load(c(summarized_quantities, svg_plots, png_plots, raw_prev, model_prev))
 ```
 
-# Summarized Quantities
+# Calculated Prevalences
 
-<details>
+## Raw
 
-<summary>
-Here we extract all quantities reported in the text of the paper. Click to expand
-</summary>
+Prevalences calculated as a % of number of samples collected, with corrected values for fecal samples
 
 ```{r, echo = FALSE}
-knitr::kable(tibble::tibble(
-  Quantity = names(summarized_quantities),
-  Value = unlist(summarized_quantities)
-), align = "lr")
+knitr::kable(raw_prev)
 ```
 
-</details>
+## Modeled
+
+Prevalances calculated as baseline (intercept) probability of infection of single samples from the Generalized Additive model, conditional on mean bat and environment variables.
+
+```{r, echo = FALSE}
+knitr::kable(model_prev)
+```
 
 
 # Figures

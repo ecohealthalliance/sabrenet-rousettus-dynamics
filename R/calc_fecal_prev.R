@@ -1,55 +1,58 @@
-calc_raw_fecal_prev <- function(dat_prepped) {
+calc_raw_prev <- function(dat_prepped) {
 
-  fec_data <- dat_prepped |>
-    filter(sample_type == "Fecal")
+  raw_prev_0 <- dat_prepped |>
+    group_by(sample_type, outcome) |>
+    summarize(positives = n()) |>
+    group_by(sample_type) |>
+    mutate(n = sum(positives)) |>
+    mutate(positives = if_else(outcome == 0, sum(positives) - positives,positives)) |>
+    mutate(outcome = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `0` = "All CoVs")) |>
+    rename(virus=outcome)
 
-  raw_prev <- binom::binom.confint(
-    x = sum(fec_data$cov_detected),
-    n = nrow(fec_data),
-    methods = "exact")
+  raw_prev <- raw_prev_0 |>
+    bind_cols(binom::binom.exact(x = raw_prev_0$positives, n = raw_prev_0$n) |> select(mean, lower, upper)) |>
+    mutate(across(c(mean,lower,upper), ~if_else(sample_type == "Fecal", correct_pooled_prevalence(.*n,n,3), NA_real_), .names = "{.col}_corrected")) |>
+    mutate(calcuation_type = "raw") |>
+    mutate(across(matches("^(mean|lower|upper)\\.*"), scales::percent)) |>
+    select(sample_type, calcuation_type, everything())
 
-  corrected_prev <- lapply(raw_prev[,c("mean", "lower", "upper")], function(x) {
-    correct_pooled_prevalence(
-      round(x*raw_prev$n),
-      raw_prev$n,
-      3
-    )})
-  names(corrected_prev) <- paste0(names(corrected_prev), "_corrected")
-  bind_cols(raw_prev, as.data.frame(corrected_prev))
+  raw_prev
+
 }
 
 softmax <- function(x) {
   exp(x) / (1 + rowSums(exp(x)))
 }
 
-calc_model_fecal_prev <- function(dat_prepped, multinomial_model, gam_posterior) {
+calc_model_prev <- function(dat_prepped, multinomial_model, gam_posterior) {
   post <- do.call(rbind, apply(gam_posterior, 2, identity, simplify = FALSE))
-  all_cov_fecal_intercept <- rowSums(softmax(post[, c("(Intercept)", "(Intercept).1", "(Intercept).2")]))
-  all_cov_fecal_est <- ggdist::point_interval(all_cov_fecal_intercept,  .point = mean, .interval = ggdist::hdi)
-  all_cov_rectal_intercept <- rowSums(softmax(post[, c("(Intercept)", "(Intercept).1", "(Intercept).2")] + post[, stringi::stri_subset_regex(colnames(post), "\\(sample_type\\):dummy_rectal1\\.2")]))
-  all_cov_rectal_est <- ggdist::point_interval(all_cov_rectal_intercept, .point = mean, .interval = ggdist::hdi)
+  fecal_intercepts <- softmax(post[, c("(Intercept)", "(Intercept).1", "(Intercept).2")])
+  fecal_intercepts <- cbind(fecal_intercepts, rowSums(fecal_intercepts))
+  rectal_intercepts <- softmax(post[, c("(Intercept)", "(Intercept).1", "(Intercept).2")] + post[, stringi::stri_subset_regex(colnames(post), "\\(sample_type\\):dummy_rectal1\\.2")])
+  rectal_intercepts <- cbind(rectal_intercepts, rowSums(rectal_intercepts))
 
-  corrected_prev <- lapply(all_cov_fecal_est[,c("y", "ymin", "ymax")], function(x) {
-    correct_pooled_prevalence(
-      round(x*sum(dat_prepped$sample_type == "Fecal")),
-      sum(dat_prepped$sample_type == "Fecal"),
-      3
-    )})
-  names(corrected_prev) <- paste0(names(corrected_prev), "_corrected")
-  bind_cols(all_cov_rectal_est, as.data.frame(corrected_prev))
+  colnames(fecal_intercepts) <- c("HKU9-related Beta-CoV","Novel Alpha-Cov", "Novel Beta-CoV", "All CoVs")
+  colnames(rectal_intercepts) <- c("HKU9-related Beta-CoV","Novel Alpha-Cov", "Novel Beta-CoV", "All CoVs")
+  model_fecal_prev_0 <- fecal_intercepts |>
+    as_tibble() |>
+    pivot_longer(everything(), names_to = "virus", values_to = "mean") |>
+    mutate(sample_type = "Fecal")
+  model_rectal_prev_0 <- rectal_intercepts |>
+    as_tibble() |>
+    pivot_longer(everything(), names_to = "virus", values_to = "mean") |>
+    mutate(sample_type = "Rectal")
 
-  pmat <-
-    predict(multinomial_model, type = "lpmatrix", unconditional = TRUE)
-  lpi <- attr(pmat, "lpi")
-  time_series <- lapply(lpi, function(i) {
-    pmat[, i] %*% t(post[, i])
-  })
+  model_prev_0 <- bind_rows(model_fecal_prev_0, model_rectal_prev_0) |>
+    group_by(virus, sample_type) |>
+    ggdist::point_interval(mean, .point = mean, .interval = ggdist::hdci) |>
+    rename(lower=.lower, upper=.upper) |>
+    select(-.width, -.point, -.interval)
+  model_prev <- model_prev_0 |>
+    mutate(calculation_type = "modeled") |>
+    mutate(across(c(mean,lower,upper), ~if_else(sample_type == "Fecal", correct_pooled_prevalence(.*30,30,3), NA_real_), .names = "{.col}_corrected")) |>
+    mutate(across(matches("^(mean|lower|upper)\\.*"), ~scales::percent(., accuracy = 0.1))) |>
+    arrange(sample_type, virus)
 
-      map_dfr(function(x) {
-      colnames(x) <- seq_len(ncol(x))
-      bind_cols(newdat, as_tibble(x)) |>
-        pivot_longer(matches("^\\d+$"), names_to = ".iteration", values_to = "linpred") |>
-        mutate(.iteration = as.integer(.iteration))
-    }, .id = "outcome")
+  model_prev
 }
 

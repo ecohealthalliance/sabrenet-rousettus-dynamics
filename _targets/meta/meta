@@ -4,10 +4,12 @@ all_dat_sum|object|16fa1eda1728059d|||||||||||||||
 all_plot_files|stem|03d21d3a3c5d45b6|5a063c420c363732|966d74aa9bc46b87|1683656025||t19407.7612950241s|9712f9cb4307e5f0|183|qs|local|vector|||0.001||
 all_time_series|object|35dbf68fc1679845|||||||||||||||
 allplots|stem|e507b738ff741588|b80c16ad4637ac48|d268a24bb7a997e2|2138401513||t19410.7293882293s|2efc04f0f4f454cf|23154109|qs|local|vector||allplots_5dcee172*allplots_a1f7ba73*allplots_ef3e3cbb*allplots_6ea4a5be*allplots_d941fb38*allplots_dbd33186*allplots_c36a4cba|0.001||
-analysis_targets|object|d66055b5933c1455|||||||||||||||
+analysis_targets|object|fec41ebd6087489f|||||||||||||||
 calc_model_fecal_prev|function|c5f286c4122552b9|||||||||||||||
+calc_model_prev|function|75739efee37c0a63|||||||||||||||
 calc_posterior_stats|function|77e45a42f15579fc|||||||||||||||
 calc_raw_fecal_prev|function|72b2466b1f92b24c|||||||||||||||
+calc_raw_prev|function|ff43ada7ced2c5ac|||||||||||||||
 calc_time_series|function|eba2eca5dba3d242|||||||||||||||
 captures_cleaned|stem|2bb339e1379dddd2|d7feb7b87c11aa7c|61f21a7db4848e77|1443380426||t19206.7190740741s|7c851447131a82e3|30|qs|local|vector|||0||
 captures_xls|stem|c992332c4ab56d3d|2b6829500773b60f|ef46db3751d8e999|-1143596566|data/Captures per month.xlsx|t19198.7194675926s|5b295b63d884e2c5|22878|file|local|vector|||0.002||
@@ -46,13 +48,14 @@ gfig_pos_demo_timeseries|object|59b9e962a90b07af|||||||||||||||
 inst|function|454f23d0207db85b|||||||||||||||
 install_proj_deps|function|ca7b64f5c9db662b|||||||||||||||
 model_diagnostics|stem|a5c990ed736c90a2|beef0aeca083de25|b322af42832bcee5|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19407.9625498s|7d04c81134a7aa26|2004820|file|local|vector|||6.568||
+model_prev|stem|9a29aef858b6163a|2e9d5c0f4653d52f|5c5485853652d5c5|196416103||t19410.9212265362s|001e75d0cb0314f6|633|qs|local|vector|||0.362||
 multinomial_model|stem|9c185eb4f8e8ac6f|90e9b0f6837df1fd|75486a6736074f9a|-640274962||t19407.9603381902s|17697c0d2b51efb9|17179967|qs|local|vector|||409.901|model has repeated 1d smooths of same variable.. model has repeated 1d smooths of same variable.|
 n|object|42b194eec038fae9|||||||||||||||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
-output_targets|object|e34c84c6e75308f6|||||||||||||||
-outputs_readme|stem|432cd2639532d331|dc5729905c4cafd2|9e067e66c6800c23|1833669539|outputs/README.md*outputs/README.Rmd|t19410.7294351373s|cc399b07df27b8c3|1311|file|local|vector|||0.926||
+output_targets|object|a072a11d4797986f|||||||||||||||
+outputs_readme|stem|6c1eb0ac0be168de|6057eb206b22a02f|830dcf1d048cc490|1833669539|outputs/README.md*outputs/README.Rmd|t19410.921233366s|82506a14774837be|4453|file|local|vector|||0.642||
 p|object|d62de3d7487789a8|||||||||||||||
-plan_targets|stem|bdb9766ee6abb68f|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19407.8961306173s|0927aca3c3becae3|3384|file|local|vector|||0.002||
+plan_targets|stem|922f361b3ec09a01|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19410.9190846465s|f9daa3fc7f30b75e|3448|file|local|vector|||0.001||
 plot_bat_demographics|function|496a9c1c9a20979b|||||||||||||||
 plot_data|object|fc64d63d59aba500|||||||||||||||
 plot_file_targets|object|fe01257c1caa6af1|||||||||||||||
@@ -110,7 +113,8 @@ posterior_stats|stem|edf7056171079913|b42d44490c6d8535|d65d6c5ce0b6e3c8|48563761
 prep_data|function|535f0488ea2b853e|||||||||||||||
 print.data.frame|function|d75dcbb79a102afe|||||||||||||||
 r_file|object|c57c5e942c5b214d|||||||||||||||
-readme|stem|24c1d31142ab7e5e|31fc094621a0e47e|9acf3058f3d02151|-165896733|README.md*README.Rmd|t19407.91911442s|7ea84de4a2f64e02|10049|file|local|vector|||8.324||
+raw_prev|stem|bf3ce53188058b6d|3e228955fc3d77e9|a445fae829427a06|-964224860||t19410.9203964141s|0ec2cb13f9ef3fc4|941|qs|local|vector|||0.168||
+readme|stem|0895d02dfa1ddb4d|31fc094621a0e47e|386b4c1c6051493b|-165896733|README.md*README.Rmd|t19410.9196877639s|e94e6f19caaf85c0|10636|file|local|vector|||8.972||
 sample_gam_posterior|function|30e8d6dcc4b018b6|||||||||||||||
 softmax|function|c5e765010193de84|||||||||||||||
 summarize_quantities|function|ccf3cfe5c9738a8c|||||||||||||||
