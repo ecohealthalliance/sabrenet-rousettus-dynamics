@@ -20,9 +20,11 @@ calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_po
     ungroup() |>
     group_by(day) |>
     summarize(frac_subadult = unique(frac_subadult),
-              fmi_kg_m2 = mean(fmi_kg_m2[sample_type == "Rectal"],))
+              fmi_kg_m2 = mean(fmi_kg_m2[sample_type == "Rectal"],),
+              n_fecal_samps = sum(sample_type == "Fecal"))
   frac_subadult_fn <- splinefun(x = interps$day, y = interps$frac_subadult)
   fmi_kg_m2_fn <- splinefun(x = interps$day[is.finite(interps$fmi_kg_m2)], y = interps$fmi_kg_m2[is.finite(interps$fmi_kg_m2)])
+  n_fecal_samps_fn <- splinefun(x = interps$day, y = interps$n_fecal_samps)
 
   newdat <- crossing(
     date = seq(min(dat_cleaned$date_collected),
@@ -39,6 +41,7 @@ calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_po
            day_of_year = lubridate::yday(date),
            frac_subadult = frac_subadult_fn(day),
            fmi_kg_m2 = fmi_kg_m2_fn(day),
+           n_fecal_samps = n_fecal_samps_fn(day),
            dummy_rectal = ordered(as.integer(sample_type == "Rectal"))
     ) |>
     arrange(sample_type, date)
@@ -58,6 +61,7 @@ calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_po
     }, .id = "outcome") |>
     group_by(date, sample_type, .iteration,) |>
     mutate(prob = exp(linpred) / (1 + sum(exp(linpred)))) |>
+    mutate(prob_corrected = if_else(sample_type == "Fecal", correct_pooled_prevalence(n_fecal_samps*prob, n_fecal_samps, 3), prob)) |>
     ungroup() |>
     mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV"))
 

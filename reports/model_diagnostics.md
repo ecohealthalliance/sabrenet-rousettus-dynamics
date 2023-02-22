@@ -32,7 +32,8 @@ options(width = 250)
 tar_load(c(
   multinomial_model,
   gam_posterior,
-  posterior_stats
+  posterior_stats,
+  dat_prepped
 ))
 ```
 
@@ -59,7 +60,7 @@ summary(multinomial_model)
 ##     by = dummy_repro) + s(frac_subadult, bs = "tp", k = 5, by = dummy_any_rectal) + 
 ##     s(frac_subadult, sample_type, bs = "fs", k = 5, xt = list(bs = "tp"), 
 ##         by = dummy_any_rectal, m = 2)
-## <environment: 0x7fdbce0e7ac0>
+## <environment: 0x7fe540a36b48>
 ## ~s(sample_type, bs = "re", by = dummy_rectal) + s(day, bs = "tp", 
 ##     k = 5, by = sample_type, m = 2) + s(day, gender_age, bs = "fs", 
 ##     k = 5, xt = list(bs = "tp"), by = dummy_rectal, m = 2) + 
@@ -71,11 +72,11 @@ summary(multinomial_model)
 ##     k = 5, by = dummy_any_rectal) + s(frac_subadult, sample_type, 
 ##     bs = "fs", k = 5, xt = list(bs = "tp"), by = dummy_any_rectal, 
 ##     m = 2)
-## <environment: 0x7fdbce0e7ac0>
+## <environment: 0x7fe540a36b48>
 ## ~s(sample_type, bs = "re", by = dummy_rectal) + s(day, bs = "tp", 
 ##     k = 5, by = sample_type, m = 2) + s(day_of_year, bs = "cc", 
 ##     by = sample_type, k = 5, m = 2)
-## <environment: 0x7fdbce0e7ac0>
+## <environment: 0x7fe540a36b48>
 ## 
 ## Parametric coefficients:
 ##               Estimate Std. Error z value Pr(>|z|)    
@@ -186,8 +187,8 @@ significance terms in in the model summary.
 
 
 ```r
-for (i in seq_len(length(multinomial_model$smooth))) {
-  plot(multinomial_model, scale = 0, select = i)
+for (i in seq_len(length(multinomial_model$smooth) + sum(multinomial_model$nsdf) - 3)) {
+  plot(multinomial_model, scale = 0, select = i, all.terms = TRUE)
 }
 ```
 
@@ -215,16 +216,16 @@ attributes(gam_posterior)[c("accept", "rw.accept")]
 
 ```
 ## $accept
-## [1] 0.1299818 0.1296182 0.1299273 0.1214727
+## [1] 0.1327273 0.1224727 0.1336727 0.1122909
 ## 
 ## $rw.accept
-## [1] 0.3325636 0.3357091 0.3301818 0.3318545
+## [1] 0.03309091 0.03280000 0.03243636 0.03258182
 ```
 
 Here is a summary of the dimensions of the MCMC chain output
 
 ```r
-tibble(
+tibble::tibble(
   dimension = names(dimnames(gam_posterior)),
   value = dim(gam_posterior)
 )
@@ -234,7 +235,7 @@ tibble(
 ## # A tibble: 3 × 2
 ##   dimension value
 ##   <chr>     <int>
-## 1 Iteration   550
+## 1 Iteration   138
 ## 2 Chain         4
 ## 3 Parameter   187
 ```
@@ -262,192 +263,192 @@ print(posterior_stats, n = Inf)
 ## # A tibble: 187 × 4
 ##     parameter                                           Rhat ess_bulk ess_tail
 ##     <chr>                                              <dbl>    <dbl>    <dbl>
-##   1 (Intercept)                                        1.00     1237.    1891.
-##   2 s(sample_type):dummy_rectal1.1                     1.00     1842.    1968.
-##   3 s(sample_type):dummy_rectal1.2                     0.999    1547.    1623.
-##   4 s(day):sample_typeFecal.1                          1.00     1663.    2111.
-##   5 s(day):sample_typeFecal.2                          1.00     1916.    2077.
-##   6 s(day):sample_typeFecal.3                          1.00     1873.    1994.
-##   7 s(day):sample_typeFecal.4                          1.00     1633.    1842.
-##   8 s(day):sample_typeRectal.1                         1.00     1761.    1929.
-##   9 s(day):sample_typeRectal.2                         1.00     1957.    1681.
-##  10 s(day):sample_typeRectal.3                         1.00     1869.    1787.
-##  11 s(day):sample_typeRectal.4                         1.00     1729.    1946.
-##  12 s(day,gender_age):dummy_rectal1.1                  1.00     2065.    2015.
-##  13 s(day,gender_age):dummy_rectal1.2                  1.00     1740.    1868.
-##  14 s(day,gender_age):dummy_rectal1.3                  1.00     1960.    2081.
-##  15 s(day,gender_age):dummy_rectal1.4                  0.999    1913.    1765.
-##  16 s(day,gender_age):dummy_rectal1.5                  1.00     1706.    1687.
-##  17 s(day,gender_age):dummy_rectal1.6                  1.00     1658.    1806.
-##  18 s(day,gender_age):dummy_rectal1.7                  1.00     1959.    2189.
-##  19 s(day,gender_age):dummy_rectal1.8                  1.00     1755.    1694.
-##  20 s(day,gender_age):dummy_rectal1.9                  1.00     1705.    2078.
-##  21 s(day,gender_age):dummy_rectal1.10                 1.00     2030.    1998.
-##  22 s(day,gender_age):dummy_rectal1.11                 1.00     1595.    1805.
-##  23 s(day,gender_age):dummy_rectal1.12                 1.01     1943.    1877.
-##  24 s(day,gender_age):dummy_rectal1.13                 1.00     1834.    2074.
-##  25 s(day,gender_age):dummy_rectal1.14                 1.00     2002.    1955.
-##  26 s(day,gender_age):dummy_rectal1.15                 1.00     1696.    2004.
-##  27 s(day,gender_age):dummy_rectal1.16                 1.00     1756.    1794.
-##  28 s(day,gender_age):dummy_rectal1.17                 1.00     1704.    1862.
-##  29 s(day,gender_age):dummy_rectal1.18                 1.00     2003.    1858.
-##  30 s(day,gender_age):dummy_rectal1.19                 1.00     1830.    2030.
-##  31 s(day,gender_age):dummy_rectal1.20                 1.00     2005.    2113.
-##  32 s(day,gender_age):dummy_rectal1.21                 0.999    1897.    1832.
-##  33 s(day,gender_age):dummy_rectal1.22                 1.00     1888.    1943.
-##  34 s(day,gender_age):dummy_rectal1.23                 1.00     1798.    1630.
-##  35 s(day,gender_age):dummy_rectal1.24                 1.00     1805.    1865.
-##  36 s(day,gender_age):dummy_rectal1.25                 0.999    1836.    1951.
-##  37 s(day_of_year):sample_typeFecal.1                  0.999    2009.    2001.
-##  38 s(day_of_year):sample_typeFecal.2                  0.999    1684.    1676.
-##  39 s(day_of_year):sample_typeFecal.3                  1.00     1958.    1900.
-##  40 s(day_of_year):sample_typeRectal.1                 1.00     1841.    1749.
-##  41 s(day_of_year):sample_typeRectal.2                 1.00     1834.    1959.
-##  42 s(day_of_year):sample_typeRectal.3                 1.00     1685.    1812.
-##  43 s(day_of_year,gender_age):dummy_rectal1.1          1.00     1835.    2111.
-##  44 s(day_of_year,gender_age):dummy_rectal1.2          1.00     1691.    1921.
-##  45 s(day_of_year,gender_age):dummy_rectal1.3          1.00     1909.    1828.
-##  46 s(day_of_year,gender_age):dummy_rectal1.4          1.00     1773.    1935.
-##  47 s(day_of_year,gender_age):dummy_rectal1.5          1.00     1564.    1893.
-##  48 s(day_of_year,gender_age):dummy_rectal1.6          1.00     1813.    1846.
-##  49 s(day_of_year,gender_age):dummy_rectal1.7          1.00     1468.    1682.
-##  50 s(day_of_year,gender_age):dummy_rectal1.8          1.00     1758.    1925.
-##  51 s(day_of_year,gender_age):dummy_rectal1.9          1.00     1836.    2150.
-##  52 s(day_of_year,gender_age):dummy_rectal1.10         1.00     2107.    2055.
-##  53 s(day_of_year,gender_age):dummy_rectal1.11         1.00     1781.    1769.
-##  54 s(day_of_year,gender_age):dummy_rectal1.12         1.00     1508.    1972.
-##  55 s(day_of_year,gender_age):dummy_rectal1.13         1.00     1735.    1901.
-##  56 s(day_of_year,gender_age):dummy_rectal1.14         0.999    1740.    1767.
-##  57 s(day_of_year,gender_age):dummy_rectal1.15         1.00     1899.    2145.
-##  58 s(day_of_year,gender_age):dummy_rectal1.16         1.00     1801.    1882.
-##  59 s(day_of_year,gender_age):dummy_rectal1.17         0.999    1809.    1697.
-##  60 s(day_of_year,gender_age):dummy_rectal1.18         1.00     1892.    2018.
-##  61 s(day_of_year,gender_age):dummy_rectal1.19         1.00     1940.    1808.
-##  62 s(day_of_year,gender_age):dummy_rectal1.20         1.00     1958.    1966.
-##  63 s(fmi_kg_m2):dummy_rectal1.1                       1.00     2111.    2152.
-##  64 s(fmi_kg_m2):dummy_rectal1.2                       1.00     1680.    1924.
-##  65 s(fmi_kg_m2):dummy_rectal1.3                       1.00     2045.    2093.
-##  66 s(fmi_kg_m2):dummy_rectal1.4                       0.999    1537.    1863.
-##  67 s(reproductive_condition):dummy_repro1.1           1.00     1737.    1655.
-##  68 s(reproductive_condition):dummy_repro1.2           1.00     1575.    1725.
-##  69 s(reproductive_condition):dummy_repro1.3           1.00     1739.    2072.
-##  70 s(reproductive_condition):dummy_repro1.4           1.00     1768.    1944.
-##  71 s(frac_subadult):dummy_any_rectal.1                1.00     1503.    1629.
-##  72 s(frac_subadult):dummy_any_rectal.2                1.00     1902.    2003.
-##  73 s(frac_subadult):dummy_any_rectal.3                1.00     1464.    1805.
-##  74 s(frac_subadult):dummy_any_rectal.4                1.00     1709.    1728.
-##  75 s(frac_subadult):dummy_any_rectal.5                1.00     1651.    1697.
-##  76 s(frac_subadult,sample_type):dummy_any_rectal.1    1.00     1980.    1966.
-##  77 s(frac_subadult,sample_type):dummy_any_rectal.2    1.00     1501.    1807.
-##  78 s(frac_subadult,sample_type):dummy_any_rectal.3    1.00     1692.    1904.
-##  79 s(frac_subadult,sample_type):dummy_any_rectal.4    1.00     1887.    2109.
-##  80 s(frac_subadult,sample_type):dummy_any_rectal.5    0.999    1630.    1827.
-##  81 s(frac_subadult,sample_type):dummy_any_rectal.6    1.00     1855.    2001.
-##  82 s(frac_subadult,sample_type):dummy_any_rectal.7    0.999    1768.    2040.
-##  83 s(frac_subadult,sample_type):dummy_any_rectal.8    1.00     1812.    1989.
-##  84 s(frac_subadult,sample_type):dummy_any_rectal.9    1.00     1654.    1666.
-##  85 s(frac_subadult,sample_type):dummy_any_rectal.10   1.00     1932.    2193.
-##  86 (Intercept).1                                      1.00     1761.    2112.
-##  87 s.1(sample_type):dummy_rectal1.1                   1.00     1836.    1651.
-##  88 s.1(sample_type):dummy_rectal1.2                   1.00     1690.    2001.
-##  89 s.1(day):sample_typeFecal.1                        1.00     1572.    1950.
-##  90 s.1(day):sample_typeFecal.2                        1.00     2092.    1981.
-##  91 s.1(day):sample_typeFecal.3                        1.00     2032.    1982.
-##  92 s.1(day):sample_typeFecal.4                        1.00     1633.    1959.
-##  93 s.1(day):sample_typeRectal.1                       1.00     1804.    1836.
-##  94 s.1(day):sample_typeRectal.2                       1.00     1620.    1743.
-##  95 s.1(day):sample_typeRectal.3                       1.00     1611.    1902.
-##  96 s.1(day):sample_typeRectal.4                       1.00     1770.    2001.
-##  97 s.1(day,gender_age):dummy_rectal1.1                1.00     1831.    2020.
-##  98 s.1(day,gender_age):dummy_rectal1.2                1.00     1688.    1798.
-##  99 s.1(day,gender_age):dummy_rectal1.3                1.00     1466.    1755.
-## 100 s.1(day,gender_age):dummy_rectal1.4                1.00     1825.    1815.
-## 101 s.1(day,gender_age):dummy_rectal1.5                1.00     1809.    1888.
-## 102 s.1(day,gender_age):dummy_rectal1.6                1.00     2015.    1970.
-## 103 s.1(day,gender_age):dummy_rectal1.7                0.999    2034.    1981.
-## 104 s.1(day,gender_age):dummy_rectal1.8                1.00     1786.    1951.
-## 105 s.1(day,gender_age):dummy_rectal1.9                1.00     1725.    1923.
-## 106 s.1(day,gender_age):dummy_rectal1.10               1.00     1954.    1941.
-## 107 s.1(day,gender_age):dummy_rectal1.11               1.00     1781.    1546.
-## 108 s.1(day,gender_age):dummy_rectal1.12               1.00     1849.    1969.
-## 109 s.1(day,gender_age):dummy_rectal1.13               0.999    1782.    1905.
-## 110 s.1(day,gender_age):dummy_rectal1.14               1.00     1607.    1945.
-## 111 s.1(day,gender_age):dummy_rectal1.15               1.00     1759.    1919.
-## 112 s.1(day,gender_age):dummy_rectal1.16               1.00     2102.    1973.
-## 113 s.1(day,gender_age):dummy_rectal1.17               1.00     1855.    2018.
-## 114 s.1(day,gender_age):dummy_rectal1.18               1.00     1939.    1881.
-## 115 s.1(day,gender_age):dummy_rectal1.19               1.00     1900.    1970.
-## 116 s.1(day,gender_age):dummy_rectal1.20               1.00     1728.    1966.
-## 117 s.1(day,gender_age):dummy_rectal1.21               0.999    1973.    2061.
-## 118 s.1(day,gender_age):dummy_rectal1.22               1.00     2111.    2041.
-## 119 s.1(day,gender_age):dummy_rectal1.23               1.00     1678.    1780.
-## 120 s.1(day,gender_age):dummy_rectal1.24               1.00     1857.    1665.
-## 121 s.1(day,gender_age):dummy_rectal1.25               1.00     1908.    1933.
-## 122 s.1(day_of_year):sample_typeFecal.1                1.00     1825.    1792.
-## 123 s.1(day_of_year):sample_typeFecal.2                1.00     2070.    2072.
-## 124 s.1(day_of_year):sample_typeFecal.3                1.00     1895.    1925.
-## 125 s.1(day_of_year):sample_typeRectal.1               1.00     1936.    1901.
-## 126 s.1(day_of_year):sample_typeRectal.2               0.999    1810.    1913.
-## 127 s.1(day_of_year):sample_typeRectal.3               1.01     1857.    1886.
-## 128 s.1(day_of_year,gender_age):dummy_rectal1.1        1.00     1897.    2113.
-## 129 s.1(day_of_year,gender_age):dummy_rectal1.2        1.00     1998.    1648.
-## 130 s.1(day_of_year,gender_age):dummy_rectal1.3        1.00     1978.    2019.
-## 131 s.1(day_of_year,gender_age):dummy_rectal1.4        1.00     1792.    2002.
-## 132 s.1(day_of_year,gender_age):dummy_rectal1.5        1.00     1995.    1948.
-## 133 s.1(day_of_year,gender_age):dummy_rectal1.6        1.00     2159.    2107.
-## 134 s.1(day_of_year,gender_age):dummy_rectal1.7        0.999    1762.    2075.
-## 135 s.1(day_of_year,gender_age):dummy_rectal1.8        1.00     1803.    1986.
-## 136 s.1(day_of_year,gender_age):dummy_rectal1.9        1.00     1688.    1769.
-## 137 s.1(day_of_year,gender_age):dummy_rectal1.10       1.00     1940.    1964.
-## 138 s.1(day_of_year,gender_age):dummy_rectal1.11       1.00     2042.    1836.
-## 139 s.1(day_of_year,gender_age):dummy_rectal1.12       1.00     1869.    1844.
-## 140 s.1(day_of_year,gender_age):dummy_rectal1.13       1.00     1685.    2039.
-## 141 s.1(day_of_year,gender_age):dummy_rectal1.14       1.00     1872.    2001.
-## 142 s.1(day_of_year,gender_age):dummy_rectal1.15       1.00     1735.    1966.
-## 143 s.1(day_of_year,gender_age):dummy_rectal1.16       1.00     1937.    1832.
-## 144 s.1(day_of_year,gender_age):dummy_rectal1.17       1.00     1919.    1880.
-## 145 s.1(day_of_year,gender_age):dummy_rectal1.18       1.00     1945.    1955.
-## 146 s.1(day_of_year,gender_age):dummy_rectal1.19       1.00     1967.    1997.
-## 147 s.1(day_of_year,gender_age):dummy_rectal1.20       1.00     2038.    1828.
-## 148 s.1(fmi_kg_m2):dummy_rectal1.1                     1.00     1710.    1858.
-## 149 s.1(fmi_kg_m2):dummy_rectal1.2                     1.00     1644.    1920.
-## 150 s.1(fmi_kg_m2):dummy_rectal1.3                     1.00     1867.    1943.
-## 151 s.1(fmi_kg_m2):dummy_rectal1.4                     1.00     1795.    2000.
-## 152 s.1(reproductive_condition):dummy_repro1.1         1.00     1911.    1826.
-## 153 s.1(reproductive_condition):dummy_repro1.2         1.00     1660.    1898.
-## 154 s.1(reproductive_condition):dummy_repro1.3         1.00     1732.    1926.
-## 155 s.1(reproductive_condition):dummy_repro1.4         1.00     1868.    2114.
-## 156 s.1(frac_subadult):dummy_any_rectal.1              1.00     1917.    1916.
-## 157 s.1(frac_subadult):dummy_any_rectal.2              1.00     1567.    1744.
-## 158 s.1(frac_subadult):dummy_any_rectal.3              1.00     1984.    1991.
-## 159 s.1(frac_subadult):dummy_any_rectal.4              1.00     1931.    2036.
-## 160 s.1(frac_subadult):dummy_any_rectal.5              1.00     1634.    1519.
-## 161 s.1(frac_subadult,sample_type):dummy_any_rectal.1  1.00     1831.    1892.
-## 162 s.1(frac_subadult,sample_type):dummy_any_rectal.2  1.00     2088.    2234.
-## 163 s.1(frac_subadult,sample_type):dummy_any_rectal.3  1.00     1407.    1907.
-## 164 s.1(frac_subadult,sample_type):dummy_any_rectal.4  1.00     1853.    2151.
-## 165 s.1(frac_subadult,sample_type):dummy_any_rectal.5  1.01     1600.    2039.
-## 166 s.1(frac_subadult,sample_type):dummy_any_rectal.6  1.00     1828.    1770.
-## 167 s.1(frac_subadult,sample_type):dummy_any_rectal.7  1.00     1878.    1918.
-## 168 s.1(frac_subadult,sample_type):dummy_any_rectal.8  1.00     1971.    2002.
-## 169 s.1(frac_subadult,sample_type):dummy_any_rectal.9  1.00     2028.    1729.
-## 170 s.1(frac_subadult,sample_type):dummy_any_rectal.10 1.00     1803.    1932.
-## 171 (Intercept).2                                      1.00     1328.    1063.
-## 172 s.2(sample_type):dummy_rectal1.1                   1.00     1788.    1961.
-## 173 s.2(sample_type):dummy_rectal1.2                   1.00     1913.    2075.
-## 174 s.2(day):sample_typeFecal.1                        1.00     1750.    1985.
-## 175 s.2(day):sample_typeFecal.2                        1.00     1917.    2053.
-## 176 s.2(day):sample_typeFecal.3                        1.00     2016.    1846.
-## 177 s.2(day):sample_typeFecal.4                        1.00     1524.    1894.
-## 178 s.2(day):sample_typeRectal.1                       1.00     2046.    1881.
-## 179 s.2(day):sample_typeRectal.2                       1.00     1640.    1913.
-## 180 s.2(day):sample_typeRectal.3                       1.00     1779.    1716.
-## 181 s.2(day):sample_typeRectal.4                       1.00     1408.    1197.
-## 182 s.2(day_of_year):sample_typeFecal.1                1.00     1583.    1644.
-## 183 s.2(day_of_year):sample_typeFecal.2                1.00     1407.    1095.
-## 184 s.2(day_of_year):sample_typeFecal.3                1.00     1366.    1276.
-## 185 s.2(day_of_year):sample_typeRectal.1               1.00     1447.    1662.
-## 186 s.2(day_of_year):sample_typeRectal.2               1.00     1390.    1443.
-## 187 s.2(day_of_year):sample_typeRectal.3               1.01     1414.    1466.
+##   1 (Intercept)                                        1.00      431.    406. 
+##   2 s(sample_type):dummy_rectal1.1                     1.01      417.    455. 
+##   3 s(sample_type):dummy_rectal1.2                     1.02      375.    226. 
+##   4 s(day):sample_typeFecal.1                          1.00      419.    488. 
+##   5 s(day):sample_typeFecal.2                          1.00      400.    504. 
+##   6 s(day):sample_typeFecal.3                          1.01      336.    503. 
+##   7 s(day):sample_typeFecal.4                          1.00      447.    440. 
+##   8 s(day):sample_typeRectal.1                         1.01      254.    299. 
+##   9 s(day):sample_typeRectal.2                         1.00      422.    470. 
+##  10 s(day):sample_typeRectal.3                         1.01      382.    302. 
+##  11 s(day):sample_typeRectal.4                         1.02      481.    406. 
+##  12 s(day,gender_age):dummy_rectal1.1                  0.999     493.    507. 
+##  13 s(day,gender_age):dummy_rectal1.2                  1.00      373.    388. 
+##  14 s(day,gender_age):dummy_rectal1.3                  1.01      316.    239. 
+##  15 s(day,gender_age):dummy_rectal1.4                  1.01      289.    165. 
+##  16 s(day,gender_age):dummy_rectal1.5                  1.00      299.    625. 
+##  17 s(day,gender_age):dummy_rectal1.6                  1.00      431.    404. 
+##  18 s(day,gender_age):dummy_rectal1.7                  1.01      504.    512. 
+##  19 s(day,gender_age):dummy_rectal1.8                  1.01      360.    329. 
+##  20 s(day,gender_age):dummy_rectal1.9                  1.01      339.    368. 
+##  21 s(day,gender_age):dummy_rectal1.10                 1.01      439.    504. 
+##  22 s(day,gender_age):dummy_rectal1.11                 1.00      371.    389. 
+##  23 s(day,gender_age):dummy_rectal1.12                 1.00      490.    471. 
+##  24 s(day,gender_age):dummy_rectal1.13                 1.00      504.    427. 
+##  25 s(day,gender_age):dummy_rectal1.14                 1.00      415.    462. 
+##  26 s(day,gender_age):dummy_rectal1.15                 1.00      432.    473. 
+##  27 s(day,gender_age):dummy_rectal1.16                 1.01      474.    467. 
+##  28 s(day,gender_age):dummy_rectal1.17                 1.00      323.    320. 
+##  29 s(day,gender_age):dummy_rectal1.18                 1.00      377.    423. 
+##  30 s(day,gender_age):dummy_rectal1.19                 1.00      483.    575. 
+##  31 s(day,gender_age):dummy_rectal1.20                 1.01      347.    320. 
+##  32 s(day,gender_age):dummy_rectal1.21                 1.01      379.    384. 
+##  33 s(day,gender_age):dummy_rectal1.22                 1.01      313.    155. 
+##  34 s(day,gender_age):dummy_rectal1.23                 1.02      479.    501. 
+##  35 s(day,gender_age):dummy_rectal1.24                 1.01      362.    353. 
+##  36 s(day,gender_age):dummy_rectal1.25                 1.00      539.    448. 
+##  37 s(day_of_year):sample_typeFecal.1                  1.02      162.    244. 
+##  38 s(day_of_year):sample_typeFecal.2                  0.999     407.    373. 
+##  39 s(day_of_year):sample_typeFecal.3                  1.00      390.    388. 
+##  40 s(day_of_year):sample_typeRectal.1                 1.01      429.    444. 
+##  41 s(day_of_year):sample_typeRectal.2                 0.998     384.    455. 
+##  42 s(day_of_year):sample_typeRectal.3                 1.01      259.    186. 
+##  43 s(day_of_year,gender_age):dummy_rectal1.1          1.00      429.    488. 
+##  44 s(day_of_year,gender_age):dummy_rectal1.2          1.00      464.    296. 
+##  45 s(day_of_year,gender_age):dummy_rectal1.3          1.00      403.    473. 
+##  46 s(day_of_year,gender_age):dummy_rectal1.4          1.01      349.    442. 
+##  47 s(day_of_year,gender_age):dummy_rectal1.5          1.01      439.    375. 
+##  48 s(day_of_year,gender_age):dummy_rectal1.6          1.00      422.    429. 
+##  49 s(day_of_year,gender_age):dummy_rectal1.7          1.01      354.    317. 
+##  50 s(day_of_year,gender_age):dummy_rectal1.8          1.01      565.    541. 
+##  51 s(day_of_year,gender_age):dummy_rectal1.9          0.999     497.    470. 
+##  52 s(day_of_year,gender_age):dummy_rectal1.10         1.01      366.    380. 
+##  53 s(day_of_year,gender_age):dummy_rectal1.11         1.00      457.    540. 
+##  54 s(day_of_year,gender_age):dummy_rectal1.12         1.01      302.    231. 
+##  55 s(day_of_year,gender_age):dummy_rectal1.13         1.01      318.    332. 
+##  56 s(day_of_year,gender_age):dummy_rectal1.14         1.01      443.    365. 
+##  57 s(day_of_year,gender_age):dummy_rectal1.15         1.01      427.    487. 
+##  58 s(day_of_year,gender_age):dummy_rectal1.16         0.997     544.    301. 
+##  59 s(day_of_year,gender_age):dummy_rectal1.17         1.00      274.    389. 
+##  60 s(day_of_year,gender_age):dummy_rectal1.18         1.01      490.    412. 
+##  61 s(day_of_year,gender_age):dummy_rectal1.19         1.00      412.    505. 
+##  62 s(day_of_year,gender_age):dummy_rectal1.20         1.00      482.    470. 
+##  63 s(fmi_kg_m2):dummy_rectal1.1                       1.01      386.    485. 
+##  64 s(fmi_kg_m2):dummy_rectal1.2                       1.01      485.    496. 
+##  65 s(fmi_kg_m2):dummy_rectal1.3                       1.01      447.    438. 
+##  66 s(fmi_kg_m2):dummy_rectal1.4                       1.01      367.    460. 
+##  67 s(reproductive_condition):dummy_repro1.1           1.01      314.    278. 
+##  68 s(reproductive_condition):dummy_repro1.2           1.01      400.    505. 
+##  69 s(reproductive_condition):dummy_repro1.3           1.01      315.    302. 
+##  70 s(reproductive_condition):dummy_repro1.4           1.01      333.    339. 
+##  71 s(frac_subadult):dummy_any_rectal.1                1.01      290.     89.4
+##  72 s(frac_subadult):dummy_any_rectal.2                1.01      305.    152. 
+##  73 s(frac_subadult):dummy_any_rectal.3                1.01      429.    181. 
+##  74 s(frac_subadult):dummy_any_rectal.4                1.01      310.    109. 
+##  75 s(frac_subadult):dummy_any_rectal.5                1.00      316.    194. 
+##  76 s(frac_subadult,sample_type):dummy_any_rectal.1    1.00      312.    364. 
+##  77 s(frac_subadult,sample_type):dummy_any_rectal.2    1.01      357.    305. 
+##  78 s(frac_subadult,sample_type):dummy_any_rectal.3    1.01      351.    393. 
+##  79 s(frac_subadult,sample_type):dummy_any_rectal.4    1.01      500.    472. 
+##  80 s(frac_subadult,sample_type):dummy_any_rectal.5    1.00      384.    333. 
+##  81 s(frac_subadult,sample_type):dummy_any_rectal.6    1.00      402.    504. 
+##  82 s(frac_subadult,sample_type):dummy_any_rectal.7    0.999     446.    415. 
+##  83 s(frac_subadult,sample_type):dummy_any_rectal.8    1.00      368.    474. 
+##  84 s(frac_subadult,sample_type):dummy_any_rectal.9    1.00      430.    370. 
+##  85 s(frac_subadult,sample_type):dummy_any_rectal.10   1.01      316.    383. 
+##  86 (Intercept).1                                      1.00      410.    427. 
+##  87 s.1(sample_type):dummy_rectal1.1                   1.00      426.    501. 
+##  88 s.1(sample_type):dummy_rectal1.2                   1.01      375.    507. 
+##  89 s.1(day):sample_typeFecal.1                        1.00      457.    507. 
+##  90 s.1(day):sample_typeFecal.2                        1.00      543.    430. 
+##  91 s.1(day):sample_typeFecal.3                        1.00      514.    442. 
+##  92 s.1(day):sample_typeFecal.4                        1.02      433.    501. 
+##  93 s.1(day):sample_typeRectal.1                       1.02      186.    109. 
+##  94 s.1(day):sample_typeRectal.2                       1.01      474.    470. 
+##  95 s.1(day):sample_typeRectal.3                       1.00      386.    260. 
+##  96 s.1(day):sample_typeRectal.4                       1.01      203.    140. 
+##  97 s.1(day,gender_age):dummy_rectal1.1                1.01      452.    491. 
+##  98 s.1(day,gender_age):dummy_rectal1.2                1.00      294.    283. 
+##  99 s.1(day,gender_age):dummy_rectal1.3                1.00      311.    304. 
+## 100 s.1(day,gender_age):dummy_rectal1.4                1.01      345.    408. 
+## 101 s.1(day,gender_age):dummy_rectal1.5                0.999     419.    506. 
+## 102 s.1(day,gender_age):dummy_rectal1.6                1.00      398.    337. 
+## 103 s.1(day,gender_age):dummy_rectal1.7                1.01      303.    257. 
+## 104 s.1(day,gender_age):dummy_rectal1.8                1.01      340.    412. 
+## 105 s.1(day,gender_age):dummy_rectal1.9                1.00      468.    504. 
+## 106 s.1(day,gender_age):dummy_rectal1.10               1.00      402.    539. 
+## 107 s.1(day,gender_age):dummy_rectal1.11               0.997     557.    585. 
+## 108 s.1(day,gender_age):dummy_rectal1.12               1.00      523.    537. 
+## 109 s.1(day,gender_age):dummy_rectal1.13               1.00      456.    345. 
+## 110 s.1(day,gender_age):dummy_rectal1.14               1.01      437.    390. 
+## 111 s.1(day,gender_age):dummy_rectal1.15               0.999     486.    516. 
+## 112 s.1(day,gender_age):dummy_rectal1.16               1.01      270.    243. 
+## 113 s.1(day,gender_age):dummy_rectal1.17               0.998     311.    465. 
+## 114 s.1(day,gender_age):dummy_rectal1.18               1.00      513.    406. 
+## 115 s.1(day,gender_age):dummy_rectal1.19               1.00      384.    345. 
+## 116 s.1(day,gender_age):dummy_rectal1.20               1.00      381.    287. 
+## 117 s.1(day,gender_age):dummy_rectal1.21               1.00      470.    482. 
+## 118 s.1(day,gender_age):dummy_rectal1.22               1.00      452.    507. 
+## 119 s.1(day,gender_age):dummy_rectal1.23               1.00      432.    348. 
+## 120 s.1(day,gender_age):dummy_rectal1.24               1.00      358.    543. 
+## 121 s.1(day,gender_age):dummy_rectal1.25               1.01      378.    466. 
+## 122 s.1(day_of_year):sample_typeFecal.1                1.00      504.    308. 
+## 123 s.1(day_of_year):sample_typeFecal.2                1.01      370.    455. 
+## 124 s.1(day_of_year):sample_typeFecal.3                1.01      409.    439. 
+## 125 s.1(day_of_year):sample_typeRectal.1               1.00      237.    311. 
+## 126 s.1(day_of_year):sample_typeRectal.2               1.01      335.    425. 
+## 127 s.1(day_of_year):sample_typeRectal.3               1.01      369.    458. 
+## 128 s.1(day_of_year,gender_age):dummy_rectal1.1        1.02      255.    417. 
+## 129 s.1(day_of_year,gender_age):dummy_rectal1.2        1.00      373.    424. 
+## 130 s.1(day_of_year,gender_age):dummy_rectal1.3        1.00      497.    480. 
+## 131 s.1(day_of_year,gender_age):dummy_rectal1.4        1.01      284.    145. 
+## 132 s.1(day_of_year,gender_age):dummy_rectal1.5        1.01      351.    375. 
+## 133 s.1(day_of_year,gender_age):dummy_rectal1.6        1.01      226.    198. 
+## 134 s.1(day_of_year,gender_age):dummy_rectal1.7        1.00      350.    336. 
+## 135 s.1(day_of_year,gender_age):dummy_rectal1.8        1.01      348.    486. 
+## 136 s.1(day_of_year,gender_age):dummy_rectal1.9        1.00      519.    545. 
+## 137 s.1(day_of_year,gender_age):dummy_rectal1.10       1.00      438.    420. 
+## 138 s.1(day_of_year,gender_age):dummy_rectal1.11       1.00      389.    406. 
+## 139 s.1(day_of_year,gender_age):dummy_rectal1.12       1.01      391.    493. 
+## 140 s.1(day_of_year,gender_age):dummy_rectal1.13       1.00      346.    473. 
+## 141 s.1(day_of_year,gender_age):dummy_rectal1.14       1.01      421.    459. 
+## 142 s.1(day_of_year,gender_age):dummy_rectal1.15       0.999     390.    402. 
+## 143 s.1(day_of_year,gender_age):dummy_rectal1.16       1.00      565.    544. 
+## 144 s.1(day_of_year,gender_age):dummy_rectal1.17       1.01      324.    485. 
+## 145 s.1(day_of_year,gender_age):dummy_rectal1.18       1.00      345.    433. 
+## 146 s.1(day_of_year,gender_age):dummy_rectal1.19       1.00      424.    417. 
+## 147 s.1(day_of_year,gender_age):dummy_rectal1.20       1.00      432.    501. 
+## 148 s.1(fmi_kg_m2):dummy_rectal1.1                     0.998     294.    362. 
+## 149 s.1(fmi_kg_m2):dummy_rectal1.2                     1.01      494.    415. 
+## 150 s.1(fmi_kg_m2):dummy_rectal1.3                     1.00      437.    507. 
+## 151 s.1(fmi_kg_m2):dummy_rectal1.4                     1.01      412.    512. 
+## 152 s.1(reproductive_condition):dummy_repro1.1         1.00      508.    431. 
+## 153 s.1(reproductive_condition):dummy_repro1.2         1.00      441.    449. 
+## 154 s.1(reproductive_condition):dummy_repro1.3         1.00      457.    485. 
+## 155 s.1(reproductive_condition):dummy_repro1.4         1.01      386.    400. 
+## 156 s.1(frac_subadult):dummy_any_rectal.1              1.01      302.    330. 
+## 157 s.1(frac_subadult):dummy_any_rectal.2              0.996     302.    272. 
+## 158 s.1(frac_subadult):dummy_any_rectal.3              1.00      342.    330. 
+## 159 s.1(frac_subadult):dummy_any_rectal.4              1.01      335.    305. 
+## 160 s.1(frac_subadult):dummy_any_rectal.5              1.01      308.    321. 
+## 161 s.1(frac_subadult,sample_type):dummy_any_rectal.1  1.00      393.    366. 
+## 162 s.1(frac_subadult,sample_type):dummy_any_rectal.2  1.00      407.    543. 
+## 163 s.1(frac_subadult,sample_type):dummy_any_rectal.3  1.00      461.    433. 
+## 164 s.1(frac_subadult,sample_type):dummy_any_rectal.4  1.01      489.    465. 
+## 165 s.1(frac_subadult,sample_type):dummy_any_rectal.5  1.00      389.    507. 
+## 166 s.1(frac_subadult,sample_type):dummy_any_rectal.6  1.01      490.    532. 
+## 167 s.1(frac_subadult,sample_type):dummy_any_rectal.7  1.01      435.    348. 
+## 168 s.1(frac_subadult,sample_type):dummy_any_rectal.8  1.00      470.    504. 
+## 169 s.1(frac_subadult,sample_type):dummy_any_rectal.9  1.02      325.    503. 
+## 170 s.1(frac_subadult,sample_type):dummy_any_rectal.10 1.01      330.    364. 
+## 171 (Intercept).2                                      1.01      310.    192. 
+## 172 s.2(sample_type):dummy_rectal1.1                   1.00      432.    388. 
+## 173 s.2(sample_type):dummy_rectal1.2                   1.00      430.    435. 
+## 174 s.2(day):sample_typeFecal.1                        1.00      502.    516. 
+## 175 s.2(day):sample_typeFecal.2                        1.02      322.    403. 
+## 176 s.2(day):sample_typeFecal.3                        1.01      336.    495. 
+## 177 s.2(day):sample_typeFecal.4                        1.01      264.    351. 
+## 178 s.2(day):sample_typeRectal.1                       1.01      342.    418. 
+## 179 s.2(day):sample_typeRectal.2                       1.01      291.    347. 
+## 180 s.2(day):sample_typeRectal.3                       1.02      307.    248. 
+## 181 s.2(day):sample_typeRectal.4                       1.01      338.    437. 
+## 182 s.2(day_of_year):sample_typeFecal.1                1.01      413.    540. 
+## 183 s.2(day_of_year):sample_typeFecal.2                1.04      151.    104. 
+## 184 s.2(day_of_year):sample_typeFecal.3                1.02      244.    137. 
+## 185 s.2(day_of_year):sample_typeRectal.1               1.03      232.    189. 
+## 186 s.2(day_of_year):sample_typeRectal.2               1.03      203.     93.4
+## 187 s.2(day_of_year):sample_typeRectal.3               1.01      240.    132.
 ```
 

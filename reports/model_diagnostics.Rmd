@@ -30,7 +30,8 @@ options(width = 250)
 tar_load(c(
   multinomial_model,
   gam_posterior,
-  posterior_stats
+  posterior_stats,
+  dat_prepped
 ))
 ```
 
@@ -59,8 +60,8 @@ Inspect for strange behavior and check that their shape corresponds with
 significance terms in in the model summary.
 
 ```{r, fig.show="hold", out.width="33%"}
-for (i in seq_len(length(multinomial_model$smooth))) {
-  plot(multinomial_model, scale = 0, select = i)
+for (i in seq_len(length(multinomial_model$smooth) + sum(multinomial_model$nsdf) - 3)) {
+  plot(multinomial_model, scale = 0, select = i, all.terms = TRUE)
 }
 ```
 
@@ -85,7 +86,7 @@ attributes(gam_posterior)[c("accept", "rw.accept")]
 
 Here is a summary of the dimensions of the MCMC chain output
 ```{r}
-tibble(
+tibble::tibble(
   dimension = names(dimnames(gam_posterior)),
   value = dim(gam_posterior)
 )

@@ -25,12 +25,13 @@ data_targets <- tar_plan(
 
 analysis_targets <- tar_plan(
   dat_prepped = prep_data(dat_cleaned),
-  tar_target(multinomial_model, fit_multinomial_model(dat_prepped), cue = tar_cue("never")),
+  tar_target(multinomial_model, fit_multinomial_model(dat_prepped), cue = tar_cue("thorough")),
   tar_target(gam_posterior, sample_gam_posterior(multinomial_model, chains = 4,
-                                                 burn = 5000, ns = 55000, thin = 100, rw.scale = 0.02),
-             cue = tar_cue("never")),
+                                                 burn = 1250, ns = 13750, thin = 100, rw.scale = 0.1),
+             cue = tar_cue("thorough")),
   posterior_stats = calc_posterior_stats(gam_posterior),
-  time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior)
+  time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior),
+  pooled_fecal_ave = calc_raw_fecal_prev(dat_prepped)
 )
 
 plot_targets <- tar_plan(

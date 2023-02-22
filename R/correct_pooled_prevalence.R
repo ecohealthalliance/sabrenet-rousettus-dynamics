@@ -12,3 +12,4 @@ correct_pooled_prevalence <- function(num_pos_pools, num_pools, pool_size) {
 
   p_hat
 }
+

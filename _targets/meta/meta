@@ -3,10 +3,12 @@ name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iterat
 all_dat_sum|object|16fa1eda1728059d|||||||||||||||
 all_plot_files|stem|03d21d3a3c5d45b6|5a063c420c363732|966d74aa9bc46b87|1683656025||t19407.7612950241s|9712f9cb4307e5f0|183|qs|local|vector|||0.001||
 all_time_series|object|35dbf68fc1679845|||||||||||||||
-allplots|stem|55b26e3c550db20b|b80c16ad4637ac48|f8fade5d63f6ad3a|2138401513||t19407.8665226956s|038febcd91ecd6ef|29364934|qs|local|vector||allplots_5dcee172*allplots_a1f7ba73*allplots_e6004183*allplots_6ea4a5be*allplots_d941fb38*allplots_4b478e6d*allplots_0507c4db|0||
-analysis_targets|object|5df76a31daf44ae1|||||||||||||||
+allplots|stem|e507b738ff741588|b80c16ad4637ac48|d268a24bb7a997e2|2138401513||t19410.7293882293s|2efc04f0f4f454cf|23154109|qs|local|vector||allplots_5dcee172*allplots_a1f7ba73*allplots_ef3e3cbb*allplots_6ea4a5be*allplots_d941fb38*allplots_dbd33186*allplots_c36a4cba|0.001||
+analysis_targets|object|d66055b5933c1455|||||||||||||||
+calc_model_fecal_prev|function|c5f286c4122552b9|||||||||||||||
 calc_posterior_stats|function|77e45a42f15579fc|||||||||||||||
-calc_time_series|function|978f5e4d3a721cd2|||||||||||||||
+calc_raw_fecal_prev|function|72b2466b1f92b24c|||||||||||||||
+calc_time_series|function|eba2eca5dba3d242|||||||||||||||
 captures_cleaned|stem|2bb339e1379dddd2|d7feb7b87c11aa7c|61f21a7db4848e77|1443380426||t19206.7190740741s|7c851447131a82e3|30|qs|local|vector|||0||
 captures_xls|stem|c992332c4ab56d3d|2b6829500773b60f|ef46db3751d8e999|-1143596566|data/Captures per month.xlsx|t19198.7194675926s|5b295b63d884e2c5|22878|file|local|vector|||0.002||
 clean_captures|function|ba42fa93cd512b06|||||||||||||||
@@ -21,46 +23,48 @@ dat_prepped|stem|29b7122ed78a3245|773452dda03b46b9|5a7f168c2b37af4b|-1325759310|
 dat_sum|object|fb5e2fa485c45394|||||||||||||||
 dat_xls|stem|8f9b50fe6e2b29e2|e790b0ffe3566f83|ef46db3751d8e999|-1364927013|data/2022-06; Supplementary datasets.xlsx|t19198.7194675926s|c9700cccbf3bd428|144053|file|local|vector|||0.001||
 data_targets|object|c298af4bfddd2ac8|||||||||||||||
-fig_bat_demographics|stem|d52f6e9c1c13654a|aa7c48865a9458e7|9aa11e3412851a18|-494670363||t19407.8598167711s|06cf0f6815b06fdb|285217|qs|local|vector|||0.109||
+fig_bat_demographics|stem|d52f6e9c1c13654a|aa7c48865a9458e7|9aa11e3412851a18|-494670363||t19409.77175515s|06cf0f6815b06fdb|285217|qs|local|vector|||0.084||
 fig_bat_demographics_file|stem|83f8854152e79950|d57f2dc5c673559e|597550bd92844a4e|163831124|outputs/fig_bat_demographics.svg|t19407.7606074723s|f9ae2a55567c4987|23042|file|local|vector|||0.368||
 fig_fmi_demo|stem|349a19f679fcd6d5|555a7f08689e7582|2baf92a9024ea0c5|1682247000||t19407.8446659034s|2e46d180ff0d0a4d|403807|qs|local|vector|||0.075||
-fig_fmi_demo_effects|stem|269580b40be05ef6|8f12270256c99b41|5b596111049c93f7|-769171690||t19407.8665107544s|3196b37e5461bf45|428257|qs|local|vector|||0.152||
+fig_fmi_demo_effects|stem|269580b40be05ef6|8f12270256c99b41|5b596111049c93f7|-769171690||t19409.7717584906s|3196b37e5461bf45|428257|qs|local|vector|||0.114||
 fig_fmi_demo_effects_file|stem|9e252ff780f246f1|1c8e610a9fc0ae1f|f249a323dc51794d|1247356090|outputs/fig_fmi_demo_effects.svg|t19407.7612704703s|6bcaefb61ccbf18e|24962|file|local|vector|||0.379|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
 fig_fmi_demo_file|stem|dce98b89600770f5|7eb31e1ed7819fb1|1a9ccc77ff54b2c6|-129696329|outputs/fig_fmi_demo.png|t19155.9645423197s|53c3e64c6eae9730|365513|file|local|vector|||0.984||
-fig_fmi_demo_timeseries|stem|a93e944cb90ff844|72cb922c218af08f|8181b17ff82de1ed|-915547378||t19407.8164374953s|30be6c50baec200d|321047|qs|local|vector|||0.069||
+fig_fmi_demo_timeseries|stem|a93e944cb90ff844|72cb922c218af08f|8181b17ff82de1ed|-915547378||t19409.7717566792s|30be6c50baec200d|321047|qs|local|vector|||0.081||
 fig_fmi_demo_timeseries_file|stem|150ff94b2df2b6ae|297c6d575f328332|9f827a0c969df926|-836493601|outputs/fig_time_series.svg|t19407.7654743291s|7dbc92776b0ec32b|64547|file|local|vector|||0.714||
-fig_fmi_effects|stem|c297e62dc41b6bb1|cc2d03a9da185937|a769450c8e50ab0d|124567932||t19407.8598435364s|5ffeaf8f91d3f855|21090245|qs|local|vector|||0.511||
+fig_fmi_effects|stem|635121efba17907c|cc2d03a9da185937|45c150815fbaa16c|124567932||t19410.7293785417s|b9629be84939974c|18469340|qs|local|vector|||1.887||
 fig_fmi_effects_file|stem|d5b6959d75a31718|a6d8cfbeb0412c78|fa1d3ee990d182ca|1096938700|outputs/fig_fmi_effects.png|t19155.9203224413s|1ea6bcde2c961f83|378893|file|local|vector|||0.564||
 fig_fmi_time|stem|06bbc7010f381c7e|cc52409855931fdd|e9379e3c6bacbf9d|756779252||t19155.8764755069s|0b0809243015e42a|268848|qs|local|vector|||3.138||
-fig_pos_demo_timeseries|stem|1eae367dded6c7c0|cbac8b58c73f6596|253146ea36831047|-769153862||t19407.8446688277s|aa0162cf91020275|325749|qs|local|vector|||0.077||
+fig_pos_demo_timeseries|stem|1eae367dded6c7c0|cbac8b58c73f6596|253146ea36831047|-769153862||t19409.7717593974s|aa0162cf91020275|325749|qs|local|vector|||0.054||
 fig_pos_demo_timeseries_file|stem|bf9159d94ed3eba3|26153ba78a040b2b|79a5444736380585|-1746254415|outputs/fig_fmi_effects.svg|t19407.760620528s|f486071a35c55496|61732|file|local|vector|||0.506||
 fig_size_demo|object|e4b0d80f065ade9d|||||||||||||||
 fig_size_demo_file|stem|42f1a10cc89b735d|e26cfee37c5ba344|7da35f5043fb35da|295981980|outputs/fig_size_demo.png|t19155.9642250273s|a8c2550cc04366d4|357396|file|local|vector|||1.454||
-fig_time_series|stem|92dd0d6ba606e647|146c03e151a34226|f68f0d3f9c459de4|374477443||t19407.8599646816s|a5d4da48ef0e0950|6508384|qs|local|vector|||2.056||
+fig_time_series|stem|1edfbd8d1e604bb7|146c03e151a34226|25bf7c90b93a5a2a|374477443||t19409.8099442312s|c40b089448bcacc9|2834509|qs|local|vector|||201.24||
 fig_time_series_file|stem|171cac11ae1422d2|5b6e0c6b4a352e14|6faad033f748323a|-1617410773|outputs/fig_time_series.svg|t19407.7612948629s|753a29013bc5fc72|1490963|file|local|vector|||1.749|Using the size aesthetic with geom_segment was deprecated in ggplot2 3.4.0.ℹ Please use the linewidth aesthetic instead.. Using the size aesthetic with geom_path was deprecated in ggplot2 3.4.0.ℹ Please use the linewidth aesthetic instead.|
 fit_multinomial_model|function|cd699ac9414c0b8f|||||||||||||||
-gam_posterior|stem|73ad5a863d8a8f79|a46ebac23ea4fd4e|76e2aeeb7fe7f647|814049398||t19407.8580627109s|b31eda35e695695b|3310254|qs|local|vector|||753.382||
+gam_posterior|stem|99a1405578c5114e|9b5e7b214d706a04|76e2aeeb7fe7f647|814049398||t19407.9623614641s|25255dfe8b046a69|836107|qs|local|vector|||174.758||
 gfig_pos_demo_timeseries|object|59b9e962a90b07af|||||||||||||||
 inst|function|454f23d0207db85b|||||||||||||||
 install_proj_deps|function|ca7b64f5c9db662b|||||||||||||||
-model_diagnostics|stem|2d814606f3540594|cc20fe39cf05c315|076501b12f007dcd|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19407.8599030352s|1aa6aaea1ef8c644|2004667|file|local|vector|||5.243||
-multinomial_model|stem|9c185eb4f8e8ac6f|90e9b0f6837df1fd|75486a6736074f9a|-640274962||t19407.844664566s|17697c0d2b51efb9|17179967|qs|local|vector|||408.04|model has repeated 1d smooths of same variable.. model has repeated 1d smooths of same variable.|
+model_diagnostics|stem|a5c990ed736c90a2|beef0aeca083de25|b322af42832bcee5|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19407.9625498s|7d04c81134a7aa26|2004820|file|local|vector|||6.568||
+multinomial_model|stem|9c185eb4f8e8ac6f|90e9b0f6837df1fd|75486a6736074f9a|-640274962||t19407.9603381902s|17697c0d2b51efb9|17179967|qs|local|vector|||409.901|model has repeated 1d smooths of same variable.. model has repeated 1d smooths of same variable.|
+n|object|42b194eec038fae9|||||||||||||||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
-output_targets|object|6def8c4fdb8a4887|||||||||||||||
-outputs_readme|stem|432cd2639532d331|dc5729905c4cafd2|d3d924d803f21ca0|1833669539|outputs/README.md*outputs/README.Rmd|t19407.8685598351s|cc399b07df27b8c3|1311|file|local|vector|||0.631||
-plan_targets|stem|e3281bbbb836acc5|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19407.8637374997s|5b256a0478a301e5|3324|file|local|vector|||0.001||
+output_targets|object|e34c84c6e75308f6|||||||||||||||
+outputs_readme|stem|432cd2639532d331|dc5729905c4cafd2|9e067e66c6800c23|1833669539|outputs/README.md*outputs/README.Rmd|t19410.7294351373s|cc399b07df27b8c3|1311|file|local|vector|||0.926||
+p|object|d62de3d7487789a8|||||||||||||||
+plan_targets|stem|bdb9766ee6abb68f|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19407.8961306173s|0927aca3c3becae3|3384|file|local|vector|||0.002||
 plot_bat_demographics|function|496a9c1c9a20979b|||||||||||||||
 plot_data|object|fc64d63d59aba500|||||||||||||||
 plot_file_targets|object|fe01257c1caa6af1|||||||||||||||
 plot_fmi_demo|function|0f4061ac52196a46|||||||||||||||
 plot_fmi_demo_effects|function|3c420e4b4111ba15|||||||||||||||
 plot_fmi_demo_timeseries|function|53dc968ab1597032|||||||||||||||
-plot_fmi_effects|function|ed02d5812db7b94a|||||||||||||||
+plot_fmi_effects|function|8262bbcde2ce4ab8|||||||||||||||
 plot_fmi_time|function|2058a4e41e6e764f|||||||||||||||
 plot_positivity_demo_timeseries|function|520c47bce591ca03|||||||||||||||
 plot_size_demo|function|326bae374cde2d5a|||||||||||||||
 plot_targets|object|d79346ed502866a6|||||||||||||||
-plot_time_series|function|e77748f5cf1b3e40|||||||||||||||
+plot_time_series|function|145d9bdfa45989ca|||||||||||||||
 plotnames|pattern|ca5723297bbc28c7|0b9fce49eb36583d||-1131670293||||104|qs|local|vector||plotnames_a0b7b690*plotnames_3a56c3f5|1.47||
 plotnames_3a56c3f5|branch|d9304a9852696155|0b9fce49eb36583d|cff05c58d001f3b4|2092089357||t19407.8428943761s|ac45463db19e2cbe|48|qs|local|vector|plotnames||0.913||
 plotnames_51e334cf|branch|ed9ae4962c28b42a|a7dfd8086921ec15|18fbf3738441e888|-859294274||t19407.831724176s|241bf920421d9078|105|qs|local|vector|plotnames||0.001||
@@ -72,41 +76,75 @@ plotnames_b0db7aa2|branch|c7cafc7eeb25ec3d|a7dfd8086921ec15|294959555b1483bc|106
 plotnames_b1e76f29|branch|a033ecf0949e0827|513807fa9e55e51e|27bbc6e39f3414ba|89827196||t19407.8423454841s|fdf45c0d2301b642|39|qs|local|vector|plotnames||0.593|1m22mfilename must have length 1, not length 9.33m39m Only the first, 8fileUsersnoamrossprojectsehasabrenetrousettusdynamics2data.png34mdata.png39m8, will be used.|
 plotnames_c5620793|branch|a033ecf0949e0827|513807fa9e55e51e|c40027ed7e93e079|-1454293352||t19407.842354267s|fdf45c0d2301b642|39|qs|local|vector|plotnames||0.748|1m22mfilename must have length 1, not length 9.33m39m Only the first, 8fileUsersnoamrossprojectsehasabrenetrousettusdynamics2data.png34mdata.png39m8, will be used.|
 plotnames_e9093555|branch|c7cafc7eeb25ec3d|a7dfd8086921ec15|fda6164bea00718e|-693236708||t19407.8317250175s|2005da2f14a67e22|98|qs|local|vector|plotnames||0.001||
-png_plots|pattern|290e7f7764067458|b1d247fceb6f2e58||1218870440||||224121|file|local|vector||png_plots_4ae4817e*png_plots_3a56c3f5*png_plots_b0cc9a9a*png_plots_6654d731*png_plots_24b42ce4*png_plots_8da88a12*png_plots_fe58e3a8|0.694||
+png_plots|pattern|8b619700b192037a|b1d247fceb6f2e58||1218870440||||717297|file|local|vector||png_plots_4ae4817e*png_plots_3a56c3f5*png_plots_28474639*png_plots_6654d731*png_plots_24b42ce4*png_plots_86b7ca56*png_plots_9e7ee954|1.742||
 png_plots_140e5589|branch|d26bf9143153df0a|b1d247fceb6f2e58|a9e3d4cd8dab7e1b|-1479351341|outputs/fig_fmi_effects.png|t19407.8600273398s|1acd8052f08e1a05|358847|file|local|vector|png_plots||0.375||
-png_plots_24b42ce4|branch|d2a50b86cf6c23db|b1d247fceb6f2e58|0c00352973017595|-1673735801|outputs/fig_pos_demo_timeseries.png|t19407.8600228932s|6b93a42b91519c37|362492|file|local|vector|png_plots||0.747||
+png_plots_1d0353c8|branch|179d288a73bc86af|b1d247fceb6f2e58|953bc2fa7858fd90|1643435727|outputs/fig_time_series.png|t19409.8099650395s|9c9236aa094e53bd|529529|file|local|vector|png_plots||1.056||
+png_plots_24b42ce4|branch|d2a50b86cf6c23db|b1d247fceb6f2e58|0c00352973017595|-1673735801|outputs/fig_pos_demo_timeseries.png|t19407.9351480731s|6b93a42b91519c37|362492|file|local|vector|png_plots||0.747||
+png_plots_28474639|branch|179d288a73bc86af|b1d247fceb6f2e58|84e1e94a1f083083|-1403636662|outputs/fig_time_series.png|t19410.7294063077s|9c9236aa094e53bd|529529|file|local|vector|png_plots||1.317||
+png_plots_3442c51c|branch|66afcabdaa134f4f|b1d247fceb6f2e58|b0bdfa40149b830a|598403644|outputs/fig_time_series.png|t19409.7925430736s|6605dd26d55ad822|616120|file|local|vector|png_plots||1.006||
 png_plots_3a56c3f5|branch|004e095aa8523890|b1d247fceb6f2e58|a3e9c74245eb00e4|1662478511|outputs/fig_fmi_demo.png|t19407.8599895269s|6165f11770f9ced3|681936|file|local|vector|png_plots||0.698||
 png_plots_45b449ac|branch|1c0704c927d57bf1|b1d247fceb6f2e58|01a8afadd04a8866|1982422611|outputs/fig_fmi_demo_effects.png|t19407.8634731075s|82c12df6bb82beee|204322|file|local|vector|png_plots||0.459|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
 png_plots_4ae4817e|branch|88edf3ea265f0d50|b1d247fceb6f2e58|b51a8d5dcec89070|1373872111|outputs/fig_bat_demographics.png|t19407.8634467659s|a12d6baa90253f58|190798|file|local|vector|png_plots||0.715||
-png_plots_6654d731|branch|204dc46cea4d9ff6|b1d247fceb6f2e58|e173512d337a9f07|-140094464|outputs/fig_fmi_demo_timeseries.png|t19407.8600141674s|6d711a02abb61573|413214|file|local|vector|png_plots||0.816||
-png_plots_84724bb5|branch|88edf3ea265f0d50|b1d247fceb6f2e58|2260c16074d1663b|1413106030|outputs/fig_bat_demographics.png|t19407.8599813461s|a12d6baa90253f58|190798|file|local|vector|png_plots||0.489||
+png_plots_6654d731|branch|204dc46cea4d9ff6|b1d247fceb6f2e58|e173512d337a9f07|-140094464|outputs/fig_fmi_demo_timeseries.png|t19407.9351382152s|6d711a02abb61573|413214|file|local|vector|png_plots||0.816||
+png_plots_67dc786b|branch|960dd8faa0e42f99|b1d247fceb6f2e58|3a8f5b823f96a87a|-1637191302|outputs/fig_time_series.png|t19407.9351272176s|5fd399e8ba506a5b|982645|file|local|vector|png_plots||1.458||
+png_plots_699bff4b|branch|d2a50b86cf6c23db|b1d247fceb6f2e58|3c24294c99171620|-1989164516|outputs/fig_pos_demo_timeseries.png|t19407.9351480731s|6b93a42b91519c37|362492|file|local|vector|png_plots||0.84||
+png_plots_6b864f36|branch|6879e3b4c25f7ff1|b1d247fceb6f2e58|2a035f652e515da1|367344301|outputs/fig_time_series.png|t19409.8067843626s|730089d85dac147e|653948|file|local|vector|png_plots||1.082||
+png_plots_84724bb5|branch|88edf3ea265f0d50|b1d247fceb6f2e58|2260c16074d1663b|1413106030|outputs/fig_bat_demographics.png|t19407.8634467659s|a12d6baa90253f58|190798|file|local|vector|png_plots||0.489||
+png_plots_86b7ca56|branch|4d4c5ce76c4b213f|b1d247fceb6f2e58|a4c472ca9f943cdd|429967366|outputs/fig_fmi_effects.png|t19410.7294114005s|be371035f29b60c0|187768|file|local|vector|png_plots||0.425||
 png_plots_8da88a12|branch|d26bf9143153df0a|b1d247fceb6f2e58|5521d512ab83ec54|-839877540|outputs/fig_fmi_effects.png|t19407.8634677272s|1acd8052f08e1a05|358847|file|local|vector|png_plots||0.389||
-png_plots_9e7ee954|branch|17e5ea5e86aeee35|b1d247fceb6f2e58|3fdf2d2a67acadc7|-1324573500|outputs/fig_fmi_demo_effects.png|t19407.8600329069s|6356eae470c2a9d2|225311|file|local|vector|png_plots||0.474|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
+png_plots_9e7ee954|branch|17e5ea5e86aeee35|b1d247fceb6f2e58|3fdf2d2a67acadc7|-1324573500|outputs/fig_fmi_demo_effects.png|t19407.9625934081s|6356eae470c2a9d2|225311|file|local|vector|png_plots||0.465|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
+png_plots_9f5af104|branch|0edf4f1c0ef4d38c|b1d247fceb6f2e58|78b5ea8bcbe2fbde|608593881|outputs/fig_time_series.png|t19407.9263511585s|55d5de3a54f425f8|1033893|file|local|vector|png_plots||1.435||
 png_plots_b0cc9a9a|branch|1c19df0f1e8219c6|b1d247fceb6f2e58|3516378b9a697894|1255875135|outputs/fig_time_series.png|t19407.8634628919s|ac2236d969623b0a|1027312|file|local|vector|png_plots||1.387||
+png_plots_b30888e1|branch|5c1b909dce555dd9|b1d247fceb6f2e58|09e3ab1711236aa0|-191741263|outputs/fig_time_series.png|t19407.8812149235s|0760d7094660482a|1012108|file|local|vector|png_plots||1.489||
+png_plots_b4f92a14|branch|381e253acecd41cf|b1d247fceb6f2e58|df1aa03dca0dbf0c|-1282546364|outputs/fig_fmi_effects.png|t19407.9263561551s|83a3774389416579|367273|file|local|vector|png_plots||0.414||
 png_plots_bfe9fd3b|branch|1c19df0f1e8219c6|b1d247fceb6f2e58|adabc1153e858fb4|1821190400|outputs/fig_time_series.png|t19407.8600046348s|ac2236d969623b0a|1027312|file|local|vector|png_plots||1.299||
-png_plots_fe58e3a8|branch|78a130e9e25ec716|b1d247fceb6f2e58|1bd0f0dfb859ed51|-1026680593|outputs/fig_fmi_demo_effects.png|t19407.8665342489s|3051a98bd870861d|224121|file|local|vector|png_plots||0.694|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
-posterior_stats|stem|7e1c743f0f341f14|b42d44490c6d8535|2b82512cf35bcfa2|485637611||t19407.8598354241s|395f3f7975878309|11567|qs|local|vector|||1.556||
+png_plots_ce437a31|branch|0d8d90551b131414|b1d247fceb6f2e58|8040159c437d1914|-1952410627|outputs/fig_fmi_effects.png|t19407.8812203469s|2391fa34f6e2f99a|351051|file|local|vector|png_plots||0.45||
+png_plots_d9ec2a1e|branch|b2493339e31a4b37|b1d247fceb6f2e58|a7e2766392a22a1a|1728226493|outputs/fig_fmi_effects.png|t19407.9625876468s|fd155cfb1faef438|354602|file|local|vector|png_plots||0.389||
+png_plots_e99d1be3|branch|b2493339e31a4b37|b1d247fceb6f2e58|aff0c611f43ac4b0|-1924322666|outputs/fig_fmi_effects.png|t19409.7925477982s|fd155cfb1faef438|354602|file|local|vector|png_plots||0.392||
+png_plots_ecf59145|branch|6863e8e0a8444a99|b1d247fceb6f2e58|c31900226ce6dc41|1707705250|outputs/fig_fmi_effects.png|t19407.9351527948s|5a280d461a61ecf8|331940|file|local|vector|png_plots||0.399||
+png_plots_ef138946|branch|5a339431b01e4033|b1d247fceb6f2e58|4e6bc151b21efdff|698352072|outputs/fig_time_series.png|t19407.9625828436s|fa7c23f5e7099ee5|1037415|file|local|vector|png_plots||1.418||
+png_plots_f485fd5d|branch|204dc46cea4d9ff6|b1d247fceb6f2e58|ad6b23e6bad76509|-1489494035|outputs/fig_fmi_demo_timeseries.png|t19407.9351382152s|6d711a02abb61573|413214|file|local|vector|png_plots||0.944||
+png_plots_fe58e3a8|branch|78a130e9e25ec716|b1d247fceb6f2e58|1bd0f0dfb859ed51|-1026680593|outputs/fig_fmi_demo_effects.png|t19407.9351582993s|3051a98bd870861d|224121|file|local|vector|png_plots||0.464|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
+pooled_fecal_ave|stem|80836a0a69e19033|7aed8166ea828cd6|4dc525edd5fed79f|885359168||t19407.9242249272s|55b9bd26e54ad190|246|qs|local|vector|||0.061||
+posterior_stats|stem|edf7056171079913|b42d44490c6d8535|d65d6c5ce0b6e3c8|485637611||t19407.9623800962s|75d5bf12a5856768|11568|qs|local|vector|||1.585||
 prep_data|function|535f0488ea2b853e|||||||||||||||
 print.data.frame|function|d75dcbb79a102afe|||||||||||||||
 r_file|object|c57c5e942c5b214d|||||||||||||||
-readme|stem|fc79c3dd9fa49ef7|31fc094621a0e47e|c6cfa71c03339975|-165896733|README.md*README.Rmd|t19407.8664765734s|3ef33639043fc5d3|9853|file|local|vector|||7.249||
+readme|stem|24c1d31142ab7e5e|31fc094621a0e47e|9acf3058f3d02151|-165896733|README.md*README.Rmd|t19407.91911442s|7ea84de4a2f64e02|10049|file|local|vector|||8.324||
 sample_gam_posterior|function|30e8d6dcc4b018b6|||||||||||||||
+softmax|function|c5e765010193de84|||||||||||||||
 summarize_quantities|function|ccf3cfe5c9738a8c|||||||||||||||
 summarized_quantities|stem|22ce759319a2ba23|20b006d6588ac8c6|4f0ac09fdd7ee25a|1600875836||t19206.7189814815s|cc81a7537cb02258|59|qs|local|vector|||0||
-svg_plots|pattern|bc8dacaeef0060f1|156e3e615382f7fc||778869169||||25285|file|local|vector||svg_plots_4ae4817e*svg_plots_3a56c3f5*svg_plots_b0cc9a9a*svg_plots_6654d731*svg_plots_24b42ce4*svg_plots_8da88a12*svg_plots_fe58e3a8|0.286||
+svg_plots|pattern|8f8be0944c4e3f84|156e3e615382f7fc||778869169||||483074|file|local|vector||svg_plots_4ae4817e*svg_plots_3a56c3f5*svg_plots_28474639*svg_plots_6654d731*svg_plots_24b42ce4*svg_plots_86b7ca56*svg_plots_9e7ee954|1.27||
 svg_plots_140e5589|branch|a979dfffa6f943ba|156e3e615382f7fc|a9e3d4cd8dab7e1b|-1831875618|outputs/fig_fmi_effects.svg|t19407.8584238067s|85220c05af87e1e9|92509|file|local|vector|svg_plots||0.215||
-svg_plots_24b42ce4|branch|bf9159d94ed3eba3|156e3e615382f7fc|0c00352973017595|18519388|outputs/fig_pos_demo_timeseries.svg|t19407.8584212357s|f486071a35c55496|61732|file|local|vector|svg_plots||0.663||
+svg_plots_1d0353c8|branch|155055b3176049af|156e3e615382f7fc|953bc2fa7858fd90|-1614091489|outputs/fig_time_series.svg|t19409.8099727309s|d4bb1fd2ade59895|441226|file|local|vector|svg_plots||0.623||
+svg_plots_24b42ce4|branch|bf9159d94ed3eba3|156e3e615382f7fc|0c00352973017595|18519388|outputs/fig_pos_demo_timeseries.svg|t19407.9351853481s|f486071a35c55496|61732|file|local|vector|svg_plots||0.663||
+svg_plots_28474639|branch|155055b3176049af|156e3e615382f7fc|84e1e94a1f083083|-1104823336|outputs/fig_time_series.svg|t19410.7294231625s|d4bb1fd2ade59895|441226|file|local|vector|svg_plots||0.975||
+svg_plots_3442c51c|branch|32251c4a869bea7d|156e3e615382f7fc|b0bdfa40149b830a|423601313|outputs/fig_time_series.svg|t19409.792555742s|343790a331962083|723138|file|local|vector|svg_plots||0.659||
 svg_plots_3a56c3f5|branch|a085896ad2d5b552|156e3e615382f7fc|a3e9c74245eb00e4|-1076794540|outputs/fig_fmi_demo.svg|t19407.8485502153s|7e5fd40dddaeddb9|351273|file|local|vector|svg_plots||0.941||
 svg_plots_45b449ac|branch|606cb56b1fbae864|156e3e615382f7fc|01a8afadd04a8866|-445744074|outputs/fig_fmi_demo_effects.svg|t19407.8634943125s|c990640a1fa8b4d6|25080|file|local|vector|svg_plots||0.323|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
 svg_plots_4ae4817e|branch|e4514057552e17c7|156e3e615382f7fc|b51a8d5dcec89070|-396420643|outputs/fig_bat_demographics.svg|t19407.8634764396s|f9ae2a55567c4987|23042|file|local|vector|svg_plots||0.271||
-svg_plots_6654d731|branch|150ff94b2df2b6ae|156e3e615382f7fc|e173512d337a9f07|1567678291|outputs/fig_fmi_demo_timeseries.svg|t19407.8584134603s|7dbc92776b0ec32b|64547|file|local|vector|svg_plots||0.672||
-svg_plots_84724bb5|branch|e4514057552e17c7|156e3e615382f7fc|2260c16074d1663b|873072290|outputs/fig_bat_demographics.svg|t19407.8600366008s|f9ae2a55567c4987|23042|file|local|vector|svg_plots||0.303||
+svg_plots_6654d731|branch|150ff94b2df2b6ae|156e3e615382f7fc|e173512d337a9f07|1567678291|outputs/fig_fmi_demo_timeseries.svg|t19407.9351782676s|7dbc92776b0ec32b|64547|file|local|vector|svg_plots||0.672||
+svg_plots_67dc786b|branch|fca70f6754a05df1|156e3e615382f7fc|3a8f5b823f96a87a|302478424|outputs/fig_time_series.svg|t19407.9351712031s|0c14f4508a6bedbf|1489324|file|local|vector|svg_plots||1.081||
+svg_plots_699bff4b|branch|bf9159d94ed3eba3|156e3e615382f7fc|3c24294c99171620|-1700468137|outputs/fig_pos_demo_timeseries.svg|t19407.9351853481s|f486071a35c55496|61732|file|local|vector|svg_plots||0.604||
+svg_plots_6b864f36|branch|00291dc86e1b8ecc|156e3e615382f7fc|2a035f652e515da1|1149066521|outputs/fig_time_series.svg|t19409.8067925758s|85d96973406ec26e|722674|file|local|vector|svg_plots||0.668||
+svg_plots_84724bb5|branch|e4514057552e17c7|156e3e615382f7fc|2260c16074d1663b|873072290|outputs/fig_bat_demographics.svg|t19407.8634764396s|f9ae2a55567c4987|23042|file|local|vector|svg_plots||0.303||
+svg_plots_86b7ca56|branch|4ed43dc759011e41|156e3e615382f7fc|a4c472ca9f943cdd|1664613338|outputs/fig_fmi_effects.svg|t19410.7294268463s|7f1df94c2a16314b|41848|file|local|vector|svg_plots||0.295||
 svg_plots_8da88a12|branch|a979dfffa6f943ba|156e3e615382f7fc|5521d512ab83ec54|21676796|outputs/fig_fmi_effects.svg|t19407.8634904904s|85220c05af87e1e9|92509|file|local|vector|svg_plots||0.232||
-svg_plots_9e7ee954|branch|173294d2d2b4b58a|156e3e615382f7fc|3fdf2d2a67acadc7|307763059|outputs/fig_fmi_demo_effects.svg|t19407.858426944s|b8a57bbcce491bd7|25115|file|local|vector|svg_plots||0.264|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
+svg_plots_9e7ee954|branch|173294d2d2b4b58a|156e3e615382f7fc|3fdf2d2a67acadc7|307763059|outputs/fig_fmi_demo_effects.svg|t19407.962612461s|b8a57bbcce491bd7|25115|file|local|vector|svg_plots||0.314|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
+svg_plots_9f5af104|branch|218ce7dd594ec616|156e3e615382f7fc|78b5ea8bcbe2fbde|1280285835|outputs/fig_time_series.svg|t19407.9263683545s|bb07d4e87be8bcb4|1491593|file|local|vector|svg_plots||1.023||
 svg_plots_a0b7b690|branch|e4514057552e17c7|156e3e615382f7fc|53c03fa2825dcf85|-253107459|outputs/fig_bat_demographics.svg|t19407.8485389283s|f9ae2a55567c4987|23042|file|local|vector|svg_plots||0.805||
 svg_plots_b0cc9a9a|branch|09298bac0a731542|156e3e615382f7fc|3516378b9a697894|2123573888|outputs/fig_time_series.svg|t19407.863487637s|eadeabbe0632e90b|1488760|file|local|vector|svg_plots||0.956||
+svg_plots_b30888e1|branch|42970b1636a376cd|156e3e615382f7fc|09e3ab1711236aa0|765703240|outputs/fig_time_series.svg|t19407.8812380865s|26aee0511fcf5194|1489050|file|local|vector|svg_plots||1.056||
+svg_plots_b4f92a14|branch|f13d734757b9336a|156e3e615382f7fc|df1aa03dca0dbf0c|-1511525597|outputs/fig_fmi_effects.svg|t19407.9263711785s|8234ffb869779f08|92518|file|local|vector|svg_plots||0.225||
 svg_plots_bfe9fd3b|branch|09298bac0a731542|156e3e615382f7fc|adabc1153e858fb4|150459989|outputs/fig_time_series.svg|t19407.8584055883s|eadeabbe0632e90b|1488760|file|local|vector|svg_plots||1.132||
-svg_plots_fe58e3a8|branch|58fbfb649a8f950a|156e3e615382f7fc|1bd0f0dfb859ed51|1802536237|outputs/fig_fmi_demo_effects.svg|t19407.8665379537s|a55765b3d1c759a6|25285|file|local|vector|svg_plots||0.286|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
-time_series|stem|a691dcedc733942b|a5a02842bd0ace24|6baeedb266acb1b5|1125167423||t19407.8583737853s|9dfb79278e7a378a|156005482|qs|local|vector|||24.556||
+svg_plots_ce437a31|branch|d8fd8b7277aec9fe|156e3e615382f7fc|8040159c437d1914|-1261184869|outputs/fig_fmi_effects.svg|t19407.8812410541s|d9e8aed0e15b75d8|92519|file|local|vector|svg_plots||0.238||
+svg_plots_d9ec2a1e|branch|2f873f89c1e488f1|156e3e615382f7fc|a7e2766392a22a1a|1497169365|outputs/fig_fmi_effects.svg|t19407.962608701s|59249a09402031a5|92520|file|local|vector|svg_plots||0.221||
+svg_plots_e99d1be3|branch|2f873f89c1e488f1|156e3e615382f7fc|aff0c611f43ac4b0|-506099755|outputs/fig_fmi_effects.svg|t19409.7925586954s|59249a09402031a5|92520|file|local|vector|svg_plots||0.237||
+svg_plots_ecf59145|branch|de34ac87eefe4475|156e3e615382f7fc|c31900226ce6dc41|867560592|outputs/fig_fmi_effects.svg|t19407.9351881441s|d9e8aed0e15b75d8|92519|file|local|vector|svg_plots||0.232||
+svg_plots_ef138946|branch|813e6e350099e3fc|156e3e615382f7fc|4e6bc151b21efdff|1467236479|outputs/fig_time_series.svg|t19407.9626058653s|23133ef65c8bcd83|1488673|file|local|vector|svg_plots||1.049||
+svg_plots_f485fd5d|branch|150ff94b2df2b6ae|156e3e615382f7fc|ad6b23e6bad76509|-717894553|outputs/fig_fmi_demo_timeseries.svg|t19407.9351782676s|7dbc92776b0ec32b|64547|file|local|vector|svg_plots||0.6||
+svg_plots_fe58e3a8|branch|58fbfb649a8f950a|156e3e615382f7fc|1bd0f0dfb859ed51|1802536237|outputs/fig_fmi_demo_effects.svg|t19407.9351912375s|a55765b3d1c759a6|25285|file|local|vector|svg_plots||0.258|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
+time_series|stem|84a679a97aee64b6|a5a02842bd0ace24|0e2eedaf72018635|1125167423||t19409.7739851323s|e384a0f0819f7e9c|59577832|qs|local|vector|||191.032||
 updt|function|a79d73e59deec4b5|||||||||||||||
 user_rprof|object|9c9c20931fabe597|||||||||||||||

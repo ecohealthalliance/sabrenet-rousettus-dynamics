@@ -6,9 +6,8 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     filter(sample_type == "Rectal")
   newdat <- crossing(
     dummy_rectal = 1,
-    fmi_kg_m2 = seq(min(dat_prepped$fmi_kg_m2, na.rm = TRUE),
-                    max(dat_prepped$fmi_kg_m2, na.rm = TRUE),
-                    length.out = 50),
+    fmi_kg_m2 = seq(5, 20,
+                    length.out = 100),
     sample_type = "Rectal",
     day = mean(dat_prepped$day),
     day_of_year = mean(dat_prepped$day_of_year),
@@ -21,7 +20,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
   )
 
   post <- do.call(rbind, apply(gam_posterior, 2, identity, simplify = FALSE))
-  post <- post[sample(nrow(post), 30), ]
+ # post <- post[sample(nrow(post), 30), ]
   pmat <-
     predict(multinomial_model, newdata = newdat, type = "lpmatrix", unconditional = TRUE)
 
@@ -35,10 +34,17 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
         pivot_longer(matches("^\\d+$"), names_to = ".iteration", values_to = "linpred") |>
         mutate(.iteration = as.integer(.iteration))
     }, .id = "outcome") |>
-    group_by(fmi_kg_m2, .iteration) |>
+    group_by(fmi_kg_m2, .iteration, outcome) |>
     mutate(prob = exp(linpred) / (1 + sum(exp(linpred)))) |>
     ungroup() |>
     mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV"))
+
+  intervals <- preds |>
+    ungroup() |>
+    arrange(fmi_kg_m2) |>
+    group_by(vir, fmi_kg_m2) |>
+    ggdist::point_interval(prob, .point = mean, .interval = ggdist::qi, .width = c(0.95))
+
 
   pal <- colorspace::qualitative_hcl(palette = "Dark 3", n = 4)
   pal <- c(rbind(colorspace::darken(pal, 0.5), colorspace::lighten(pal, 0.3)))[c(3,5,7)]
@@ -51,7 +57,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     bind_cols(outcomes) |>
     pivot_longer(cols = starts_with("outcome"), names_to="outcome", values_to="positive") |>
     mutate(outcome = substr(outcome, 8, 8)) |>
-    mutate(bin = cut_width(fmi_kg_m2, 5)) |>
+    mutate(bin = cut_width(fmi_kg_m2,  5)) |>
     group_by(bin, outcome) |>
     summarize(x = sum(positive), n = n(), .groups = "drop") |>
     mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"),
@@ -63,15 +69,18 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     select(binom::binom.exact(zz$x, zz$n), mean, lower, upper)
   )
 #  breaks = 10^((-8):0)
-  fig_fmi_effects <- ggplot(preds) +
-    geom_line(alpha = 0.3, mapping = aes(x = fmi_kg_m2, y = prob, col = vir, group = .iteration)) +
+  fig_fmi_effects <- ggplot(intervals) +
+    geom_ribbon(mapping = aes(x = fmi_kg_m2, ymin = .lower, ymax = .upper, fill = vir), alpha = 0.4) +
+    geom_line(mapping = aes(x = fmi_kg_m2, y = prob, col = vir)) +
+    #geom_line(alpha = 0.3, mapping = aes(x = fmi_kg_m2, y = prob, col = vir, group = .iteration)) +
     geom_errorbar(data = zz, mapping = aes(x = bin_center, ymin = lower, ymax = upper), width = 1) +
     geom_point(data = zz, mapping = aes(x = bin_center, y = mean), pch = 21, fill = "grey90", size = 2) +
     scale_color_manual(values = pal, guide = guide_none()) +
+    scale_fill_manual(values = pal, guide = guide_none()) +
     scale_y_continuous(labels = scales::percent, limits = c(0, 0.45), oob = scales::rescale_none) +
 #    scale_y_continuous(breaks = log10(breaks), labels = breaks, limits = log10(range(breaks)), oob = scales::rescale_none) +
     facet_wrap(~vir, nrow = 1, scales = "fixed") +
-    labs(x = "Forearm Mass Index (kg/m2)", y = "Marginal Effect on CoV Positivity")
+    labs(x = "Forearm Mass Index (kg/m2)", y = "Conditional Effect on CoV Positivity")
 
   if (!interactive()) rm(zz, pal, outcomes, preds, post, lpi, pmat, newdat, K)
   fig_fmi_effects
