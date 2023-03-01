@@ -2458,11 +2458,11 @@
       "Version": "0.3.7",
       "Source": "GitHub",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "milesmcbain",
       "RemoteRepo": "tflow",
       "RemoteRef": "master",
       "RemoteSha": "30cb6850ee7f69d462619f066ff739dc19ff1e7c",
-      "RemoteHost": "api.github.com",
       "Remotes": "milesmcbain/fnmate, milesmcbain/capsule, milesmcbain/atcursor",
       "Hash": "2bb2e5b6ab165cdacd09512c3a915a73",
       "Requirements": [

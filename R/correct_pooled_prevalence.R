@@ -6,10 +6,9 @@ correct_pooled_prevalence <- function(num_pos_pools, num_pools, pool_size) {
   n <- num_pools
   m <- pool_size
 
-  a <- 0.5*(m-1)/m
+  a <- 0.5 * (m - 1) / m
 
-  p_hat <- 1 - ((n - x + a)/(n + a))^(1/m)
+  p_hat <- 1 - ((n - x + a) / (n + a))^(1 / m)
 
   p_hat
 }
-

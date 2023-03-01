@@ -1,7 +1,7 @@
 
 # Load packages/functions --------
 # Been having an issue where tidyverse won't load unless Matrix is loaded first
-suppressPackageStartupMessages(source('packages.R'))
+suppressPackageStartupMessages(source("packages.R"))
 targets::tar_source()
 
 tar_option_set(

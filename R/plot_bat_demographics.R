@@ -27,12 +27,12 @@ plot_bat_demographics <- function(dat_prepped) {
       x = "Number of Bats Sampled"
     ) +
     theme(legend.position = c(0.90, 0.5),
-          legend.background = element_rect(fill="white"),
+          legend.background = element_rect(fill = "white"),
           strip.background = element_blank(),
           panel.background = element_blank(),
           panel.grid.minor = element_blank(),
           panel.grid.major.y = element_blank(),
-          panel.grid.major.x = element_line(color="grey", linewidth  = 0.25),
+          panel.grid.major.x = element_line(color = "grey", linewidth  = 0.25),
           axis.ticks = element_blank(),
           panel.ontop = TRUE
     )
@@ -62,7 +62,7 @@ plot_fmi_demo <- function(dat_prepped) {
       y = "Demographic Group",
       x = "Forearm Mass Index (kg/m2)"
     )
-  if(!interactive()) rm(dat, dat_prepped)
+  if (!interactive()) rm(dat, dat_prepped)
   fig_fmi_demo
 }
 
@@ -77,7 +77,7 @@ plot_size_demo <- function(dat_cleaned) {
       scale = 0.9,
       jittered_points = TRUE,
       position = ggridges::position_points_jitter(width = 0.05, height = 0),
-      point_shape = '|', point_size = 3, point_alpha = 1, alpha = 0.7
+      point_shape = "|", point_size = 3, point_alpha = 1, alpha = 0.7
     ) +
     scale_fill_viridis_d(name = "") +
     labs(
