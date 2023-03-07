@@ -1,3 +1,57 @@
+sums <- function(x) {
+  rg <- signif(range(x), 3)
+  glue::glue("{signif(mean(x), 3)}, {signif(median(x), 3)}, ({rg[1]}-{rg[2]})")
+}
+
+tabulate_fmi_demo <- function(dat_prepped) {
+  tab_data <- dat_prepped |>
+    filter(sample_type == "Rectal")
+
+  tab_demo_data <- tab_data |>
+    summarize(n = n(), pos = sum(cov_detected), sums_fmi = sums(fmi_kg_m2),
+              sums_mass = sums(mass_g), sums_fa = sums(fa_mm),
+              .by = demo_group
+              ) |>
+    rename(group = demo_group)
+
+  tab_age_data <- tab_data |>
+    summarize(n = n(), pos = sum(cov_detected),
+              sums_fmi = sums(fmi_kg_m2), sums_mass = sums(mass_g), sums_fa = sums(fa_mm),
+              .by = age) |>
+    rename(group = age)
+
+  tab_all_data <-  tab_data |>
+    summarize(n = n(), pos = sum(cov_detected),
+              sums_fmi = sums(fmi_kg_m2), sums_mass = sums(mass_g), sums_fa = sums(fa_mm)) |>
+    mutate(group = "All")
+
+  tab_sum <- bind_rows(tab_all_data, tab_age_data, tab_demo_data)
+
+  renames = c("All" = "All Sampled Bats",
+              "A" = "Adults",
+              "SA" = "Subadults",
+              "F SA Not pregnant" = "Subadults, Females",
+              "M SA Not scrotal" = "Subadults, Males",
+              "F A Not pregnant" = "Adults, Not Pregrant or Lactating Females",
+              "F A Lactating" = "Adults, Lactating Females",
+              "F A Pregnant" = "Adults, Pregnant Females",
+              "M A Not scrotal" = "Adults, Nonscrotal Males",
+              "M A Scrotal" = "Adults, Scrotal Males")
+
+  table_fmi_demo <- bind_cols(
+    tab_sum,
+    select(binom::binom.exact(tab_sum$pos, tab_sum$n), -x, -n)
+  ) |>
+    mutate(sums_cov = glue::glue("{scales::percent(mean, 0.1)} ({scales::percent(lower, 0.1)}-{scales::percent(upper, 0.1)})")) |>
+    select(group, sums_fmi, sums_mass, sums_fa, sums_cov) |>
+    mutate(group = renames[group]) |>
+    mutate(group = fct_relevel(group, renames)) |>
+    arrange(group) |>
+    rename(Subgroup = group, `FMI (kg/m^2)` = sums_fmi, `Mass (g)`=sums_mass, `Forearm (mm)` = sums_fa, `CoV Prevalance`=sums_cov)
+
+  table_fmi_demo
+}
+
 #' .. content for \description{} (no empty lines) ..
 #'
 #' .. content for \details{} ..
@@ -19,12 +73,10 @@ plot_fmi_demo_effects <- function(dat_prepped) {
   point_plot_data <- plot_data |>
     group_by(demo_group) |>
     summarize(mean_fmi = mean(fmi_kg_m2), sd_fmi = sd(fmi_kg_m2), n = n(), pos = sum(cov_detected))
-
   point_plot_data <- bind_cols(
     point_plot_data,
     select(binom::binom.exact(point_plot_data$pos, point_plot_data$n), -x, -n)
   )
-
   fig_fmi_demo_effects <- ggplot(
     point_plot_data,
     aes(fill = demo_group, label = demo_group, x = mean_fmi, y = mean, ymin = lower, ymax = upper, xmin = mean_fmi - 2 * sd_fmi, xmax = mean_fmi + 2 * sd_fmi, color = demo_group)

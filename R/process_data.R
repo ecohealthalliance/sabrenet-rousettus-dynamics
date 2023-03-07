@@ -43,7 +43,10 @@ prep_data <- function(dat_cleaned) {
     mutate(reproductive_condition = coalesce(reproductive_condition, "None") |>
              fct_recode(None = "Not pregnant", None = "Not scrotal") |>
              fct_relevel("None")) |>
-    select(date = date_collected, day, day_of_year, week, sample_type, frac_subadult, dummy_rectal, dummy_any_rectal, gender, age, demo_group, reproductive_condition, fmi_kg_m2, cov_detected, vir, outcome)
+    select(date = date_collected, day, day_of_year, week, sample_type, 
+           frac_subadult, dummy_rectal, dummy_any_rectal, gender, age, 
+           demo_group, reproductive_condition, fmi_kg_m2, fa_mm, mass_g, 
+           cov_detected, vir, outcome)
 
   dat_prepped <- dat_prepped_0 |>
     mutate(gender_age = as.factor(if_else(sample_type == "Rectal", paste(gender, age, sep = "-"), "NA")),

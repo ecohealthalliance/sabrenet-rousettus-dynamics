@@ -29,6 +29,13 @@ Prevalances calculated as baseline (intercept) probability of infection of singl
 knitr::kable(model_prev)
 ```
 
+## Tables
+
+## Body Condition and Prevalence by demographic group
+
+```{r, echo = FALSE}
+knitr::kable(table_fmi_demo)
+```
 
 # Figures
 

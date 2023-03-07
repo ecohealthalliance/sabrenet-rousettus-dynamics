@@ -31,7 +31,8 @@ analysis_targets <- tar_plan(
   posterior_stats = calc_posterior_stats(gam_posterior),
   time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior),
   raw_prev = calc_raw_prev(dat_prepped),
-  model_prev = calc_model_prev(dat_prepped, multinomial_model, gam_posterior)
+  model_prev = calc_model_prev(dat_prepped, multinomial_model, gam_posterior),
+  table_fmi_demo = tabulate_fmi_demo(dat_prepped)
 )
 
 plot_targets <- tar_plan(
