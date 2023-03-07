@@ -35,7 +35,7 @@ analysis_targets <- tar_plan(
 )
 
 plot_targets <- tar_plan(
-  fig_bat_demographics =    structure(plot_bat_demographics(dat_cleaned), fig.width = 8, fig.height = 4.5),
+  fig_bat_demographics =    structure(plot_bat_demographics(dat_prepped, dat_captures), fig.width = 8, fig.height = 4.5),
   fig_fmi_demo =            structure(plot_fmi_demo(dat_prepped), fig.width = 8, fig.height = 8),
   fig_time_series =         structure(plot_time_series(dat_prepped, time_series), fig.width = 8, fig.height = 6),
   fig_fmi_demo_timeseries = structure(plot_fmi_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 6),

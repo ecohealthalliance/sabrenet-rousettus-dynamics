@@ -7,36 +7,50 @@
 #' @return
 #' @author 'Noam Ross'
 #' @export
-plot_bat_demographics <- function(dat_prepped) {
-
+plot_bat_demographics <- function(dat_prepped, dat_captures) {
   dat <- dat_prepped |>
-    filter(sample_type == "Rectal swab") |>
-    count(date_collected, gender, age, reproductive_condition) |>
-    mutate(demo = paste(gender, reproductive_condition, sep = "-"),
-           age = fct_recode(age,  Adults = "A", Subadults = "SA"))
+    filter(sample_type == "Rectal") |>
+    count(date, gender, age, reproductive_condition) |>
+    mutate(
+      demo = paste(gender, reproductive_condition, sep = "-"),
+      age = fct_recode(age, Adults = "A", Subadults = "SA"),
+      date = as.Date(date)
+    ) |> 
+    group_by(date) |> 
+    mutate(sampled = sum(n))
 
+  datc <- dat_captures |>
+    janitor::clean_names() |>
+    mutate(date = lubridate::ymd(date)) |> 
+    select(date, captured = total)
+
+    dat <- dat |> 
+    left_join(datc, by = "date")  |> 
+    mutate(label = glue::glue("{date} ({sampled}/{captured})"))
 
 
   fig_bat_demographics <-
-    ggplot(dat, aes(x = n, y = fct_rev(as.factor(date_collected)), fill = demo)) +
+    ggplot(dat, aes(x = n, y = fct_rev(as.factor(date)), fill = demo)) +
     geom_col(position = "stack", col = "black", lwd = 0.5) +
     facet_grid(~age) +
     scale_fill_brewer(type = "qual", name = "") +
+    scale_y_discrete(labels = rev(unique(dat$label))) +
     labs(
-      y = "Collection Date",
+      y = "Collection Date (No. bats sampled/total captured)",
       x = "Number of Bats Sampled"
     ) +
-    theme(legend.position = c(0.90, 0.5),
-          legend.background = element_rect(fill = "white"),
-          strip.background = element_blank(),
-          panel.background = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.grid.major.y = element_blank(),
-          panel.grid.major.x = element_line(color = "grey", linewidth  = 0.25),
-          axis.ticks = element_blank(),
-          panel.ontop = TRUE
+    theme(
+      legend.position = c(0.90, 0.5),
+      legend.background = element_rect(fill = "white"),
+      strip.background = element_blank(),
+      panel.background = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "grey", linewidth = 0.25),
+      axis.ticks = element_blank(),
+      panel.ontop = TRUE
     )
-  if (!interactive()) rm(dat_prepped, dat)
+  if (!interactive()) rm(dat_prepped, dat, datc)
   fig_bat_demographics
 }
 
@@ -46,9 +60,11 @@ plot_fmi_demo <- function(dat_prepped) {
     mutate(demo = paste(gender, age, reproductive_condition, sep = "-")) |>
     mutate(demo = fct_reorder(demo, fmi_kg_m2))
 
-  fig_fmi_demo <- ggplot(dat, aes(x = fmi_kg_m2, y = demo, fill = demo,
-                                  point_fill = factor(cov_detected, labels = c("No CoV Detected", "CoV Detected")),
-                         point_alpha = factor(cov_detected, labels = c("No CoV Detected", "CoV Detected")))) +
+  fig_fmi_demo <- ggplot(dat, aes(
+    x = fmi_kg_m2, y = demo, fill = demo,
+    point_fill = factor(cov_detected, labels = c("No CoV Detected", "CoV Detected")),
+    point_alpha = factor(cov_detected, labels = c("No CoV Detected", "CoV Detected"))
+  )) +
     ggridges::geom_density_ridges(
       scale = 0.9,
       jittered_points = TRUE,
@@ -56,7 +72,7 @@ plot_fmi_demo <- function(dat_prepped) {
       point_shape = 21, point_size = 3, alpha = 0.4,
     ) +
     scale_discrete_manual("point_alpha", values = c(0.4, 0.8), name = "") +
-    scale_discrete_manual("point_fill", values = c("black", "red"), name = "")  +
+    scale_discrete_manual("point_fill", values = c("black", "red"), name = "") +
     scale_fill_viridis_d(name = "") +
     labs(
       y = "Demographic Group",
