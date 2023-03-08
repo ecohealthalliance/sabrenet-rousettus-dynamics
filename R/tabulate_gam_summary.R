@@ -132,7 +132,7 @@ make_partial_effect_plots <- function(multinomial_model) {
 
   partial_effect_plots <- list(
     gratia::draw(multinomial_model, select = 1:15, nrow = 5, ncol = 3),
-    gratia::draw(multinomial_model, select = 1:12, nrow = 5, ncol = 3)
+    gratia::draw(multinomial_model, select = 16:27, nrow = 5, ncol = 3)
   )
 
   partial_effect_plots

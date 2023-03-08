@@ -50,8 +50,8 @@ gfig_pos_demo_timeseries|object|59b9e962a90b07af|||||||||||||||
 inst|function|454f23d0207db85b|||||||||||||||
 install_proj_deps|function|ca7b64f5c9db662b|||||||||||||||
 make_flextable_gam_summary|function|9607176b978c0de6|||||||||||||||
-make_partial_effect_plots|function|4675b97da84a7c26|||||||||||||||
-model_diagnostics|stem|a5c990ed736c90a2|beef0aeca083de25|b322af42832bcee5|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19407.9625498s|7d04c81134a7aa26|2004820|file|local|vector|||6.568||
+make_partial_effect_plots|function|eb30ea001343c870|||||||||||||||
+model_diagnostics|stem|ac5d4a8359fdbfc4|beef0aeca083de25|abf535c89072f5b9|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19424.8836133128s|f517928f1e8c6ec6|3112742|file|local|vector|||6.643||
 model_prev|stem|14ed9077a1065e0a|2e9d5c0f4653d52f|c02db428a8ec75c5|196416103||t19424.0242913123s|001e75d0cb0314f6|633|qs|local|vector|||0.171||
 model_terms_table|stem|ae3bbfb056b6a19a|cdebaa7be7820339|9c2e8525a17a820c|67972067||t19424.0694905016s|9920ed09bf4afd3e|4676|qs|local|vector|||0.317||
 model_terms_table_file|stem|6c1831b07ccefba2|17b8b8b25f3b1f5d|ef46db3751d8e999|1068991115|data/model-terms-table.csv|t19424.0703659061s|2641b5a58086fdcd|4193|file|local|vector|||0.002||
@@ -59,12 +59,12 @@ multinomial_model|stem|7167b9745caa0d25|90e9b0f6837df1fd|cef6b887d2d1ba50|-64027
 n|object|42b194eec038fae9|||||||||||||||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
 output_targets|object|50bd0e9e93e9449e|||||||||||||||
-outputs_readme|stem|aa439a1f3ac4f29d|d5e1ebecdc33208b|6eb181963222b584|1833669539|outputs/README.md*outputs/README.Rmd|t19424.036446378s|707ca3fb85acea7d|6723|file|local|vector|||1.284||
+outputs_readme|stem|aa439a1f3ac4f29d|d5e1ebecdc33208b|de2c04bab5027893|1833669539|outputs/README.md*outputs/README.Rmd|t19424.8836239072s|707ca3fb85acea7d|6723|file|local|vector|||1.044||
 p|object|d62de3d7487789a8|||||||||||||||
-partial_effect_plots|stem|a944938252b2c2b7|cd3780128b3f2345|3a650a348f9b4f27|766137583||t19424.0234382086s|ed77ead3d6c86446|38162463|qs|local|vector|||1.795||
-partial_effect_plots_png|stem|e43218a8f9a5b1ce|3be65cd6b85f2f5c|696e19cc3aef9e5b|-1309451877|outputs/partial_effect_plots_1.png*outputs/partial_effect_plots_2.png|t19424.0265134598s|ad538fc71ba021e3|1747214|file|local|vector|||4.844||
-partial_effect_plots_svg|stem|1d388fd9ffb61363|4a9986e2d25e3b53|696e19cc3aef9e5b|1377201689|outputs/partial_effect_plots_1.svg*outputs/partial_effect_plots_2.svg|t19424.0302014615s|bf7da7bc078c9517|2927472|file|local|vector|||2.74||
-plan_targets|stem|34a780804ab36c88|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19423.6088642988s|8fdf640af3968557|3462|file|local|vector|||0.001||
+partial_effect_plots|stem|8041dd3d2079ca22|cd3780128b3f2345|cb6c378999eb069c|766137583||t19424.8834358124s|089f9a15e9d488e3|38029993|qs|local|vector|||1.96||
+partial_effect_plots_png|stem|e46cabdb7d3a7cf4|3be65cd6b85f2f5c|83ff283429454aef|-1309451877|outputs/partial_effect_plots_1.png*outputs/partial_effect_plots_2.png|t19424.883537791s|a4cbcf1c64eaad75|1657427|file|local|vector|||4.106||
+partial_effect_plots_svg|stem|0f96617d5bf04b90|4a9986e2d25e3b53|83ff283429454aef|1377201689|outputs/partial_effect_plots_1.svg*outputs/partial_effect_plots_2.svg|t19424.8834901789s|4eee74bb84374769|3038230|file|local|vector|||3.493||
+plan_targets|stem|6dfee8c8b396dd89|98a51661f84e14d7|ef46db3751d8e999|156766894|_targets.R|t19424.0520669182s|e08965459bb14bc3|4811|file|local|vector|||0.001||
 plot_bat_demographics|function|f167b86904c028fe|||||||||||||||
 plot_data|object|fc64d63d59aba500|||||||||||||||
 plot_file_targets|object|604a4bedc477cd3a|||||||||||||||
@@ -127,12 +127,12 @@ png_plots_ef138946|branch|5a339431b01e4033|b1d247fceb6f2e58|4e6bc151b21efdff|698
 png_plots_f485fd5d|branch|204dc46cea4d9ff6|b1d247fceb6f2e58|ad6b23e6bad76509|-1489494035|outputs/fig_fmi_demo_timeseries.png|t19407.9351382152s|6d711a02abb61573|413214|file|local|vector|png_plots||0.944||
 png_plots_fe58e3a8|branch|78a130e9e25ec716|b1d247fceb6f2e58|1bd0f0dfb859ed51|-1026680593|outputs/fig_fmi_demo_effects.png|t19407.9351582993s|3051a98bd870861d|224121|file|local|vector|png_plots||0.464|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
 pooled_fecal_ave|stem|80836a0a69e19033|7aed8166ea828cd6|4dc525edd5fed79f|885359168||t19407.9242249272s|55b9bd26e54ad190|246|qs|local|vector|||0.061||
-posterior_stats|stem|edf7056171079913|b42d44490c6d8535|d65d6c5ce0b6e3c8|485637611||t19407.9623800962s|75d5bf12a5856768|11568|qs|local|vector|||1.585||
+posterior_stats|stem|b140441c2efc5ec2|b42d44490c6d8535|d21d22c0dfe3622f|485637611||t19424.8834495038s|395f3f7975878309|11567|qs|local|vector|||1.12||
 prep_data|function|b78ceb1ed13751f6|||||||||||||||
 print.data.frame|function|d75dcbb79a102afe|||||||||||||||
 r_file|object|c57c5e942c5b214d|||||||||||||||
 raw_prev|stem|79af124ea80df7ac|3e228955fc3d77e9|0939e316da799e32|-964224860||t19424.0242790711s|0ec2cb13f9ef3fc4|941|qs|local|vector|||0.142||
-readme|stem|d111986bb2a22281|31fc094621a0e47e|565811a00b30f5ac|-165896733|README.md*README.Rmd|t19423.6109406386s|fcdb9e0b45384518|10743|file|local|vector|||8.189||
+readme|stem|7cc8b2b411c28cee|31fc094621a0e47e|73150533355df03d|-165896733|README.md*README.Rmd|t19424.8833818813s|82f914706abdc92b|12379|file|local|vector|||7.706||
 sample_gam_posterior|function|30e8d6dcc4b018b6|||||||||||||||
 softmax|function|c5e765010193de84|||||||||||||||
 summarize_quantities|function|ccf3cfe5c9738a8c|||||||||||||||
