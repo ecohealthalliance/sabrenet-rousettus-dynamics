@@ -7,7 +7,7 @@
 #' @return
 #' @author 'Noam Ross'
 #' @export
-plot_bat_demographics <- function(dat_prepped, dat_captures) {
+plot_bat_demographics <- function(dat_prepped) {
   dat <- dat_prepped |>
     filter(sample_type == "Rectal") |>
     count(date, gender, age, reproductive_condition) |>
@@ -15,28 +15,17 @@ plot_bat_demographics <- function(dat_prepped, dat_captures) {
       demo = paste(gender, reproductive_condition, sep = "-"),
       age = fct_recode(age, Adults = "A", Subadults = "SA"),
       date = as.Date(date)
-    ) |> 
-    group_by(date) |> 
+    ) |>
+    group_by(date) |>
     mutate(sampled = sum(n))
-
-  datc <- dat_captures |>
-    janitor::clean_names() |>
-    mutate(date = lubridate::ymd(date)) |> 
-    select(date, captured = total)
-
-    dat <- dat |> 
-    left_join(datc, by = "date")  |> 
-    mutate(label = glue::glue("{date} ({sampled}/{captured})"))
-
 
   fig_bat_demographics <-
     ggplot(dat, aes(x = n, y = fct_rev(as.factor(date)), fill = demo)) +
     geom_col(position = "stack", col = "black", lwd = 0.5) +
     facet_grid(~age) +
     scale_fill_brewer(type = "qual", name = "") +
-    scale_y_discrete(labels = rev(unique(dat$label))) +
     labs(
-      y = "Collection Date (No. bats sampled/total captured)",
+      y = "Collection Date",
       x = "Number of Bats Sampled"
     ) +
     theme(
