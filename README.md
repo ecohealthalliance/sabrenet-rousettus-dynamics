@@ -54,7 +54,8 @@ subgraph Project Workflow
     xe05634441492d438(["dat_captures"]):::skipped --> x370906d20a0ac4c5(["captures_cleaned"]):::queued
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x023bc1d70802c4e1(["multinomial_model"]):::queued
     x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x4ee8fa2dac97ae88(["fig_fmi_demo_effects"]):::queued
-    xba784c3a136c631a(["dat_cleaned"]):::queued --> x7a7f43da56388c67(["fig_bat_demographics"]):::queued
+    xe05634441492d438(["dat_captures"]):::skipped --> x7a7f43da56388c67(["fig_bat_demographics"]):::queued
+    x4a5cfaffa1d0e789(["dat_prepped"]):::queued --> x7a7f43da56388c67(["fig_bat_demographics"]):::queued
     xc2117931d245afce(["dat_xls"]):::skipped --> x733041ef94e8d4a9(["dat_fec"]):::skipped
     xc2117931d245afce(["dat_xls"]):::skipped --> x6cf5d6dc2e05a667(["dat_bat"]):::skipped
     x67d4d2e6dfa8bf90(["model_prev"]):::queued --> xbda0fd67e19f73bc(["outputs_readme"]):::queued

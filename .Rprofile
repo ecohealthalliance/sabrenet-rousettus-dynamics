@@ -31,7 +31,10 @@ if (!Sys.getenv("USE_CAPSULE") != "") {
 
 # Use the local user's .Rprofile when interactive.
 # Good for keeping local preferences, but not always reproducible.
-user_rprof <- Sys.getenv("R_PROFILE_USER", normalizePath("~/.Rprofile", mustWork = FALSE))
+user_rprof <- Sys.getenv("R_PROFILE_USER")
+if (is.na(user_rprof) || is.null(user_rprof) || user_rprof == "") {
+  user_rprof <- normalizePath("~/.Rprofile", mustWork = FALSE)
+}
 if(interactive() && file.exists(user_rprof)) {
   source(user_rprof)
 }

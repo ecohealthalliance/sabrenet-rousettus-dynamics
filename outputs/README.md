@@ -9,11 +9,11 @@ corrected values for fecal samples
 | sample_type | calcuation_type | virus                 | positives |   n | mean  | lower  | upper | mean_corrected | lower_corrected | upper_corrected |
 |:------------|:----------------|:----------------------|----------:|----:|:------|:-------|:------|:---------------|:----------------|:----------------|
 | Fecal       | raw             | All CoVs              |       106 | 720 | 14.7% | 12.2%  | 17.5% | 5.17%          | 4.25%           | 6.2%            |
-| Fecal       | raw             | Novel Alpha-Cov       |        29 | 720 | 4.0%  | 2.7%   | 5.7%  | 1.36%          | 0.91%           | 1.9%            |
+| Fecal       | raw             | Novel Alpha-CoV       |        29 | 720 | 4.0%  | 2.7%   | 5.7%  | 1.36%          | 0.91%           | 1.9%            |
 | Fecal       | raw             | HKU9-related Beta-CoV |        67 | 720 | 9.3%  | 7.3%   | 11.7% | 3.20%          | 2.49%           | 4.0%            |
 | Fecal       | raw             | Novel Beta-CoV        |        10 | 720 | 1.4%  | 0.7%   | 2.5%  | 0.46%          | 0.22%           | 0.9%            |
 | Rectal      | raw             | All CoVs              |        94 | 710 | 13.2% | 10.83% | 16.0% | NA             | NA              | NA              |
-| Rectal      | raw             | Novel Alpha-Cov       |        13 | 710 | 1.8%  | 0.98%  | 3.1%  | NA             | NA              | NA              |
+| Rectal      | raw             | Novel Alpha-CoV       |        13 | 710 | 1.8%  | 0.98%  | 3.1%  | NA             | NA              | NA              |
 | Rectal      | raw             | HKU9-related Beta-CoV |        78 | 710 | 11.0% | 8.78%  | 13.5% | NA             | NA              | NA              |
 | Rectal      | raw             | Novel Beta-CoV        |         3 | 710 | 0.4%  | 0.09%  | 1.2%  | NA             | NA              | NA              |
 
@@ -25,14 +25,31 @@ mean bat and environment variables.
 
 | virus                 | sample_type | mean | lower | upper | calculation_type | mean_corrected | lower_corrected | upper_corrected |
 |:----------------------|:------------|:-----|:------|:------|:-----------------|:---------------|:----------------|:----------------|
-| All CoVs              | Fecal       | 9.1% | 4.4%  | 15.0% | modeled          | 3.1%           | 1.5%            | 5.2%            |
-| HKU9-related Beta-CoV | Fecal       | 6.2% | 1.8%  | 10.7% | modeled          | 2.1%           | 0.6%            | 3.6%            |
-| Novel Alpha-Cov       | Fecal       | 2.9% | 0.9%  | 5.2%  | modeled          | 1.0%           | 0.3%            | 1.8%            |
-| Novel Beta-CoV        | Fecal       | 0.1% | 0.0%  | 0.3%  | modeled          | 0.0%           | 0.0%            | 0.1%            |
-| All CoVs              | Rectal      | 9.1% | 4.4%  | 15.0% | modeled          | NA             | NA              | NA              |
-| HKU9-related Beta-CoV | Rectal      | 6.2% | 1.8%  | 10.6% | modeled          | NA             | NA              | NA              |
-| Novel Alpha-Cov       | Rectal      | 2.9% | 0.9%  | 5.2%  | modeled          | NA             | NA              | NA              |
-| Novel Beta-CoV        | Rectal      | 0.1% | 0.0%  | 0.3%  | modeled          | NA             | NA              | NA              |
+| All CoVs              | Fecal       | 9.0% | 4.5%  | 14.5% | modeled          | 3.1%           | 1.5%            | 5.0%            |
+| HKU9-related Beta-CoV | Fecal       | 6.0% | 2.0%  | 11.2% | modeled          | 2.0%           | 0.7%            | 3.8%            |
+| Novel Alpha-CoV       | Fecal       | 2.9% | 1.1%  | 5.0%  | modeled          | 1.0%           | 0.4%            | 1.7%            |
+| Novel Beta-CoV        | Fecal       | 0.1% | 0.0%  | 0.2%  | modeled          | 0.0%           | 0.0%            | 0.1%            |
+| All CoVs              | Rectal      | 9.0% | 4.6%  | 14.7% | modeled          | NA             | NA              | NA              |
+| HKU9-related Beta-CoV | Rectal      | 6.0% | 2.0%  | 11.2% | modeled          | NA             | NA              | NA              |
+| Novel Alpha-CoV       | Rectal      | 2.9% | 1.2%  | 5.0%  | modeled          | NA             | NA              | NA              |
+| Novel Beta-CoV        | Rectal      | 0.1% | 0.0%  | 0.2%  | modeled          | NA             | NA              | NA              |
+
+## Tables
+
+## Body Condition and Prevalence by demographic group
+
+| Subgroup                                  | FMI (kg/m^2)            | Mass (g)            | Forearm (mm)            | CoV Prevalance      |
+|:------------------------------------------|:------------------------|:--------------------|:------------------------|:--------------------|
+| All Sampled Bats                          | 12.3, 12, (5.72-20.3)   | 95.2, 87, (45-179)  | 87.4, 86.6, (71.1-101)  | 13.2% (10.8%-16.0%) |
+| Adults                                    | 13.6, 13.4, (5.72-20.3) | 119, 120, (51-179)  | 93.4, 93.2, (84.9-101)  | 6.6% (3.9%-10.3%)   |
+| Subadults                                 | 11.6, 11.6, (5.88-16.7) | 81.7, 81, (45-127)  | 84, 84, (71.1-88.8)     | 17.1% (13.7%-20.9%) |
+| Subadults, Females                        | 11.5, 11.4, (6.82-16.7) | 80.8, 80, (51-127)  | 83.8, 83.6, (71.1-88.8) | 16.7% (12.1%-22.2%) |
+| Subadults, Males                          | 11.6, 11.7, (5.88-14.6) | 82.7, 83, (45-114)  | 84.2, 84.5, (71.3-88.8) | 17.4% (12.7%-23.0%) |
+| Adults, Not Pregrant or Lactating Females | 11.7, 12.1, (6.51-14.7) | 101, 102, (53-134)  | 92.6, 92.2, (89-99.1)   | 14.3% (7.1%-24.7%)  |
+| Adults, Lactating Females                 | 16.9, 16.8, (13.1-20.3) | 147, 147, (121-179) | 93.4, 93, (89.5-98.2)   | 0.0% (0.0%-21.8%)   |
+| Adults, Pregnant Females                  | 14.7, 14.2, (8.71-19.2) | 129, 126, (74-175)  | 93.5, 93.6, (88.6-101)  | 5.9% (1.2%-16.2%)   |
+| Adults, Nonscrotal Males                  | 12, 12, (7.23-15.7)     | 100, 98, (69-153)   | 91.5, 90.9, (84.9-99.1) | 5.1% (0.6%-17.3%)   |
+| Adults, Scrotal Males                     | 14.5, 14.5, (5.72-17.8) | 131, 133, (51-164)  | 95, 94.9, (89.9-101)    | 2.4% (0.3%-8.3%)    |
 
 # Figures
 
@@ -63,3 +80,9 @@ mean bat and environment variables.
 ## outputs/fig_fmi_demo_effects.svg
 
 ![](fig_fmi_demo_effects.svg)
+
+## Partial Effect plots
+
+![](partial_effect_plots_1.svg)
+
+![](partial_effect_plots_2.svg)

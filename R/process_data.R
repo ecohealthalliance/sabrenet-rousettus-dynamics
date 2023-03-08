@@ -33,7 +33,7 @@ prep_data <- function(dat_cleaned) {
            dummy_rectal = ordered(as.integer(sample_type == "Rectal")),
            demo_group = paste(gender, age, reproductive_condition)) |>
     mutate(across(c(gender, age, demo_group), \(x) if_else(sample_type == "Rectal", x, "NA"))) |>
-    mutate(vir = c(NA_character_, "Novel Alpha-Cov", "HKU9-related Beta-CoV","Novel Beta-CoV")[outcome + 1]) |>
+    mutate(vir = c(NA_character_, "Novel Alpha-CoV", "HKU9-related Beta-CoV","Novel Beta-CoV")[outcome + 1]) |>
     mutate(across(c(sample_type, gender, age, demo_group, vir), as.factor)) |>
     group_by(week) |>
     mutate(frac_subadult = sum(age == "SA", na.rm = TRUE)/sum(!is.na(age))) |>

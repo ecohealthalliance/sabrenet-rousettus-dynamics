@@ -2,13 +2,16 @@
 output: 
   github_document:
     html_preview: true
+  always_allow_html: true
 ---
 
 
 ```{r setup, include=FALSE}
 library(knitr)
 library(targets)
-tar_load(c(summarized_quantities, svg_plots, png_plots, raw_prev, model_prev))
+tar_load(c(summarized_quantities, svg_plots, png_plots, partial_effect_plots_svg,
+           partial_effect_plots_png, raw_prev, model_prev, flextable_gam_summary,
+           table_fmi_demo))
 ```
 
 # Calculated Prevalences
@@ -41,4 +44,11 @@ knitr::kable(table_fmi_demo)
 
 ```{r, results = "asis", echo = FALSE}
 cat(paste0("## ", svg_plots, "\n\n![](", basename(svg_plots), ")"), sep = "\n\n")
+```
+
+## Partial Effect plots
+
+
+```{r, results = "asis", echo = FALSE}
+cat(paste0("\n\n![](", basename(partial_effect_plots_svg), ")"), sep = "\n\n")
 ```

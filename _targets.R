@@ -19,7 +19,9 @@ data_targets <- tar_plan(
   dat_fec = readxl::read_xlsx(dat_xls, sheet = "Dataset 1", skip = 1),
   dat_bat = readxl::read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
   captures_cleaned = clean_captures(dat_captures),
-  dat_cleaned = clean_data(dat_fec, dat_bat)
+  dat_cleaned = clean_data(dat_fec, dat_bat),
+  tar_file(model_terms_table_file, "data/model-terms-table.csv"),
+  model_terms_table = readr::read_csv(model_terms_table_file)
 )
 
 analysis_targets <- tar_plan(
@@ -32,7 +34,10 @@ analysis_targets <- tar_plan(
   time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior),
   raw_prev = calc_raw_prev(dat_prepped),
   model_prev = calc_model_prev(dat_prepped, multinomial_model, gam_posterior),
-  table_fmi_demo = tabulate_fmi_demo(dat_prepped)
+  table_fmi_demo = tabulate_fmi_demo(dat_prepped),
+  table_gam_summary = tabulate_gam_summary(dat_prepped, multinomial_model, gam_posterior, model_terms_table),
+  partial_effect_plots = make_partial_effect_plots(multinomial_model),
+  flextable_gam_summary = make_flextable_gam_summary(table_gam_summary)
 )
 
 plot_targets <- tar_plan(
@@ -57,7 +62,19 @@ plot_file_targets <- tar_plan(
     paste0("outputs/", names(allplots), ".svg"), allplots[[1]],
     units = "in", bg = "white",
     width = attr(allplots[[1]], "fig.width"), height = attr(allplots[[1]], "fig.height")),
-    pattern = map(allplots))
+    pattern = map(allplots)),
+  tar_file(partial_effect_plots_png, c(
+    ggsave("outputs/partial_effect_plots_1.png", partial_effect_plots[[1]],
+           scale = 2, width = 6.5, height = 7.5),
+    ggsave("outputs/partial_effect_plots_2.png", partial_effect_plots[[2]],
+           scale = 2, width = 6.5, height = 7.5)
+  )),
+  tar_file(partial_effect_plots_svg, c(
+    ggsave("outputs/partial_effect_plots_1.svg", partial_effect_plots[[1]],
+           scale = 2, width = 6.5, height = 9),
+    ggsave("outputs/partial_effect_plots_2.svg", partial_effect_plots[[2]],
+           scale = 2, width = 6.5, height = 7.2)
+  ))
 )
 
 output_targets <- tar_plan(
@@ -66,6 +83,12 @@ output_targets <- tar_plan(
              path = "README.Rmd"),
   tar_render(model_diagnostics,
              path = "reports/model_diagnostics.Rmd"),
+  tar_file(gam_summary_docx,
+           flextable::save_as_docx(values = flextable_gam_summary,
+                        path = "outputs/gam_summary.docx",
+                        pr_section = officer::prop_section(
+                          page_size = officer::page_size(orient = "landscape")
+                        ))),
   tar_file(dat_cleaned_csv, {
     write_csv(dat_cleaned, "outputs/data_prepped.csv")
     "outputs/data_prepped.csv"

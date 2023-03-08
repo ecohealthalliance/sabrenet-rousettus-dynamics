@@ -54,7 +54,7 @@ plot_time_series <- function(dat_prepped, time_series) {
     summarize(x = sum(x), n = unique(n), .groups = "drop") |>
     mutate(outcome = "All") |>
     bind_rows(dat_sum) |>
-    mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"))
+    mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"))
 
   all_dat_sum <- bind_cols(
     all_dat_sum,

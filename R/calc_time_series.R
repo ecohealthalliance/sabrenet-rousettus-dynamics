@@ -69,7 +69,7 @@ calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_po
     mutate(prob = exp(linpred) / (1 + sum(exp(linpred)))) |>
     mutate(prob_corrected = if_else(sample_type == "Fecal", correct_pooled_prevalence(n_fecal_samps * prob, n_fecal_samps, 3), prob)) |>
     ungroup() |>
-    mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2` = "HKU9-related Beta-CoV", `3` = "Novel Beta-CoV"))
+    mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2` = "HKU9-related Beta-CoV", `3` = "Novel Beta-CoV"))
 
 
   time_series

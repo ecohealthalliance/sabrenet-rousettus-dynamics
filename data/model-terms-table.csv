@@ -1,0 +1,31 @@
+﻿Multinomial Outcome,Model Term,Description,Evaluated for Rectal Samples Only,Evaluated on Dates with Bat Collection Only
+HKU9-related Beta-CoV,s(sample_type):dummy_rectal1,Random effect fecal or rectal baseline prevalence differing from intercept,FALSE,FALSE
+HKU9-related Beta-CoV,s(day):sample_typeFecal,Long-term nonlinear trend of prevalence in fecal samples,FALSE,FALSE
+HKU9-related Beta-CoV,s(day):sample_typeRectal,Long-term nonlinear trend of prevalence in rectal samples,TRUE,TRUE
+HKU9-related Beta-CoV,"s(day,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+HKU9-related Beta-CoV,s(day_of_year):sample_typeFecal,Annual nonlinear cyclic trend of prevalence in fecal samples,FALSE,FALSE
+HKU9-related Beta-CoV,s(day_of_year):sample_typeRectal,Annual nonlinear cyclic trend of prevalence in rectal samples,TRUE,TRUE
+HKU9-related Beta-CoV,"s(day_of_year,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+HKU9-related Beta-CoV,s(fmi_kg_m2):dummy_rectal1,Nonlinear effect of bat FMI on prevalence,TRUE,TRUE
+HKU9-related Beta-CoV,s(reproductive_condition):dummy_repro1,"Random effect of prevalence in bats with reproductive conditions (Pregnant, Lactating, Scrotal) varying from intercept",TRUE,TRUE
+HKU9-related Beta-CoV,s(frac_subadult):dummy_any_rectal,Nonlinear effect of sampled population fraction subadult on prevalence,FALSE,TRUE
+HKU9-related Beta-CoV,"s(frac_subadult,sample_type):dummy_any_rectal",Random nonlinear effect of sampled population fraction subadult trend within sample types varying from the common effect,FALSE,TRUE
+Novel Alpha-CoV,s.1(sample_type):dummy_rectal1,Random effect fecal or rectal baseline prevalence differing from intercept,TRUE,TRUE
+Novel Alpha-CoV,s.1(day):sample_typeFecal,Long-term nonlinear trend of prevalence in fecal samples,FALSE,FALSE
+Novel Alpha-CoV,s.1(day):sample_typeRectal,Long-term nonlinear trend of prevalence in rectal samples,TRUE,TRUE
+Novel Alpha-CoV,"s.1(day,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+Novel Alpha-CoV,s.1(day_of_year):sample_typeFecal,Annual nonlinear cyclic trend of prevalence in fecal samples,FALSE,FALSE
+Novel Alpha-CoV,s.1(day_of_year):sample_typeRectal,Annual nonlinear cyclic trend of prevalence in rectal samples,TRUE,TRUE
+Novel Alpha-CoV,"s.1(day_of_year,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+Novel Alpha-CoV,s.1(fmi_kg_m2):dummy_rectal1,Nonlinear effect of bat FMI on prevalence,TRUE,TRUE
+Novel Alpha-CoV,s.1(reproductive_condition):dummy_repro1,"Random effect of prevalence in bats with reproductive conditions (Pregnant, Lactating, Scrotal) varying from intercept",TRUE,TRUE
+Novel Alpha-CoV,s.1(frac_subadult):dummy_any_rectal,Nonlinear effect of sampled population fraction subadult on prevalence,FALSE,TRUE
+Novel Alpha-CoV,"s.1(frac_subadult,sample_type):dummy_any_rectal",Random nonlinear effect of sampled population fraction subadult trend within sample types varying from the common effect,FALSE,TRUE
+Novel Beta-CoV,s.2(sample_type):dummy_rectal1,Random effect fecal or rectal baseline prevalence differing from intercept,TRUE,TRUE
+Novel Beta-CoV,s.2(day):sample_typeFecal,Long-term nonlinear trend of prevalence in fecal samples,FALSE,FALSE
+Novel Beta-CoV,s.2(day):sample_typeRectal,Long-term nonlinear trend of prevalence in rectal samples,TRUE,TRUE
+Novel Beta-CoV,s.2(day_of_year):sample_typeFecal,Annual nonlinear cyclic trend of prevalence in fecal samples,FALSE,FALSE
+Novel Beta-CoV,s.2(day_of_year):sample_typeRectal,Annual nonlinear cyclic trend of prevalence in rectal samples,TRUE,TRUE
+HKU9-related Beta-CoV,(Intercept),Prevalence at mean covariate values,FALSE,FALSE
+Novel Alpha-CoV,(Intercept).1,Prevalence at mean covariate values,FALSE,FALSE
+Novel Beta-CoV,(Intercept).2,Prevalence at mean covariate values,FALSE,FALSE

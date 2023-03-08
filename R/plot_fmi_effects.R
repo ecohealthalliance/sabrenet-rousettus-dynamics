@@ -37,7 +37,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     group_by(fmi_kg_m2, .iteration, outcome) |>
     mutate(prob = exp(linpred) / (1 + sum(exp(linpred)))) |>
     ungroup() |>
-    mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV"))
+    mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV"))
 
   intervals <- preds |>
     ungroup() |>
@@ -60,7 +60,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     mutate(bin = cut_width(fmi_kg_m2,  5)) |>
     group_by(bin, outcome) |>
     summarize(x = sum(positive), n = n(), .groups = "drop") |>
-    mutate(vir = recode(outcome, `1` = "Novel Alpha-Cov", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"),
+    mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"),
            bin_center = map_dbl(bin, \(x) mean(as.numeric(c(
              stringi::stri_extract_first_regex(x, "[\\d\\.]+"),
              stringi::stri_extract_last_regex(x, "[\\d\\.]+"))))))
