@@ -26,6 +26,7 @@ data_targets <- tar_plan(
 
 analysis_targets <- tar_plan(
   dat_prepped = prep_data(dat_cleaned),
+  fa_cutoff_summary = summarize_fa_cutoffs(dat_cleaned),
   tar_target(multinomial_model, fit_multinomial_model(dat_prepped), cue = tar_cue("thorough")),
   tar_target(gam_posterior, sample_gam_posterior(multinomial_model, chains = 4,
                                                  burn = 1250, ns = 13750, thin = 100, rw.scale = 0.1),
