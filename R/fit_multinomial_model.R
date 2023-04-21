@@ -45,6 +45,13 @@ fit_multinomial_model <- function(dat_prepped, nthreads = 8, n_blas_threads = 16
 }
 
 sample_gam_posterior <- function(multinomial_model, chains = 4, cores = min(chains, parallel::detectCores()), ...) {
+
+  # Modify gam.mh to cleanup the initial matrix first.  This does not last between sessions,
+  # so we do it inside the function
+  suppressMessages(
+    trace(gam.mh, quote(Vb <- fix_matrix(Vb)), at = 5, print = FALSE)
+    )
+
   samps <-
     purrr::transpose(parallel::mclapply(
       X = seq_len(chains),
@@ -62,6 +69,8 @@ sample_gam_posterior <- function(multinomial_model, chains = 4, cores = min(chai
       accept = unlist(samps$accept)
     )
   dimnames(gam_posterior) <- list(Iteration = NULL, Chain = NULL, Parameter = dimnames(gam_posterior)[[3]])
+
+  untrace(gam.mh)
 
   gam_posterior
 }
