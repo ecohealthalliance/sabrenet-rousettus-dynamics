@@ -127,14 +127,17 @@ plot_peak_dates <- function(peak_dates) {
     group_by(vir) |>
     summarize(label = paste(label, collapse = "\n"))
 
+  pal <-   pal <- colorspace::qualitative_hcl(palette = "Dark 3", n = 4)[2:4] |>
+    colorspace::lighten(0.3)
+
   ggplot() +
     geom_density(data = peak_dates, mapping = aes(x = date, fill = vir, linetype = sample_type), alpha = 0.5, key_glyph = draw_key_path) +
     geom_text(data = labs, mapping = aes(label = label, x = as.Date("2020-12-15"), y = 0.04), hjust=1, size=3) +
     facet_wrap(~vir, ncol=1) +
-    scale_fill_manual(values = colorspace::qualitative_hcl(3), guide = "none") +
+    scale_fill_manual(values = pal, guide = "none") +
     scale_linetype_discrete(name = "") +
     scale_x_date(date_labels = "%b", name = "") +
-    #scale_linetype_manual(values = c(3, 1), name = "") +
+    scale_linetype_manual(values = c(2, 1), name = "") +
     #guides(linetype = guide_legend(override.aes = list(shape = 3))) +
     theme(legend.position = c(0.13,0.13), legend.background = element_blank()) + labs(y = "Posterior Density")
 }
