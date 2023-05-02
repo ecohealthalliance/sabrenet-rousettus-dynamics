@@ -117,11 +117,22 @@ calc_peak_dates <- function(dat_cleaned, dat_prepped, multinomial_model, gam_pos
 
 plot_peak_dates <- function(peak_dates) {
 
+  rot_fn <- \(x) ifelse(x > 310, x - 365, x)
+  ret_fn <- \(x) ifelse(x < 0, x + 365, x)
   peak_date_sum <- peak_dates |>
     group_by(vir, sample_type) |>
+    mutate(day_of_year = rot_fn(day_of_year)) |>
     ggdist::mean_qi(day_of_year) |>
+    mutate(across(c("day_of_year", ".lower", ".upper"), ret_fn)) |>
     mutate(across(c("day_of_year", ".lower", ".upper"), \(x) as.Date("2019-12-30") + days(round(x)), .names = "{.col}_date")) |>
     mutate(label = glue::glue("{sample_type} peak: {strftime(day_of_year_date, '%b %d')} (95% CI {strftime(.lower_date, '%b %d')}-{strftime(.upper_date, '%b %d')})"))
+#
+#   ranks <- peak_dates |>
+#     group_by(sample_type, .iteration) |>
+#     mutate(drank = rank(day_of_year)) |>
+#     group_by(sample_type, vir) |>
+#     summarize(r1 = sum(drank == 1)/n(), r2 = sum(drank == 2)/n(), r3 = sum(drank == 3)/n()) |>
+#     arrange(vir, sample_type)
 
   labs <- peak_date_sum |>
     group_by(vir) |>
@@ -139,5 +150,5 @@ plot_peak_dates <- function(peak_dates) {
     scale_x_date(date_labels = "%b", name = "") +
     scale_linetype_manual(values = c(2, 1), name = "") +
     #guides(linetype = guide_legend(override.aes = list(shape = 3))) +
-    theme(legend.position = c(0.13,0.13), legend.background = element_blank()) + labs(y = "Posterior Density")
+    theme(legend.position = c(0.13,0.13), legend.background = element_blank()) + labs(title = "Estimated Peak Seasonal Shedding Date", y = "Posterior Density")
 }

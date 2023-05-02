@@ -3,7 +3,7 @@ name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iterat
 all_dat_sum|object|16fa1eda1728059d|||||||||||||||
 all_plot_files|stem|03d21d3a3c5d45b6|5a063c420c363732|966d74aa9bc46b87|1683656025||t19407.7612950241s|9712f9cb4307e5f0|183|qs|local|vector|||0.001||
 all_time_series|object|35dbf68fc1679845|||||||||||||||
-allplots|stem|c4c53e7b51b91a77|fbf09a03542c1829|e871f5055bbf48ad|2138401513||t19479.9482837418s|9e857eef45de7189|5924654|qs|local|vector||allplots_052b2caf*allplots_53911b4d*allplots_ac07e17c*allplots_af9b74b1*allplots_02ee043c*allplots_fa689117*allplots_59347b0a*allplots_91ac7b13*allplots_0514cb7d|0.001||
+allplots|stem|b38cb7dcb8fff178|fbf09a03542c1829|267eaee721137db3|2138401513||t19479.9753315299s|6a1581150d264255|5944123|qs|local|vector||allplots_052b2caf*allplots_53911b4d*allplots_ac07e17c*allplots_af9b74b1*allplots_02ee043c*allplots_fa689117*allplots_59347b0a*allplots_91ac7b13*allplots_49fb27ba|0||
 analysis_targets|object|c0133f442c2a74a9|||||||||||||||
 calc_model_fecal_prev|function|c5f286c4122552b9|||||||||||||||
 calc_model_prev|function|a9a6b1585c74d31c|||||||||||||||
@@ -42,7 +42,7 @@ fig_fmi_demo_timeseries_file|stem|150ff94b2df2b6ae|297c6d575f328332|9f827a0c969d
 fig_fmi_effects|stem|4f3683f07186e940|cc2d03a9da185937|91dd8e69d71fef4a|124567932||t19479.7215207225s|452d5218ddc7a526|4108708|qs|local|vector|||1.04||
 fig_fmi_effects_file|stem|d5b6959d75a31718|a6d8cfbeb0412c78|fa1d3ee990d182ca|1096938700|outputs/fig_fmi_effects.png|t19155.9203224413s|1ea6bcde2c961f83|378893|file|local|vector|||0.564||
 fig_fmi_time|stem|06bbc7010f381c7e|cc52409855931fdd|e9379e3c6bacbf9d|756779252||t19155.8764755069s|0b0809243015e42a|268848|qs|local|vector|||3.138||
-fig_peak_dates|stem|862e8fa11d0f1bf9|7e6161af850f23be|4f9698797daab148|2006475165||t19479.9482752133s|45dc37c8a673e84a|1092436|qs|local|vector|||0.248||
+fig_peak_dates|stem|aa1a681acecaeabf|7e6161af850f23be|2bf78b3ff5018908|2006475165||t19479.9753242764s|c92f6196db6e3b70|1094556|qs|local|vector|||0.218||
 fig_pos_demo_timeseries|stem|abf0906cfd1a4288|cbac8b58c73f6596|ee50569d0b69380d|-769153862||t19478.851124509s|57008ee6ff16c159|339172|qs|local|vector|||0.103||
 fig_pos_demo_timeseries_file|stem|bf9159d94ed3eba3|26153ba78a040b2b|79a5444736380585|-1746254415|outputs/fig_fmi_effects.svg|t19407.760620528s|f486071a35c55496|61732|file|local|vector|||0.506||
 fig_repro_effects|stem|9ddec073424b11d4|39b18a43dc4951cb|7db9ee3f4fa93896|-563578401||t19479.8168651102s|b6da0a9ac47be9c6|574980|qs|local|vector|||0.105||
@@ -74,7 +74,7 @@ multinomial_model_alt|stem|f2fc5b939bda7bc7|18b0f158ff2a91e1|86958aeb8a84662c|15
 n|object|42b194eec038fae9|||||||||||||||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
 output_targets|object|af8bb44eb7dfab7f|||||||||||||||
-outputs_readme|stem|194a59753a170456|d5e1ebecdc33208b|b485cdd2e5fbae29|1833669539|outputs/README.md*outputs/README.Rmd|t19479.948315365s|c10f7d0273e95a33|6851|file|local|vector|||1.555||
+outputs_readme|stem|194a59753a170456|d5e1ebecdc33208b|41e1283f4b6551cc|1833669539|outputs/README.md*outputs/README.Rmd|t19479.9753565432s|c10f7d0273e95a33|6851|file|local|vector|||0.909||
 p|object|d62de3d7487789a8|||||||||||||||
 partial_effect_plots|stem|c51a64d62c3decb8|cd3780128b3f2345|61bfe19cac914e91|766137583||t19479.720912742s|32ad73d791c4b73d|9409951|qs|local|vector|||1.314||
 partial_effect_plots_png|stem|862318f1861b520e|3be65cd6b85f2f5c|44d1e56615772133|-1309451877|outputs/partial_effect_plots_1.png*outputs/partial_effect_plots_2.png|t19479.7215652079s|d5a220d15ab42bf8|984184|file|local|vector|||3.833||
@@ -91,7 +91,7 @@ plot_fmi_demo_timeseries|function|53dc968ab1597032|||||||||||||||
 plot_fmi_effects|function|f0b50a030b600809|||||||||||||||
 plot_fmi_time|function|2058a4e41e6e764f|||||||||||||||
 plot_gam_with_mh|function|33a9292bc6d57ffd|||||||||||||||
-plot_peak_dates|function|5cfd11cf2aad670a|||||||||||||||
+plot_peak_dates|function|a8cb33d0f4b3c82b|||||||||||||||
 plot_positivity_demo_timeseries|function|520c47bce591ca03|||||||||||||||
 plot_repro_effects|function|d3fbde65549294dc|||||||||||||||
 plot_size_demo|function|326bae374cde2d5a|||||||||||||||
@@ -108,12 +108,13 @@ plotnames_b0db7aa2|branch|c7cafc7eeb25ec3d|a7dfd8086921ec15|294959555b1483bc|106
 plotnames_b1e76f29|branch|a033ecf0949e0827|513807fa9e55e51e|27bbc6e39f3414ba|89827196||t19407.8423454841s|fdf45c0d2301b642|39|qs|local|vector|plotnames||0.593|1m22mfilename must have length 1, not length 9.33m39m Only the first, 8fileUsersnoamrossprojectsehasabrenetrousettusdynamics2data.png34mdata.png39m8, will be used.|
 plotnames_c5620793|branch|a033ecf0949e0827|513807fa9e55e51e|c40027ed7e93e079|-1454293352||t19407.842354267s|fdf45c0d2301b642|39|qs|local|vector|plotnames||0.748|1m22mfilename must have length 1, not length 9.33m39m Only the first, 8fileUsersnoamrossprojectsehasabrenetrousettusdynamics2data.png34mdata.png39m8, will be used.|
 plotnames_e9093555|branch|c7cafc7eeb25ec3d|a7dfd8086921ec15|fda6164bea00718e|-693236708||t19407.8317250175s|2005da2f14a67e22|98|qs|local|vector|plotnames||0.001||
-png_plots|pattern|4a989a556e649266|b1d247fceb6f2e58||1218870440||||231756|file|local|vector||png_plots_94b8d249*png_plots_d38a7da5*png_plots_f03445b9*png_plots_13fe30b7*png_plots_0d50741b*png_plots_d136158f*png_plots_7ba34140*png_plots_36d19f12*png_plots_a13a2019|0.498||
+png_plots|pattern|0239019803175022|b1d247fceb6f2e58||1218870440||||242829|file|local|vector||png_plots_94b8d249*png_plots_d38a7da5*png_plots_f03445b9*png_plots_13fe30b7*png_plots_0d50741b*png_plots_d136158f*png_plots_7ba34140*png_plots_36d19f12*png_plots_c892ca9d|0.501||
 png_plots_01d6c2a5|branch|4d5d676858790a48|b1d247fceb6f2e58|8ea6f798cf5b619f|990513366|outputs/fig_time_series.png|t19479.7216432659s|a96756f7f67efa68|390381|file|local|vector|png_plots||0.693||
 png_plots_0a3dc850|branch|d85fdb5e6f815453|b1d247fceb6f2e58|30bdd6a3534fcfc9|-1262379945|outputs/fig_fmi_demo.png|t19424.029168527s|130471a8e173534d|568641|file|local|vector|png_plots||1.192||
 png_plots_0d50741b|branch|fc866e74758ce071|b1d247fceb6f2e58|50bc42b7a69bb6ff|1387523833|outputs/fig_pos_demo_timeseries.png|t19478.8570412567s|5b3c88028a72430c|273177|file|local|vector|png_plots||0.618||
 png_plots_0ef1a184|branch|8f3671aa74d54adf|b1d247fceb6f2e58|f8059a576758208e|-1320059140|outputs/fig_fmi_effects.png|t19479.7689391696s|7a78e39d236e6015|102532|file|local|vector|png_plots||0.333||
 png_plots_109f32ff|branch|aaba775218deb0a6|b1d247fceb6f2e58|16cf17905576db86|-891800506|outputs/fig_bat_demographics.png|t19423.6237560623s|df08314185d020f4|243746|file|local|vector|png_plots||5.165||
+png_plots_12beed3e|branch|7a57c99b6da6c632|b1d247fceb6f2e58|a6b9d100b0a46ec0|-896407807|outputs/fig_peak_dates.png|t19479.9751913895s|bb3cc85cb25593c2|242829|file|local|vector|png_plots||0.512||
 png_plots_13fe30b7|branch|9379127a7a261d77|b1d247fceb6f2e58|a08436d19da64b6f|1754880022|outputs/fig_fmi_demo_timeseries.png|t19478.8570340142s|de61b081614ef1cf|299777|file|local|vector|png_plots||0.714||
 png_plots_140e5589|branch|d26bf9143153df0a|b1d247fceb6f2e58|a9e3d4cd8dab7e1b|-1479351341|outputs/fig_fmi_effects.png|t19407.8600273398s|1acd8052f08e1a05|358847|file|local|vector|png_plots||0.375||
 png_plots_1b6a58af|branch|8f3671aa74d54adf|b1d247fceb6f2e58|b8476e07e55be48e|818286462|outputs/fig_fmi_effects.png|t19479.7216487375s|7a78e39d236e6015|102532|file|local|vector|png_plots||0.457||
@@ -165,6 +166,7 @@ png_plots_befecc9e|branch|c3f9d4fc03a0ba7d|b1d247fceb6f2e58|bbdc64c9a86345ac|172
 png_plots_bf7a0bc9|branch|fe18cc2781fb2ddf|b1d247fceb6f2e58|57b8d2eb470b2afd|-125134332|outputs/fig_pos_demo_timeseries.png|t19424.9478761888s|c3eef7e97022ac6b|272654|file|local|vector|png_plots||0.66||
 png_plots_bfe9fd3b|branch|1c19df0f1e8219c6|b1d247fceb6f2e58|adabc1153e858fb4|1821190400|outputs/fig_time_series.png|t19407.8600046348s|ac2236d969623b0a|1027312|file|local|vector|png_plots||1.299||
 png_plots_c0cdc10f|branch|29c56474d2744a4f|b1d247fceb6f2e58|84b08f6c461a2f2d|-856787484|outputs/fig_fmi_effects.png|t19478.8570451591s|00eb455110b6fd67|91241|file|local|vector|png_plots||0.33||
+png_plots_c892ca9d|branch|7a57c99b6da6c632|b1d247fceb6f2e58|ed216c4366f1f359|1393309334|outputs/fig_peak_dates.png|t19479.9753490921s|bb3cc85cb25593c2|242829|file|local|vector|png_plots||0.501||
 png_plots_cb7374fb|branch|942ab307c3db6fcf|b1d247fceb6f2e58|26714cd64af1de4f|14980564|outputs/fig_bat_demographics.png|t19424.9493941786s|c88d167c3d7ec4aa|121263|file|local|vector|png_plots||0.454||
 png_plots_ce437a31|branch|0d8d90551b131414|b1d247fceb6f2e58|8040159c437d1914|-1952410627|outputs/fig_fmi_effects.png|t19407.8812203469s|2391fa34f6e2f99a|351051|file|local|vector|png_plots||0.45||
 png_plots_d136158f|branch|758e3883c07622e7|b1d247fceb6f2e58|9aa0085c59acbb0a|-1251523377|outputs/fig_fmi_demo_effects.png|t19478.8570505194s|c7cf584334f3dfa7|131922|file|local|vector|png_plots||0.456|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
@@ -194,12 +196,13 @@ summarize_fa_cutoffs|function|e87a90fd70414a51|||||||||||||||
 summarize_quantities|function|ccf3cfe5c9738a8c|||||||||||||||
 summarized_quantities|stem|22ce759319a2ba23|20b006d6588ac8c6|4f0ac09fdd7ee25a|1600875836||t19206.7189814815s|cc81a7537cb02258|59|qs|local|vector|||0||
 sums|function|2d67249527b41661|||||||||||||||
-svg_plots|pattern|d73bdb629a14ccdb|156e3e615382f7fc||778869169||||148896|file|local|vector||svg_plots_94b8d249*svg_plots_d38a7da5*svg_plots_f03445b9*svg_plots_13fe30b7*svg_plots_0d50741b*svg_plots_d136158f*svg_plots_7ba34140*svg_plots_36d19f12*svg_plots_a13a2019|0.707||
+svg_plots|pattern|229d1cd57e02b9fc|156e3e615382f7fc||778869169||||149102|file|local|vector||svg_plots_94b8d249*svg_plots_d38a7da5*svg_plots_f03445b9*svg_plots_13fe30b7*svg_plots_0d50741b*svg_plots_d136158f*svg_plots_7ba34140*svg_plots_36d19f12*svg_plots_c892ca9d|0.731||
 svg_plots_01d6c2a5|branch|08504396e5a6e563|156e3e615382f7fc|8ea6f798cf5b619f|-226265458|outputs/fig_time_series.svg|t19479.7216546299s|e15a8ab8b5631f07|141461|file|local|vector|svg_plots||0.468||
 svg_plots_0a3dc850|branch|b188c3872304b97f|156e3e615382f7fc|30bdd6a3534fcfc9|-1578429756|outputs/fig_fmi_demo.svg|t19424.029225439s|7e5fd40dddaeddb9|351273|file|local|vector|svg_plots||0.614||
 svg_plots_0d50741b|branch|cc1eb67b92fefce1|156e3e615382f7fc|50bc42b7a69bb6ff|-16492147|outputs/fig_pos_demo_timeseries.svg|t19478.8570793839s|f486071a35c55496|61732|file|local|vector|svg_plots||0.497||
 svg_plots_0ef1a184|branch|44e746aeb47ac74b|156e3e615382f7fc|f8059a576758208e|-295267248|outputs/fig_fmi_effects.svg|t19479.7689237553s|8e1e9a11c1ee33af|40688|file|local|vector|svg_plots||0.535||
 svg_plots_109f32ff|branch|e642020d1e38dd14|156e3e615382f7fc|16cf17905576db86|1461725512|outputs/fig_bat_demographics.svg|t19423.6236913274s|ead063cb01298d11|23235|file|local|vector|svg_plots||0.581||
+svg_plots_12beed3e|branch|abdae28c12a9a5f2|156e3e615382f7fc|a6b9d100b0a46ec0|-1966948690|outputs/fig_peak_dates.svg|t19479.9751847462s|d33a8cc3eb18156f|149102|file|local|vector|svg_plots||0.933||
 svg_plots_13fe30b7|branch|9eccb9ee761031f4|156e3e615382f7fc|a08436d19da64b6f|2025149445|outputs/fig_fmi_demo_timeseries.svg|t19478.8570735507s|7dbc92776b0ec32b|64547|file|local|vector|svg_plots||0.485||
 svg_plots_140e5589|branch|a979dfffa6f943ba|156e3e615382f7fc|a9e3d4cd8dab7e1b|-1831875618|outputs/fig_fmi_effects.svg|t19407.8584238067s|85220c05af87e1e9|92509|file|local|vector|svg_plots||0.215||
 svg_plots_1b6a58af|branch|44e746aeb47ac74b|156e3e615382f7fc|b8476e07e55be48e|-2028119222|outputs/fig_fmi_effects.svg|t19479.7216574836s|8e1e9a11c1ee33af|40688|file|local|vector|svg_plots||0.231||
@@ -251,6 +254,7 @@ svg_plots_befecc9e|branch|150ff94b2df2b6ae|156e3e615382f7fc|bbdc64c9a86345ac|-10
 svg_plots_bf7a0bc9|branch|bf9159d94ed3eba3|156e3e615382f7fc|57b8d2eb470b2afd|-2095072615|outputs/fig_pos_demo_timeseries.svg|t19424.9479136763s|f486071a35c55496|61732|file|local|vector|svg_plots||0.549||
 svg_plots_bfe9fd3b|branch|09298bac0a731542|156e3e615382f7fc|adabc1153e858fb4|150459989|outputs/fig_time_series.svg|t19407.8584055883s|eadeabbe0632e90b|1488760|file|local|vector|svg_plots||1.132||
 svg_plots_c0cdc10f|branch|253765997858451c|156e3e615382f7fc|84b08f6c461a2f2d|1396593010|outputs/fig_fmi_effects.svg|t19478.8570817821s|58b298589e6eb72c|40880|file|local|vector|svg_plots||0.2||
+svg_plots_c892ca9d|branch|abdae28c12a9a5f2|156e3e615382f7fc|ed216c4366f1f359|39613843|outputs/fig_peak_dates.svg|t19479.9753427936s|d33a8cc3eb18156f|149102|file|local|vector|svg_plots||0.731||
 svg_plots_cb7374fb|branch|918cca8c3f00cdbf|156e3e615382f7fc|26714cd64af1de4f|-956305597|outputs/fig_bat_demographics.svg|t19424.9493973332s|4fbf8ea41ff52af1|23027|file|local|vector|svg_plots||0.236||
 svg_plots_ce437a31|branch|d8fd8b7277aec9fe|156e3e615382f7fc|8040159c437d1914|-1261184869|outputs/fig_fmi_effects.svg|t19407.8812410541s|d9e8aed0e15b75d8|92519|file|local|vector|svg_plots||0.238||
 svg_plots_d136158f|branch|2a662924d278c1e8|156e3e615382f7fc|9aa0085c59acbb0a|-1678667260|outputs/fig_fmi_demo_effects.svg|t19478.8570846212s|b8a57bbcce491bd7|25115|file|local|vector|svg_plots||0.238|The following aesthetics were dropped during statistical transformation fill,label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in  the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical  variable into a factor|
