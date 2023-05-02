@@ -7,7 +7,7 @@
 #' @return
 #' @author 'Noam Ross'
 #' @export
-summarize_fa_cutoffs <- function(dat_cleaned) {
+plot_fa_cutoffs <- function(dat_cleaned) {
 
   test_cutoffs <- c(89, 90, 94)
 
@@ -29,19 +29,23 @@ summarize_fa_cutoffs <- function(dat_cleaned) {
   p1 <- ggplot(dat, aes(x = fa_mm, fill = paste(reproductive_condition))) +
     geom_histogram(binwidth = 1, boundary = 0, col = "white", linewidth = 0.25) +
     scale_x_continuous(breaks = seq(70, 105, by = 2), name = "Forearm Length (mm)") +
-    scale_fill_discrete(name = "Reproductive Status") +
+    scale_fill_discrete(name = "") +
     facet_wrap(~sex, ncol = 1) +
     geom_vline(xintercept = c(min_cutoff, test_cutoffs), col = "black") +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom") +
+    guides(fill=guide_legend(nrow=2,byrow=TRUE))
 
   p2 <- ggplot(dat, aes(x = fa_mm^2, y = mass_g, color = paste(reproductive_condition, age, sex))) +
     geom_point() +
     geom_smooth(method = "lm", formula = y ~ 0 + x) +
     #scale_x_continuous(breaks = seq(70, 105, by = 2), name = "Forearm Length (mm)") +
-    scale_color_discrete(name = "Reproductive Status") +
+    scale_color_discrete(name = "") +
     facet_wrap(~sex, ncol = 1) +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom") +
+    labs(x = Forearm~Length^2~(mm^2), y = "Mass (g)") +
+    guides(color=guide_legend(nrow=3,byrow=TRUE))
   #  geom_vline(xintercept = c(min_cutoff, test_cutoffs), col = "black")
 
-  p1 + p2
+  p1 + p2 + plot_annotation(title = "Exploring Size-Age Relationships",
+                            subtitle = "To determine age class cutoffs and FMI normalization")
 }

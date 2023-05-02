@@ -6,7 +6,8 @@ options(
   repos = c(RSPM = "https://packagemanager.rstudio.com/all/latest",
             CRAN = "https://cran.rstudio.com/",
             INLA = "https://inla.r-inla-download.org/R/testing"),
-
+  pkgType = "binary",
+  Ncpus = 3,
   renv.config.auto.snapshot = TRUE, ## Attempt to keep renv.lock updated automatically
   renv.config.rspm.enabled = TRUE, ## Use RStudio Package manager for pre-built package binaries
   renv.config.install.shortcuts = TRUE, ## Use the existing local library to fetch copies of packages for renv
@@ -14,6 +15,9 @@ options(
   renv.config.cache.symlinks = TRUE,  ## Keep full copies of packages locally than symlinks to make the project portable in/out of containers
   renv.config.install.transactional = FALSE,
   renv.config.synchronized.check = FALSE,
+  renv.config.updates.parallel = TRUE,
+#  renv.config.pak.enabled = TRUE,
+  renv.config.rspm.enabled = TRUE,
 
   mc.cores = min(parallel::detectCores(), 4)
 

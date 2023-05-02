@@ -19,10 +19,10 @@ plot_time_series <- function(dat_prepped, time_series) {
 
   intervals <- all_time_series |>
     arrange(date) |>
-    group_by(date, vir, sample_type, day, day_of_year) |>
+    group_by(vir, sample_type) |>
     ggdist::curve_interval(
       prob_corrected,
-      .along = date, .interval = "mhd",
+      .along = date, .interval = "bd",
       .width = c(0.5, 0.95))
 
 

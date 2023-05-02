@@ -11,7 +11,9 @@ clean_data <- function(dat_fec, dat_bat) {
   )
 
   dat_cleaned <- dat_combined |>
-    mutate(genus = tolower(genus))
+    mutate(genus = tolower(genus)) |>
+    mutate(age = if_else(fa_mm >= 89 | reproductive_condition %in% c("Lactating", "Pregnant", "Scrotal"),
+                           "A", "SA"))
   dat_cleaned
 }
 
@@ -21,6 +23,7 @@ prep_data <- function(dat_cleaned) {
   mean_fmi <- dat_cleaned |>
     filter(!is.na(fmi_kg_m2), fmi_kg_m2 != 0) |>
     pull(fmi_kg_m2) |> mean()
+
   dat_prepped_0 <- dat_cleaned |>
     filter(is.na(clade) | clade != 4) |>
     mutate(vir = if_else(is.na(genus), NA_character_, paste(genus, clade, sep = "-")),
@@ -29,7 +32,6 @@ prep_data <- function(dat_cleaned) {
            day_of_year = lubridate::yday(date_collected),
            week = lubridate::round_date(date_collected, "week"),
            sample_type = fct_recode(sample_type, Fecal = "Faecal pool (x3)", Rectal = "Rectal swab"),
-           fmi_kg_m2 = coalesce(fmi_kg_m2, mean_fmi),
            dummy_rectal = ordered(as.integer(sample_type == "Rectal")),
            demo_group = paste(gender, age, reproductive_condition)) |>
     mutate(across(c(gender, age, demo_group), \(x) if_else(sample_type == "Rectal", x, "NA"))) |>
@@ -43,12 +45,18 @@ prep_data <- function(dat_cleaned) {
     mutate(reproductive_condition = coalesce(reproductive_condition, "None") |>
              fct_recode(None = "Not pregnant", None = "Not scrotal") |>
              fct_relevel("None")) |>
-    select(date = date_collected, day, day_of_year, week, sample_type, 
-           frac_subadult, dummy_rectal, dummy_any_rectal, gender, age, 
-           demo_group, reproductive_condition, fmi_kg_m2, fa_mm, mass_g, 
+    select(sample_id, date = date_collected, day, day_of_year, week, sample_type,
+           frac_subadult, dummy_rectal, dummy_any_rectal, gender, age,
+           demo_group, reproductive_condition, fmi_kg_m2, fa_mm, mass_g,
            cov_detected, vir, outcome)
 
-  dat_prepped <- dat_prepped_0 |>
+  dat_prepped_1 <- dat_prepped_0 |>
+    group_by(age, gender, reproductive_condition) |>
+    mutate(fmi_normalized = if_else(age != "NA" & gender != "NA",
+                                    (fmi_kg_m2 - mean(fmi_kg_m2)) / sd(fmi_kg_m2), 0)) |>
+    ungroup()
+
+  dat_prepped <- dat_prepped_1 |>
     mutate(gender_age = as.factor(if_else(sample_type == "Rectal", paste(gender, age, sep = "-"), "NA")),
            dummy_repro = ordered(if_else(reproductive_condition == "None", 0, 1)))
 
