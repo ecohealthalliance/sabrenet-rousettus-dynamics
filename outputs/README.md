@@ -85,6 +85,10 @@ mean bat and environment variables.
 
 ![](fig_fa_cutoffs.svg)
 
+## outputs/fig_peak_dates.svg
+
+![](fig_peak_dates.svg)
+
 ## Partial Effect plots
 
 ![](partial_effect_plots_1.svg)
