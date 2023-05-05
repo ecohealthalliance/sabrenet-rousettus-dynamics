@@ -121,11 +121,12 @@ manual:
 Note that for coefficient values < 1e-6, mixing isn't very relevant.
 
 ```{r}
+options(scipen=12)
 posterior_stats |> 
-  gt() |> 
-  fmt_number(columns = c("ess_bulk", "ess_tail"), decimals = 0) |> 
-  fmt_number(2:7, n_sigfig = 2) |> 
-  fmt_number("rhat", n_sigfig = 3) |>  
-  cols_align_decimal(2:8) 
+  mutate(across(c("ess_bulk", "ess_tail"), round)) |> 
+  mutate(across(2:7, \(x) signif(x, 2))) |> 
+  mutate(rhat = signif(rhat, 3)) |> 
+  mutate(across(2:8, \(x) gt:::align_to_char(as.character(x)))) |> 
+  knitr::kable(format.args = list(scientific = FALSE))
 ```
 
