@@ -6,7 +6,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     filter(sample_type == "Rectal")
   newdat <- crossing(
     dummy_rectal = 1,
-    fmi_kg_m2 = seq(5, 20,
+    fmi_normalized = seq(-2, 2,
                     length.out = 100),
     sample_type = "Rectal",
     day = mean(dat_prepped$day),
@@ -34,15 +34,15 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
         pivot_longer(matches("^\\d+$"), names_to = ".iteration", values_to = "linpred") |>
         mutate(.iteration = as.integer(.iteration))
     }, .id = "outcome") |>
-    group_by(fmi_kg_m2, .iteration, outcome) |>
+    group_by(fmi_normalized, .iteration, outcome) |>
     mutate(prob = exp(linpred) / (1 + sum(exp(linpred)))) |>
     ungroup() |>
     mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV"))
 
   intervals <- preds |>
     ungroup() |>
-    arrange(fmi_kg_m2) |>
-    group_by(vir, fmi_kg_m2) |>
+    arrange(fmi_normalized) |>
+    group_by(vir, fmi_normalized) |>
     ggdist::point_interval(prob, .point = mean, .interval = ggdist::qi, .width = c(0.95))
 
 
@@ -57,7 +57,7 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
     bind_cols(outcomes) |>
     pivot_longer(cols = starts_with("outcome"), names_to="outcome", values_to="positive") |>
     mutate(outcome = substr(outcome, 8, 8)) |>
-    mutate(bin = cut_width(fmi_kg_m2,  5)) |>
+    mutate(bin = cut_width(fmi_normalized,  5)) |>
     group_by(bin, outcome) |>
     summarize(x = sum(positive), n = n(), .groups = "drop") |>
     mutate(vir = recode(outcome, `1` = "Novel Alpha-CoV", `2`="HKU9-related Beta-CoV", `3`="Novel Beta-CoV", `All` = "All CoVs"),
@@ -70,8 +70,8 @@ plot_fmi_effects <- function(dat_prepped, multinomial_model, gam_posterior) {
   )
 #  breaks = 10^((-8):0)
   fig_fmi_effects <- ggplot(intervals) +
-    geom_ribbon(mapping = aes(x = fmi_kg_m2, ymin = .lower, ymax = .upper, fill = vir), alpha = 0.4) +
-    geom_line(mapping = aes(x = fmi_kg_m2, y = prob, col = vir)) +
+    geom_ribbon(mapping = aes(x = fmi_normalized, ymin = .lower, ymax = .upper, fill = vir), alpha = 0.4) +
+    geom_line(mapping = aes(x = fmi_normalized, y = prob, col = vir)) +
     #geom_line(alpha = 0.3, mapping = aes(x = fmi_kg_m2, y = prob, col = vir, group = .iteration)) +
     geom_errorbar(data = zz, mapping = aes(x = bin_center, ymin = lower, ymax = upper), width = 1) +
     geom_point(data = zz, mapping = aes(x = bin_center, y = mean), pch = 21, fill = "grey90", size = 2) +

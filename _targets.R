@@ -18,6 +18,7 @@ data_targets <- tar_plan(
   dat_captures = readxl::read_xlsx(captures_xls),
   dat_fec = readxl::read_xlsx(dat_xls, sheet = "Dataset 1", skip = 1),
   dat_bat = readxl::read_xlsx(dat_xls, sheet = "Dataset 2", skip = 1),
+
   captures_cleaned = clean_captures(dat_captures),
   dat_cleaned = clean_data(dat_fec, dat_bat),
   tar_file(model_terms_table_file, "data/model-terms-table.csv"),
@@ -26,18 +27,21 @@ data_targets <- tar_plan(
 
 analysis_targets <- tar_plan(
   dat_prepped = prep_data(dat_cleaned),
-  tar_target(multinomial_model, fit_multinomial_model(dat_prepped), cue = tar_cue("thorough")),
-  tar_target(gam_posterior, sample_gam_posterior(multinomial_model, chains = 4,
-                                                 burn = 1250, ns = 13750, thin = 100, rw.scale = 0.1),
+  tar_target(multinomial_model, fit_multinomial_model(dat_prepped, method = "REML"), cue = tar_cue("thorough")),
+  tar_target(multinomial_model_alt, fit_multinomial_model_alt(dat_prepped, method = "REML"), cue = tar_cue("thorough")),
+  tar_target(gam_posterior, sample_gam_posterior(multinomial_model, chains = 4, t.df = 40,
+                                                 burn = 20000, ns = 20000, thin = 200, rw.scale = 0.05),
              cue = tar_cue("thorough")),
-  posterior_stats = calc_posterior_stats(gam_posterior),
+  posterior_stats = posterior::summarise_draws(gam_posterior),
   time_series = calc_time_series(dat_cleaned, dat_prepped, multinomial_model, gam_posterior),
   raw_prev = calc_raw_prev(dat_prepped),
   model_prev = calc_model_prev(dat_prepped, multinomial_model, gam_posterior),
   table_fmi_demo = tabulate_fmi_demo(dat_prepped),
   table_gam_summary = tabulate_gam_summary(dat_prepped, multinomial_model, gam_posterior, model_terms_table),
   partial_effect_plots = make_partial_effect_plots(multinomial_model),
-  flextable_gam_summary = make_flextable_gam_summary(table_gam_summary)
+  flextable_gam_summary = make_flextable_gam_summary(table_gam_summary),
+  repro_effects = get_repro_effects(multinomial_model, gam_posterior, dat_prepped),
+  peak_dates = calc_peak_dates(dat_clean, dat_prepped, multinomial_model, gam_posterior)
 )
 
 plot_targets <- tar_plan(
@@ -46,10 +50,13 @@ plot_targets <- tar_plan(
   fig_time_series =         structure(plot_time_series(dat_prepped, time_series), fig.width = 8, fig.height = 6),
   fig_fmi_demo_timeseries = structure(plot_fmi_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 6),
   fig_pos_demo_timeseries = structure(plot_positivity_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 4),
-  fig_fmi_effects =         structure(plot_fmi_effects(dat_prepped, multinomial_model, gam_posterior), fig.width = 8, fig.height = 4.5),
-  fig_fmi_demo_effects =    structure(plot_fmi_demo_effects(dat_prepped), fig.width = 8, fig.height = 6)
+  #fig_fmi_effects =         structure(plot_fmi_effects(dat_prepped, multinomial_model, gam_posterior), fig.width = 8, fig.height = 4.5),
+  fig_fmi_demo_effects =    structure(plot_fmi_demo_effects(dat_prepped), fig.width = 8, fig.height = 6),
+  fig_repro_effects =       structure(plot_repro_effects(repro_effects), fig.width = 5, fig.height = 4),
+  fig_fa_cutoffs =          structure(plot_fa_cutoffs(dat_cleaned), fig.width = 10, fig.height = 8),
+  fig_peak_dates =          structure(plot_peak_dates(peak_dates), fig.width = 6, fig.height = 7.5),
 )
-
+tar
 
 plot_file_targets <- tar_plan(
   tar_combine(allplots, plot_targets, command = vctrs::vec_c(list(!!!.x))),

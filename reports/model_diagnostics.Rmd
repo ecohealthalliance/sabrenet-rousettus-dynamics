@@ -23,12 +23,14 @@ First, we set up by loading packages and generated R objects.
 knitr::opts_chunk$set(echo = TRUE)
 library(targets)
 library(mgcv)
+library(gt)
 options(width = 250)
 ```
 
 ```{r load_targets}
 tar_load(c(
   multinomial_model,
+  multinomial_model_alt,
   gam_posterior,
   posterior_stats,
   dat_prepped
@@ -39,6 +41,16 @@ tar_load(c(
 
 ```{r}
 summary(multinomial_model)
+```
+
+### Alterate Model Summary
+
+This is an alternate model fomulation with simple singel random effects of age/sex category
+rather than time-varying ones.  This is used to check if there age/sex effects are
+just insignificant because of the high complexity of the time-varying smooths.
+
+```{r}
+summary(multinomial_model_alt)
 ```
 
 ## GAM Checks
@@ -106,7 +118,15 @@ manual:
 > Markov Chain in order to be reliable and indicate that estimates of respective
 > posterior quantiles are reliable
 
+Note that for coefficient values < 1e-6, mixing isn't very relevant.
+
 ```{r}
-print(posterior_stats, n = Inf)
+options(scipen=12)
+posterior_stats |> 
+  mutate(across(c("ess_bulk", "ess_tail"), round)) |> 
+  mutate(across(2:7, \(x) signif(x, 2))) |> 
+  mutate(rhat = signif(rhat, 3)) |> 
+  mutate(across(2:8, \(x) gt:::align_to_char(as.character(x)))) |> 
+  knitr::kable(format.args = list(scientific = FALSE))
 ```
 

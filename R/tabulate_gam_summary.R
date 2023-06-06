@@ -20,11 +20,13 @@ tabulate_gam_summary <- function(dat_prepped, multinomial_model, gam_posterior,
     "random.effect" = "Random Effect",
     "tprs.smooth" = "Thin Plate Spline",
     "fs.interaction" = "Factor-Spline",
-    "cyclic.smooth" = "Cyclic Cubic Spline")
+    "cyclic.smooth" = "Cyclic Cubic Spline",
+    "sz.interaction" = "Factor-Spline")
   bases <- bases_names[bases]
 
   lp <- predict(multinomial_model, newdata = dat_prepped, type = "lpmatrix", unconditional = TRUE)
   post <- do.call(rbind, apply(gam_posterior, 2, identity, simplify = FALSE))
+  post <- post[sample.int(nrow(post), pmin(500, nrow(post))),]
   term_names <- stringi::stri_replace_last_regex(colnames(lp), "(?<!\\))\\.\\d+$", "")
   lpi <- lapply(unique(term_names), function(nm) {
     which(term_names == nm)
@@ -128,12 +130,30 @@ make_flextable_gam_summary <- function(table_gam_summary) {
   flextable_gam_summary
 }
 
-make_partial_effect_plots <- function(multinomial_model) {
+make_partial_effect_plots <- function(multinomial_model, nrow_per_page = 5, ncol_per_page = 3) {
 
-  partial_effect_plots <- list(
-    gratia::draw(multinomial_model, select = 1:15, nrow = 5, ncol = 3),
-    gratia::draw(multinomial_model, select = 16:27, nrow = 5, ncol = 3)
-  )
+
+  plots_per_page = ncol_per_page*nrow_per_page
+  sms <- length(gratia::smooths(multinomial_model))
+  pages <- ceiling(sms/plots_per_page)
+
+  breaks <- c("F-A", "F-SA", "M-A", "M-SA", "NA")
+  values <- c(viridisLite::viridis(4), "#FFFFFF00")
+  labels <- c("F Adult", "F Subadult", "M Adult", "M Subadult", "")
+  partial_effect_plots <- lapply(seq_len(pages), function(page) {
+    from = plots_per_page*(page - 1) + 1
+    to = min(plots_per_page*page, sms)
+    gratia::draw(multinomial_model,
+                 select = seq(from = from, to = to, by = 1),
+                 nrow = nrow_per_page, ncol = ncol_per_page,
+                 scales = "fixed",
+                 discrete_colour =  scale_color_manual(name = character(0), breaks = breaks, values = values, labels = labels, limits = breaks[1:4]),
+                 discrete_fill =scale_fill_manual(name = character(0), breaks = breaks, values = values, labels = labels, limits = breaks[1:4])) +
+      patchwork::plot_layout(guides = 'collect')
+
+
+  })
 
   partial_effect_plots
+
 }

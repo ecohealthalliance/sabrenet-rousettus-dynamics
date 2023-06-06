@@ -30,8 +30,8 @@ calc_model_prev <- function(dat_prepped, multinomial_model, gam_posterior) {
     post[, stringi::stri_subset_regex(colnames(post), "\\(sample_type\\):dummy_rectal1\\.2")])
   rectal_intercepts <- cbind(rectal_intercepts, rowSums(rectal_intercepts))
 
-  colnames(fecal_intercepts) <- c("HKU9-related Beta-CoV", "Novel Alpha-CoV", "Novel Beta-CoV", "All CoVs")
-  colnames(rectal_intercepts) <- c("HKU9-related Beta-CoV", "Novel Alpha-CoV", "Novel Beta-CoV", "All CoVs")
+  colnames(fecal_intercepts) <- c("Novel Alpha-CoV", "HKU9-related Beta-CoV", "Novel Beta-CoV", "All CoVs")
+  colnames(rectal_intercepts) <- c( "Novel Alpha-CoV", "HKU9-related Beta-CoV", "Novel Beta-CoV", "All CoVs")
   model_fecal_prev_0 <- fecal_intercepts |>
     as_tibble() |>
     pivot_longer(everything(), names_to = "virus", values_to = "mean") |>
