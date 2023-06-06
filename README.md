@@ -3,7 +3,7 @@
 
 # sabrenet-rousettus-dynamics
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6637927)](https://doi.org/10.5281/zenodo.6637927)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7709716)](https://doi.org/10.5281/zenodo.7709716)
 [![License (for code):
 MIT](https://img.shields.io/badge/License%20(for%20code)-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![License:
