@@ -6,7 +6,7 @@ all_time_series|object|35dbf68fc1679845|||||||||||||||
 allplots|stem|b5ad866029b9ba99|fbf09a03542c1829|267eaee721137db3|2138401513||t19482.882357415s|3b561411da1fcb2f|5948707|qs|local|vector||allplots_052b2caf*allplots_53911b4d*allplots_ac07e17c*allplots_af9b74b1*allplots_02ee043c*allplots_fa689117*allplots_278a5b05*allplots_91ac7b13*allplots_5d366ad9|0.001||
 analysis_targets|object|c0133f442c2a74a9|||||||||||||||
 calc_model_fecal_prev|function|c5f286c4122552b9|||||||||||||||
-calc_model_prev|function|a9a6b1585c74d31c|||||||||||||||
+calc_model_prev|function|ecc86b7e2299b04b|||||||||||||||
 calc_peak_dates|function|6b09a9212bc48489|||||||||||||||
 calc_posterior_stats|function|a26d63212f0e0953|||||||||||||||
 calc_raw_fecal_prev|function|72b2466b1f92b24c|||||||||||||||
@@ -54,10 +54,10 @@ fit_multinomial_model|function|c87a1f057c85e990|||||||||||||||
 fit_multinomial_model_alt|function|1ebf63ebd217e1e7|||||||||||||||
 fix_mat|function|514893fbbe26af45|||||||||||||||
 fix_matrix|function|f2089937c13d3ea0|||||||||||||||
-flextable_gam_summary|stem|ffb0d394b4c2fc91|028633dad8decc66|dfebb386c6709866|1575357607||t19479.7264380612s|8d904100e88ff170|63259|qs|local|vector|||3.027||
+flextable_gam_summary|stem|68d1c005e80a9163|028633dad8decc66|cf36fad1853160ef|1575357607||t19514.7391152971s|f3be121233fe0b95|62569|qs|local|vector|||0.656||
 gam_mh|function|d54cc24dcbebe757|||||||||||||||
 gam_posterior|stem|a33f9bd4c073e3eb|f5f62d85252d9e4c|1eb8001922724577|814049398||t19479.7153254105s|75e359b8360faaef|510167|qs|local|vector|||365.404||
-gam_summary_docx|stem|d915f49839aae421|dd022115c064df9a|ba57fd61713a5745|-1980760760|outputs/gam_summary.docx|t19479.7264650896s|db50a0a4e8de06bb|17496|file|local|vector|||2.148||
+gam_summary_docx|stem|26f6ffb41feeda64|dd022115c064df9a|ca57d444a2c60e43|-1980760760|outputs/gam_summary.docx|t19514.7391210179s|db50a0a4e8de06bb|17496|file|local|vector|||0.461||
 get_repro_effects|function|435d8e79578f2bbf|||||||||||||||
 get_sz_intercepts|function|f4d2b1c15c613f05|||||||||||||||
 gfig_pos_demo_timeseries|object|59b9e962a90b07af|||||||||||||||
@@ -66,15 +66,15 @@ install_proj_deps|function|ca7b64f5c9db662b|||||||||||||||
 make_flextable_gam_summary|function|9607176b978c0de6|||||||||||||||
 make_partial_effect_plots|function|b4c3d60046fbda7a|||||||||||||||
 model_diagnostics|stem|811eaba28ee46920|69f6b0d305fe3bf3|da3cc3bb483790ca|-2086566065|reports/model_diagnostics.html*reports/model_diagnostics.Rmd*reports/model_diagnostics_files|t19482.8810619124s|acf56d8225ba6afb|1869072|file|local|vector|||4.811||
-model_prev|stem|74a0f170a257e31f|2e9d5c0f4653d52f|765b00ab629760f4|196416103||t19479.7214730451s|2bcf0db1cd2ad234|631|qs|local|vector|||0.097||
-model_terms_table|stem|0dc029fe315122b2|cdebaa7be7820339|bfa15f035dc1aeb0|67972067||t19479.7251991433s|693312a94465a98b|4121|qs|local|vector|||0.464||
-model_terms_table_file|stem|41a0ff21157c5593|17b8b8b25f3b1f5d|ef46db3751d8e999|1068991115|data/model-terms-table.csv|t19479.7250873308s|a42db494e4a818e4|3637|file|local|vector|||0.001||
+model_prev|stem|c866890c00c8e96f|2e9d5c0f4653d52f|027315a718277762|196416103||t19514.7391073251s|2bcf0db1cd2ad234|631|qs|local|vector|||0.1||
+model_terms_table|stem|e3b4a9ee1c3d6e84|cdebaa7be7820339|d0d0234fc3f495e2|67972067||t19514.7385846479s|693312a94465a98b|4121|qs|local|vector|||0.379||
+model_terms_table_file|stem|a8d618ee6df0de29|17b8b8b25f3b1f5d|ef46db3751d8e999|1068991115|data/model-terms-table.csv|t19514.7271841014s|a42db494e4a818e4|3637|file|local|vector|||0.002||
 multinomial_model|stem|b80829d14335d7e8|348ad215b4c17951|dd471d75c5afd676|-640274962||t19479.7110958818s|80fc96933fddca25|2955605|qs|local|vector|||10.983|model has repeated 1d smooths of same variable.. model has repeated 1d smooths of same variable.|
 multinomial_model_alt|stem|f2fc5b939bda7bc7|18b0f158ff2a91e1|86958aeb8a84662c|1528495088||t19478.8028888684s|aa686fbf4b820c5b|1164672|qs|local|vector|||3.828||
 n|object|42b194eec038fae9|||||||||||||||
 outcomes|object|48bcd7f73f491c8b|||||||||||||||
 output_targets|object|af8bb44eb7dfab7f|||||||||||||||
-outputs_readme|stem|194a59753a170456|d5e1ebecdc33208b|fbe72115c1540c61|1833669539|outputs/README.md*outputs/README.Rmd|t19482.8823743368s|c10f7d0273e95a33|6851|file|local|vector|||1.505||
+outputs_readme|stem|e995233a597fd7d1|d5e1ebecdc33208b|29b299f02e8788d0|1833669539|outputs/README.md*outputs/README.Rmd|t19514.7391436194s|c10f7d0273e95a33|6851|file|local|vector|||2.239||
 p|object|d62de3d7487789a8|||||||||||||||
 partial_effect_plots|stem|c51a64d62c3decb8|cd3780128b3f2345|61bfe19cac914e91|766137583||t19479.720912742s|32ad73d791c4b73d|9409951|qs|local|vector|||1.314||
 partial_effect_plots_png|stem|862318f1861b520e|3be65cd6b85f2f5c|44d1e56615772133|-1309451877|outputs/partial_effect_plots_1.png*outputs/partial_effect_plots_2.png|t19479.7215652079s|d5a220d15ab42bf8|984184|file|local|vector|||3.833||
@@ -276,7 +276,7 @@ svg_plots_fdace984|branch|25fdb84e2ea431f5|156e3e615382f7fc|a94e53c93930f34b|-67
 svg_plots_fe58e3a8|branch|58fbfb649a8f950a|156e3e615382f7fc|1bd0f0dfb859ed51|1802536237|outputs/fig_fmi_demo_effects.svg|t19407.9351912375s|a55765b3d1c759a6|25285|file|local|vector|svg_plots||0.258|The following aesthetics were dropped during statistical transformation fill, label, xmin, xmaxℹ This can happen when ggplot fails to infer the correct grouping structure in the data.ℹ Did you forget to specify a group aesthetic or to convert a numerical variable into a factor|
 tablate_fmi_demo|function|fb26e9f667e4b78f|||||||||||||||
 table_fmi_demo|stem|99dacc3dcc1cf793|04b2b6149f96cae0|d24147f7cdd4c5c5|1581499303||t19467.6996091751s|ad2ba438f05aaa17|1483|qs|local|vector|||0.071||
-table_gam_summary|stem|6a4c986ac7720d8d|150bff8a83047da3|126d48e5fcbfa2e4|782109768||t19479.7264011161s|fa3f79b05211906f|6091|qs|local|vector|||103.729||
+table_gam_summary|stem|1ea50217cd182670|150bff8a83047da3|4326d7f22fd20c77|782109768||t19514.7391059515s|93e0ed29caa19700|6063|qs|local|vector|||44.927||
 tabulate_fmi_demo|function|ef1182c54e58882c|||||||||||||||
 tabulate_gam_summary|function|37983caddc7972ae|||||||||||||||
 terms|object|ce0cf887eed2a333|||||||||||||||
