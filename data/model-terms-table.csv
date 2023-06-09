@@ -3,18 +3,26 @@ HKU9-related Beta-CoV,s.1(sample_type):dummy_rectal1,Random effect fecal or rect
 HKU9-related Beta-CoV,s.1(day):sample_typeFecal,Long-term nonlinear trend of prevalence in fecal samples,FALSE,FALSE
 HKU9-related Beta-CoV,s.1(day):sample_typeRectal,Long-term nonlinear trend of prevalence in rectal samples,TRUE,TRUE
 HKU9-related Beta-CoV,"s.1(day,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+HKU9-related Beta-CoV,"s.1(day,gender):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+HKU9-related Beta-CoV,"s.1(day,age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
 HKU9-related Beta-CoV,s.1(day_of_year):sample_typeFecal,Annual nonlinear cyclic trend of prevalence in fecal samples,FALSE,FALSE
 HKU9-related Beta-CoV,s.1(day_of_year):sample_typeRectal,Annual nonlinear cyclic trend of prevalence in rectal samples,TRUE,TRUE
 HKU9-related Beta-CoV,"s.1(day_of_year,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+HKU9-related Beta-CoV,"s.1(day_of_year,age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+HKU9-related Beta-CoV,"s.1(day_of_year,gender):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
 HKU9-related Beta-CoV,s.1(fmi_normalized):dummy_rectal1,"Nonlinear effect of bat FMI, normalized within age, sex, and reproductive calss, on prevalence",TRUE,TRUE
 HKU9-related Beta-CoV,s.1(reproductive_condition):dummy_repro1,"Random effect of prevalence in bats with reproductive conditions (Pregnant, Lactating, Scrotal) varying from intercept",TRUE,TRUE
 Novel Alpha-CoV,s(sample_type):dummy_rectal1,Random effect fecal or rectal baseline prevalence differing from intercept,TRUE,TRUE
 Novel Alpha-CoV,s(day):sample_typeFecal,Long-term nonlinear trend of prevalence in fecal samples,FALSE,FALSE
 Novel Alpha-CoV,s(day):sample_typeRectal,Long-term nonlinear trend of prevalence in rectal samples,TRUE,TRUE
 Novel Alpha-CoV,"s(day,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+Novel Alpha-CoV,"s(day,gender):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
+Novel Alpha-CoV,"s(day,age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common long-term trend,TRUE,TRUE
 Novel Alpha-CoV,s(day_of_year):sample_typeFecal,Annual nonlinear cyclic trend of prevalence in fecal samples,FALSE,FALSE
 Novel Alpha-CoV,s(day_of_year):sample_typeRectal,Annual nonlinear cyclic trend of prevalence in rectal samples,TRUE,TRUE
 Novel Alpha-CoV,"s(day_of_year,gender_age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+Novel Alpha-CoV,"s(day_of_year,gender):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
+Novel Alpha-CoV,"s(day_of_year,age):dummy_rectal1",Random nonlinear effects of trends in prevalence within gender/age groups varying from the common annual cyclic trend,TRUE,TRUE
 Novel Alpha-CoV,s(fmi_normalized):dummy_rectal1,"Nonlinear effect of bat FMI, normalized within age, sex, and reproductive calss, on prevalence",TRUE,TRUE
 Novel Alpha-CoV,s(reproductive_condition):dummy_repro1,"Random effect of prevalence in bats with reproductive conditions (Pregnant, Lactating, Scrotal) varying from intercept",TRUE,TRUE
 Novel Beta-CoV,s.2(sample_type):dummy_rectal1,Random effect fecal or rectal baseline prevalence differing from intercept,TRUE,TRUE

@@ -41,6 +41,7 @@ analysis_targets <- tar_plan(
   partial_effect_plots = make_partial_effect_plots(multinomial_model),
   flextable_gam_summary = make_flextable_gam_summary(table_gam_summary),
   repro_effects = get_repro_effects(multinomial_model, gam_posterior, dat_prepped),
+  day_age_effects = get_day_age_effects(multinomial_model, gam_posterior, dat_prepped),
   peak_dates = calc_peak_dates(dat_clean, dat_prepped, multinomial_model, gam_posterior)
 )
 
@@ -52,7 +53,8 @@ plot_targets <- tar_plan(
   fig_pos_demo_timeseries = structure(plot_positivity_demo_timeseries(dat_prepped), fig.width = 8, fig.height = 4),
   #fig_fmi_effects =         structure(plot_fmi_effects(dat_prepped, multinomial_model, gam_posterior), fig.width = 8, fig.height = 4.5),
   fig_fmi_demo_effects =    structure(plot_fmi_demo_effects(dat_prepped), fig.width = 8, fig.height = 6),
-  fig_repro_effects =       structure(plot_repro_effects(repro_effects), fig.width = 5, fig.height = 4),
+  fig_day_age_effects =     structure(plot_day_age_effects(day_age_effects), fig.width = 8, fig.height = 6),
+  #fig_repro_effects =       structure(plot_repro_effects(repro_effects), fig.width = 5, fig.height = 4),
   fig_fa_cutoffs =          structure(plot_fa_cutoffs(dat_cleaned), fig.width = 10, fig.height = 8),
   fig_peak_dates =          structure(plot_peak_dates(peak_dates), fig.width = 6, fig.height = 7.5),
 )

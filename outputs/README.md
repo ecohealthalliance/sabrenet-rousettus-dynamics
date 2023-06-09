@@ -25,13 +25,13 @@ mean bat and environment variables.
 
 | virus                 | sample_type | mean | lower | upper | calculation_type | mean_corrected | lower_corrected | upper_corrected |
 |:----------------------|:------------|:-----|:------|:------|:-----------------|:---------------|:----------------|:----------------|
-| All CoVs              | Fecal       | 9.6% | 7.3%  | 11.9% | modeled          | 3.3%           | 2.5%            | 4.1%            |
-| HKU9-related Beta-CoV | Fecal       | 7.7% | 5.7%  | 9.7%  | modeled          | 2.6%           | 1.9%            | 3.3%            |
-| Novel Alpha-CoV       | Fecal       | 1.7% | 1.0%  | 2.6%  | modeled          | 0.6%           | 0.3%            | 0.9%            |
-| Novel Beta-CoV        | Fecal       | 0.2% | 0.0%  | 0.4%  | modeled          | 0.0%           | 0.0%            | 0.1%            |
-| All CoVs              | Rectal      | 9.6% | 7.4%  | 11.9% | modeled          | NA             | NA              | NA              |
-| HKU9-related Beta-CoV | Rectal      | 7.7% | 5.7%  | 9.6%  | modeled          | NA             | NA              | NA              |
-| Novel Alpha-CoV       | Rectal      | 1.7% | 1.0%  | 2.6%  | modeled          | NA             | NA              | NA              |
+| All CoVs              | Fecal       | 9.6% | 7.5%  | 12.0% | modeled          | 3.3%           | 2.5%            | 4.1%            |
+| HKU9-related Beta-CoV | Fecal       | 7.5% | 5.3%  | 9.4%  | modeled          | 2.5%           | 1.8%            | 3.2%            |
+| Novel Alpha-CoV       | Fecal       | 2.0% | 1.1%  | 3.0%  | modeled          | 0.7%           | 0.4%            | 1.0%            |
+| Novel Beta-CoV        | Fecal       | 0.2% | 0.0%  | 0.4%  | modeled          | 0.1%           | 0.0%            | 0.1%            |
+| All CoVs              | Rectal      | 9.6% | 7.3%  | 11.7% | modeled          | NA             | NA              | NA              |
+| HKU9-related Beta-CoV | Rectal      | 7.5% | 5.3%  | 9.4%  | modeled          | NA             | NA              | NA              |
+| Novel Alpha-CoV       | Rectal      | 1.9% | 1.1%  | 2.8%  | modeled          | NA             | NA              | NA              |
 | Novel Beta-CoV        | Rectal      | 0.2% | 0.0%  | 0.4%  | modeled          | NA             | NA              | NA              |
 
 ## Tables
@@ -77,9 +77,9 @@ mean bat and environment variables.
 
 ![](fig_fmi_demo_effects.svg)
 
-## outputs/fig_repro_effects.svg
+## outputs/fig_day_age_effects.svg
 
-![](fig_repro_effects.svg)
+![](fig_day_age_effects.svg)
 
 ## outputs/fig_fa_cutoffs.svg
 

@@ -130,7 +130,7 @@ make_flextable_gam_summary <- function(table_gam_summary) {
   flextable_gam_summary
 }
 
-make_partial_effect_plots <- function(multinomial_model, nrow_per_page = 5, ncol_per_page = 3) {
+make_partial_effect_plots <- function(multinomial_model, nrow_per_page = 6, ncol_per_page = 3) {
 
 
   plots_per_page = ncol_per_page*nrow_per_page

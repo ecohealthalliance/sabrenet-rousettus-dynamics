@@ -16,22 +16,19 @@ options(
   renv.config.install.transactional = FALSE,
   renv.config.synchronized.check = FALSE,
   renv.config.updates.parallel = TRUE,
-#  renv.config.pak.enabled = TRUE,
+  #  renv.config.pak.enabled = TRUE,
   renv.config.rspm.enabled = TRUE,
 
   mc.cores = min(parallel::detectCores(), 4)
 
 )
 
-if (!Sys.getenv("USE_CAPSULE") != "") {
-  if (file.exists("renv/activate.R")) {
-    source("renv/activate.R")
-  } else {
-    message("No renv/activate.R")
-  }
+if (file.exists("renv/activate.R")) {
+  source("renv/activate.R")
 } else {
-  message("Skipping renv load. Use {capsule} commands.")
+  message("No renv/activate.R")
 }
+
 
 # Use the local user's .Rprofile when interactive.
 # Good for keeping local preferences, but not always reproducible.

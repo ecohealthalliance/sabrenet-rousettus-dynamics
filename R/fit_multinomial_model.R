@@ -16,8 +16,12 @@ fit_multinomial_model <- function(dat_prepped, method = "REML", optimizer = "efs
   frm <- ~ s(sample_type, bs = "re", by = dummy_rectal) +
     s(day, bs = "tp", k = 5, by = sample_type, m = 2) + # Overall trend, split by fecal and swab
     s(day, gender_age, bs = "fs", k = 5, xt = list(bs = "tp"), by = dummy_rectal, m = 1) + # Overall trend deviance for different bat groups, swab only
+    s(day, gender, bs = "fs", k = 5, xt = list(bs = "tp"), by = dummy_rectal, m = 1) +
+    s(day, age, bs = "fs", k = 5, xt = list(bs = "tp"), by = dummy_rectal, m = 1) +
     s(day_of_year, bs = "cc", by = sample_type, k = 5, m = 2) + # Seasonal effect, split by fecal/swab
     s(day_of_year, gender_age, bs = "fs", xt = list(bs = "cc"), k = 5, by = dummy_rectal, m = 1) + # Seasonal deviance for different bat groups, swab only
+    s(day_of_year, gender, bs = "fs", k = 5, xt = list(bs = "cc"), by = dummy_rectal, m = 1) +
+    s(day_of_year, age, bs = "fs", k = 5, xt = list(bs = "cc"), by = dummy_rectal, m = 1) +
     s(fmi_normalized, k = 5, bs = "tp", by = dummy_rectal) + # Effect of bat FMI, swab only
     s(reproductive_condition, bs = "re", by = dummy_repro) # Effect of lactation/pregnancy/scrotal, reproductively active adults only
 

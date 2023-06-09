@@ -33,6 +33,8 @@ calc_time_series <- function(dat_cleaned, dat_prepped, multinomial_model, gam_po
       ),
       sample_type = as.factor(c("Fecal", "Rectal")),
       gender_age = factor("NA"),
+      age = factor("NA"),
+      gender = factor("NA"),
       dummy_repro = ordered(0),
       reproductive_condition = factor("None")
     ) |>
@@ -82,6 +84,8 @@ calc_peak_dates <- function(dat_cleaned, dat_prepped, multinomial_model, gam_pos
     ) |>
     mutate(
       gender_age = factor("NA"),
+      gender = factor("NA"),
+      age = factor("NA"),
       dummy_repro = ordered(0),
       reproductive_condition = factor("None"),
       fmi_normalized = 0,
