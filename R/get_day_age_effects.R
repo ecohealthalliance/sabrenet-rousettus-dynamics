@@ -5,7 +5,8 @@ get_day_age_effects <- function(multinomial_model, gam_posterior, dat_prepped) {
       age = factor(c("A", "SA")),
       day = round(seq(min(dat_prepped$day), max(dat_prepped$day), length.out = 100))
     ) |>
-    mutate(sample_type = "Rectal", day_of_year=yday(day), fmi_normalized = 0,
+    mutate(sample_type = "Rectal", day_of_year=yday(min(dat_prepped$date) + days(day)),
+           fmi_normalized = 0,
            gender = factor("NA"), gender_age = factor("NA"),
            reproductive_condition = factor("None"), dummy_rectal = 1, dummy_repro=0)
 
@@ -42,9 +43,9 @@ plot_day_age_effects <- function(day_age_effects) {
     filter(vir == "HKU9-related Beta-CoV")
 
   ggplot(day_age_effects2, aes(x = date, y = prob, ymin = prob.lower, ymax = prob.upper,
-                               col = `Age Class`, fill = `Age Class`, linetype = `Age Class`)) +
-    geom_ribbon(alpha = 0.5) +
-    geom_line(linewidth = 1) +
+                               col = `Age Class`, fill = `Age Class`)) +
+    geom_ribbon(alpha = 0.5, linetype = 2) +
+    geom_line(linewidth = 1, linetype = 1) +
     scale_color_manual(values = c("darkred", "darkgreen")) +
     scale_fill_manual(values = c("#FFFFFF00", "grey60")) +
     scale_y_continuous(labels = scales::percent, limits = c(-0,1), expand = c(0,0)) +
