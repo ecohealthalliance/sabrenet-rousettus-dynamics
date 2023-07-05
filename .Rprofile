@@ -23,14 +23,13 @@ options(
 
 )
 
-if (!Sys.getenv("USE_CAPSULE") != "") {
-  if (file.exists("renv/activate.R")) {
-    source("renv/activate.R")
-  } else {
-    message("No renv/activate.R")
+if(Sys.getenv("USE_CAPSULE") %in% c("1", "TRUE", "true")) {
+  if (interactive() && file.exists("renv.lock")) {
+    message("renv library not loaded (found env var USE_CAPSULE=", Sys.getenv("USE_CAPSULE"), "). Use `capsule` functions (see https://github.com/MilesMcBain/capsule)")
+    capsule::whinge()
   }
 } else {
-  message("Skipping renv load. Use {capsule} commands.")
+  source("renv/activate.R")
 }
 
 # Use the local user's .Rprofile when interactive.
