@@ -13,17 +13,26 @@ knitr::opts_chunk$set(
 
 # sabrenet-rousettus-dynamics
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6637927)](https://doi.org/10.5281/zenodo.6637927)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7709716)](https://doi.org/10.5281/zenodo.7709716)
 [![License (for code): MIT](https://img.shields.io/badge/License (for code)-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![License: CC0-1.0](https://img.shields.io/badge/License (for data)-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![License: CC-BY-4.0](https://img.shields.io/badge/License (for text)-CC_BY_4.0-blue.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 This repository contains data and R code which are supplements to:
 
-_Viral maintenance and excretion dynamics of coronaviruses within an Egyptian rousette fruit bat colony- considerations for spillover_, by
-Geldenhuys et al.  (2022)
+_Viral maintenance and excretion dynamics of coronaviruses within an Egyptian rousette fruit bat maternal colony – considerations for spillover_, by
+Marike Geldenhuys [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4005-118X), 
+Noam Ross [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-2136-0000),
+Muriel Dietrich [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-2665-7970),
+John L. de Vries [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-1749-8402),
+Marinda Mortlock [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9286-1040),
+Jonathan H. Epstein [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-1373-9301),
+Jacqueline Weyer [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-8776-7519),
+Janusz T. Pawęska, [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9471-2890) 
+and Wanda Markotter [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7550-0080),
+(2022)
 
-Please cite that paper, and/or the Zenodo data reference (<https://doi.org/######>)
+Please cite that paper, and/or the Zenodo data reference (<https://doi.org/10.5281/zenodo.7709716>)
 when using data or referring to this study.
 
 ## Repository Structure and Reproducibility
@@ -42,7 +51,7 @@ when using data or referring to this study.
     be viewed by pasting the code into <https://mermaid.live>.)
 
 ```{r, echo=FALSE, message = FALSE, results='asis'}
-tar_load(plan_targets)
+targets::tar_load(plan_targets)
 mer <- targets::tar_mermaid(targets_only = TRUE, outdated = FALSE, 
                             legend = FALSE, color = FALSE, 
                             exclude = c("readme", ends_with("_targets")))
