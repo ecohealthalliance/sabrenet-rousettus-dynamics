@@ -3,7 +3,9 @@
 
 # sabrenet-rousettus-dynamics
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7709716)](https://doi.org/10.5281/zenodo.7709716)
+
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7709716.svg)](https://doi.org/10.5281/zenodo.7709716)
 [![License (for code):
 MIT](https://img.shields.io/badge/License%20(for%20code)-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![License:
@@ -32,12 +34,9 @@ Jacqueline Weyer
 Janusz T. Pawęska,
 [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9471-2890)
 and Wanda Markotter
-[![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7550-0080),
-(2022)
+[![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7550-0080). _Scientific Reports 13, 15829 (2023). https://doi.org/10.1038/s41598-023-42938-w <https://doi.org/10.1038/s41598-023-42938-w>
 
-Please cite that paper, and/or the Zenodo data reference
-(<https://doi.org/10.5281/zenodo.7709716>) when using data or referring
-to this study.
+If referring to the study or methods, please cite the publication. If you re-use these data and/or code in a publication please be sure to cite the Zenodo reference, as well (<https://doi.org/10.5281/zenodo.7709716>).
 
 ## Repository Structure and Reproducibility
 
