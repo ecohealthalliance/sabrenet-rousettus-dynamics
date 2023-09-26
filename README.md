@@ -34,7 +34,7 @@ Jacqueline Weyer
 Janusz T. Pawęska,
 [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9471-2890)
 and Wanda Markotter
-[![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7550-0080). _Scientific Reports 13, 15829 (2023). <https://doi.org/10.1038/s41598-023-42938-w>
+[![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7550-0080). _Scientific Reports_ 13, 15829 (2023). <https://doi.org/10.1038/s41598-023-42938-w>
 
 If referring to the study or methods, please cite the publication. If you re-use these data and/or code in a publication please be sure to cite the Zenodo reference, as well (<https://doi.org/10.5281/zenodo.7709716>).
 
